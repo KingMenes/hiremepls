@@ -23,7 +23,11 @@ const questionSchema = mongoose.Schema({
   comments: {
     // might change
     type: Array,
-  },
+    },
+    tags: {
+        type: Array,
+        required:[true, 'Please add at least one tag']
+  }
 });
 
 module.exports = mongoose.model("Question", questionSchema);
