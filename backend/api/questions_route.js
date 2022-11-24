@@ -1,8 +1,9 @@
 import express from "express"
 
 const router = express.Router()
+import QuestionsCtrl from "./questions.controller.js"
 
-router.route("/").get((req, res) => res.send("Hello world"))
+router.route("/").get(QuestionsCtrl.apiGetQuestions)
 
 
 
