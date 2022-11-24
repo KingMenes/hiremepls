@@ -1,7 +1,7 @@
 // const mongoose = require("mongoose");
 // const userSchema = require("./userModel");
 import mongoose from "mongoose";
-import userSchema from "./userModel.js"
+import User from "./userModel.js"
 
 const questionSchema = mongoose.Schema({
   question: {

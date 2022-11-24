@@ -29,7 +29,11 @@ export const createQuestion = asyncHandler(async (req, res) => {
 
   const question = await Question.create({
     question: req.body.question,
-
+    author: req.body.author,
+    date: new Date(),
+    comments: [],
+    reputation: [],
+    tags: req.body.tags,
   })
 
   res.json(question)

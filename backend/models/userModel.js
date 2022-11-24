@@ -2,7 +2,7 @@
 // const questionSchema = require("./questionModel"); //Required to access questions submitted by users
 
 import mongoose from "mongoose";
-import questionScheme from "./questionModel.js"
+import questionSchema from "./questionModel.js"
 // Defines a schema, or a structure for data that will be sent to MongoDB.
 // Usually just the attributes an object would have
 const userSchema = mongoose.Schema(
