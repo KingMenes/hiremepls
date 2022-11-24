@@ -30,6 +30,7 @@ export default class DBDAO {
     let cursor;
     try {
       cursor = await questions.find(query);
+      console.log('does it hit this ntry')
     } catch (e) {
       console.error("Unable to issue find command, ", e);
       return { questionsList: [], totalNumQuestions: 0 };
