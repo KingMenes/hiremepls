@@ -1,0 +1,8 @@
+.searchbar {
+  display: flex;
+  flex-direction: row;
+}
+.searchbar input {
+  border-width: 0px;
+  border: none;
+}/*# sourceMappingURL=SearchBar.css.map */
