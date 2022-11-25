@@ -68,7 +68,7 @@ export const getMe = asyncHandler(async (req, res) => {
 
 export const logInUser = asyncHandler(async (req, res) => {
     const { email, password, id } = req.body
-    const user = await User.findOne(email)
+    const user = await User.findOne({ email })
     if (!user) {
         res.status(400)
         throw new Error('User not found')
@@ -82,24 +82,27 @@ export const logInUser = asyncHandler(async (req, res) => {
 })
 
 export const updateUser = asyncHandler(async (req, res) => {
-    const question = await Question.findById(req.params.id)
+    const user = await user.findById(req.params.id)
     if (!question) {
         res.status(400)
-        throw new Error('Question not found')
+        throw new Error('User not found')
     }
 
-    const updatedQuestion = await Question.findByIdAndUpdate(req.params.id, req.body, {
+
+    const updatedUser = await User.findByIdAndUpdate(req.params.id, req.body, {
         new: true,
     })
-    res.json(updatedQuestion)
+    res.json(updatedUser)
 })
 
 export const deleteUser = asyncHandler(async (req, res) => {
-    const question = await Question.findById(req.params.id)
-    if (!question) {
+    const user = await User.findById(req.params.id)
+    if (!user) {
         res.status(400)
-        throw new Error('Question not found')
+        throw new Error('User not found')
     }
-    await question.remove()
-    res.json({ "id": req.params.id })
+    await user.remove()
+
+
+    res.json({ "message": "Account successfully deleted" })
 })
