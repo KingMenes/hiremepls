@@ -11,6 +11,13 @@ export const getUser = asyncHandler(async (req, res) => {
     res.json(user)
 })
 
+//generate JWT
+const generateToken = (id) => {
+    return jwt.sign({ id }, process.env.JWT_SECRET, {
+        expiresIn: '30d',
+    })
+}
+
 export const createUser = asyncHandler(async (req, res) => {
     const { username, email, password, role } = req.body
     if (!username) {
@@ -43,11 +50,20 @@ export const createUser = asyncHandler(async (req, res) => {
     })
 
     if (user) {
-        res.status(201).json({ _id: user.id, username: user.username, email: user.email, reputation: user.reputation })
+        res.status(201).json({ _id: user.id, token: generateToken(user._id), username: user.username, email: user.email, reputation: user.reputation })
     } else {
         res.status(400)
         throw new Error('Invalid user data')
     }
+})
+
+export const getMe = asyncHandler(async (req, res) => {
+    const { _id, name, email } = await User.findById(req.user.id)
+    res.status(200).json({
+        id: _id,
+        name,
+        email
+    })
 })
 
 export const logInUser = asyncHandler(async (req, res) => {
@@ -58,7 +74,7 @@ export const logInUser = asyncHandler(async (req, res) => {
         throw new Error('User not found')
     }
     if (user && (await bcrypt.compare(password, user.password))) {
-        res.json({ _id: user.id, username: user.username, email: user.email, reputation: user.reputation })
+        res.json({ _id: user.id, token: generateToken(user._id), username: user.username, email: user.email, reputation: user.reputation })
     } else {
         res.status(400)
         throw new Error('Invalid credentals')
