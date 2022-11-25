@@ -1,8 +1,14 @@
 import express from "express";
-
 const router = express.Router();
-import QuestionsCtrl from "../controllers/questionController.js";
+import { protect } from "../middleware/authMiddleware.js"
 
-router.route("/").get(QuestionsCtrl.apiGetQuestions);
+// import QuestionsCtrl from "../controllers/questionController.js";
+import { createQuestion, deleteQuestion, getQuestions, updateQuestion } from "../controllers/questionController.js"
+
+router.get('/', protect, getQuestions)
+router.post('/', protect, createQuestion)
+router.put('/:id', protect, updateQuestion)
+router.delete('/id', protect, deleteQuestion)
+// router.route("/").get(QuestionsCtrl.apiGetQuestions);
 
 export default router;

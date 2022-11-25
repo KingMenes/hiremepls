@@ -1,10 +1,12 @@
-const mongoose = require("mongoose");
-const userSchema = require("./userModel");
+// const mongoose = require("mongoose");
+// const userSchema = require("./userModel");
+import mongoose from "mongoose";
+import User from "./userModel.js"
 
 const questionSchema = mongoose.Schema({
-  title: {
+  question: {
     type: String,
-    required: [true, "Please add a title"],
+    required: [true, "Please add a question"],
   },
   author: {
     type: mongoose.Schema.Types.ObjectId,
@@ -23,11 +25,11 @@ const questionSchema = mongoose.Schema({
   comments: {
     // might change
     type: Array,
-    },
-    tags: {
-        type: Array,
-        required:[true, 'Please add at least one tag']
+  },
+  tags: {
+    type: Array,
+    required: [true, 'Please add at least one tag']
   }
 });
-
-module.exports = mongoose.model("Question", questionSchema);
+export default mongoose.model("Question", questionSchema)
+// module.exports = mongoose.model("Question", questionSchema);
