@@ -1,9 +1,7 @@
 import SignUpForm from "../components/SignupForm/SignupForm";
 
 function Home() {
-  return (
-    <SignUpForm/>
-  )
+  return <SignUpForm />;
 }
 
-export default Home
+export default Home;

@@ -21,8 +21,8 @@ const commentSchema = mongoose.Schema({
   date: {
     type: Date,
     required: [true, "Please add date"],
-    },
-    replies: {
-        type:String,
-    }
+  },
+  replies: {
+    type: String,
+  },
 });

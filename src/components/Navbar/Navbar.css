@@ -6,7 +6,8 @@
   height: 40px;
   font-family: "Nunito", sans-serif;
   font-weight: 500;
-  box-shadow: 0 1px 2px hsla(0deg, 0%, 0%, 0.05), 0 1px 4px hsla(0deg, 0%, 0%, 0.05), 0 2px 8px hsla(0deg, 0%, 0%, 0.05);
+  box-shadow: 0 1px 2px hsla(0deg, 0%, 0%, 0.05),
+    0 1px 4px hsla(0deg, 0%, 0%, 0.05), 0 2px 8px hsla(0deg, 0%, 0%, 0.05);
   border-radius: 5px;
 }
 .navbar .menu-icon {
@@ -33,4 +34,4 @@
   list-style: none;
   justify-content: space-around;
   width: 100%;
-}/*# sourceMappingURL=Navbar.css.map */
+} /*# sourceMappingURL=Navbar.css.map */
