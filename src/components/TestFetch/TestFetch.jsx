@@ -14,10 +14,10 @@ function TestFetch() {
             return
         }
     }
+    console.log(questions)
     useEffect(() => {
         fetchQuestions()
     }, []
-
     )
 
     return (
