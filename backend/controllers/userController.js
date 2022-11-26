@@ -50,15 +50,13 @@ export const createUser = asyncHandler(async (req, res) => {
   });
 
   if (user) {
-    res
-      .status(201)
-      .json({
-        _id: user.id,
-        token: generateToken(user._id),
-        username: user.username,
-        email: user.email,
-        reputation: user.reputation,
-      });
+    res.status(201).json({
+      _id: user.id,
+      token: generateToken(user._id),
+      username: user.username,
+      email: user.email,
+      reputation: user.reputation,
+    });
   } else {
     res.status(400);
     throw new Error("Invalid user data");

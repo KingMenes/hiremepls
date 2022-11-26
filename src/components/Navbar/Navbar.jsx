@@ -6,27 +6,31 @@ import SearchBar from "../SearchBar/SearchBar";
 function Navbar() {
   return (
     <div className="navbar">
-      <div>
-        <MdMenu className="menu-icon" />
-        <div className="logo">
-          <img src={logo} alt="" />
+      <div className="nav-main">
+        <div className="nav-section1">
+          <MdMenu className="menu-icon" />
+          <div className="logo">
+            <img src={logo} alt="" />
+          </div>
         </div>
-      </div>
 
-      <nav>
-        <ul>
-          <li>
-            <a>Option 1</a>
-          </li>
-          <li>
-            <a>Option 2</a>
-          </li>
-          <li>
-            <a>Option 3</a>
-          </li>
-        </ul>
-      </nav>
-      <SearchBar />
+        <nav>
+          <ul>
+            <li>
+              <a>Option 1</a>
+            </li>
+            <li>
+              <a>Option 2</a>
+            </li>
+            <li>
+              <a>Option 3</a>
+            </li>
+          </ul>
+        </nav>
+        <SearchBar />
+        <button>Sign Up</button>
+        <button>Login</button>
+      </div>
     </div>
   );
 }

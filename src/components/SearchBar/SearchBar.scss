@@ -1,6 +1,13 @@
 .searchbar {
   display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  border: 1px rgb(67, 67, 67) solid;
+  border-radius: 999px;
+  width: 50%;
+  height: 20px;
+  margin: auto;
 
   input {
     border-width: 0px;
