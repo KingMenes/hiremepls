@@ -1,20 +1,7 @@
-// import DBDAO from "../dao/questionsDAO.js";
 import asyncHandler from "express-async-handler";
 import Question from "../models/questionModel.js";
 import User from "../models/userModel.js";
-// export default class QuestionsController {
-//   static async apiGetQuestions(req, res, next) {
-//     const { questionsList, totalNumQuestions } = await DBDAO.getQuestions({});
-//     let response = {
-//       questions: questionsList,
-//       // page: page,
-//       // filters: filters,
-//       // entries_per_page: questionsPerPage,
-//       total_results: totalNumQuestions,
-//     };
-//     res.json(response);
-//   }
-// }
+
 
 export const getQuestions = asyncHandler(async (req, res) => {
   // const { questionsList } = await DBDAO.getQuestions({})

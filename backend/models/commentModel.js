@@ -26,3 +26,5 @@ const commentSchema = mongoose.Schema({
     type: String,
   },
 });
+
+export default mongoose.model("Comment", commentSchema)
