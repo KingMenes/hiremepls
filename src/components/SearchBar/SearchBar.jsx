@@ -3,12 +3,14 @@ import { MdSearch } from "react-icons/md";
 
 function SearchBar() {
   return (
-    <div className="searchbar">
-      <div>
-        <MdSearch />
+    <form id="search" className="searchbar">
+      <div className="input-group">
+        <div className="search-icon-container">
+          <MdSearch className="search-icon" />
+        </div>
+        <input type="text" placeholder="Search ..." />
       </div>
-      <input type="text" placeholder="Search ..." />
-    </div>
+    </form>
   );
 }
 

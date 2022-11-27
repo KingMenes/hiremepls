@@ -28,8 +28,12 @@ function Navbar() {
           </ul>
         </nav>
         <SearchBar />
-        <button>Sign Up</button>
-        <button>Login</button>
+        <button className="btn-login">
+          <span>Login</span>
+        </button>
+        <button className="btn-signup">
+          <span>Sign Up</span>
+        </button>
       </div>
     </div>
   );
