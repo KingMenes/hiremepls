@@ -73,7 +73,7 @@ export const getMe = asyncHandler(async (req, res) => {
 });
 
 export const logInUser = asyncHandler(async (req, res) => {
-  const { email, password, id } = req.body;
+  const { email, password } = req.body;
   const user = await User.findOne({ email });
   if (!user) {
     res.status(400);
