@@ -13,26 +13,29 @@ function Navbar() {
                         <img src={logo} alt="" />
                     </div>
                 </div>
-
-                <nav>
-                    <ul>
-                        <li>
-                            <a>Option 1</a>
-                        </li>
-                        <li>
-                            <a>Option 2</a>
-                        </li>
-                        <li>
-                            <a>Option 3</a>
-                        </li>
-                    </ul>
-                </nav>
-                <SearchBar />
-                <button>Sign Up</button>
-                <button>Login</button>
-            </div>
-        </div>
-    );
+        <nav>
+          <ul>
+            <li>
+              <a>Option 1</a>
+            </li>
+            <li>
+              <a>Option 2</a>
+            </li>
+            <li>
+              <a>Option 3</a>
+            </li>
+          </ul>
+        </nav>
+        <SearchBar />
+        <button className="btn-login">
+          <span>Login</span>
+        </button>
+        <button className="btn-signup">
+          <span>Sign Up</span>
+        </button>
+      </div>
+    </div>
+  );
 }
 
 export default Navbar;

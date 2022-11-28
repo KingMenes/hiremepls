@@ -3,14 +3,49 @@
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
-  border: 1px rgb(67, 67, 67) solid;
-  border-radius: 999px;
-  width: 50%;
-  height: 20px;
-  margin: auto;
+  border: 1px hsl(267, 17%, 46%) solid;
+  border-radius: 3px;
+  width: 100%;
+  height: 75%;
+  margin: auto 10px;
+  flex-shrink: 10000;
+  flex-grow: 1;
+  &:focus {
+    outline: hsl(206, 90, 69.5);
+    box-shadow: 0 0 0 4px;
+  }
 
+  .input-group {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
   input {
     border-width: 0px;
     border: none;
+    background-color: inherit;
+    width: 100%;
+    height: 100%;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .search-icon-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 28px;
+    width: 28px;
+    margin: auto;
+  }
+  .search-icon {
+    height: 100%;
+    width: 100%;
+    color: hsl(0, 0%, 30%);
   }
 }
