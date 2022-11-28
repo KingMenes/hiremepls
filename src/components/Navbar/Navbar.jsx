@@ -4,16 +4,15 @@ import "./Navbar.css";
 import SearchBar from "../SearchBar/SearchBar";
 
 function Navbar() {
-  return (
-    <div className="navbar">
-      <div className="nav-main">
-        <div className="nav-section1">
-          <MdMenu className="menu-icon" />
-          <div className="logo">
-            <img src={logo} alt="" />
-          </div>
-        </div>
-
+    return (
+        <div className="navbar">
+            <div className="nav-main">
+                <div className="nav-section1">
+                    <MdMenu className="menu-icon" />
+                    <div className="logo">
+                        <img src={logo} alt="" />
+                    </div>
+                </div>
         <nav>
           <ul>
             <li>

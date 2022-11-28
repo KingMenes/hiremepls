@@ -1,7 +1,6 @@
-// const mongoose = require("mongoose");
-// const userSchema = require("./userModel");
 import mongoose from "mongoose";
 import User from "./userModel.js";
+import Comment from "./commentModel.js"
 
 const questionSchema = mongoose.Schema({
   question: {
@@ -32,4 +31,3 @@ const questionSchema = mongoose.Schema({
   },
 });
 export default mongoose.model("Question", questionSchema);
-// module.exports = mongoose.model("Question", questionSchema);
