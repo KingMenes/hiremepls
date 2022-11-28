@@ -19,15 +19,20 @@ const questionSchema = mongoose.Schema({
   reputation: {
     //likes/dislikes
     type: Array,
-    required: [true, "Please add reps"],
+    default:[0,0],
   },
   comments: {
     // might change
     type: Array,
+    default:[]
   },
   tags: {
     type: Array,
-    required: [true, "Please add at least one tag"],
+    default: [],
   },
+  views: {
+    type: Number,
+    default: 0,
+  }
 });
 export default mongoose.model("Question", questionSchema);
