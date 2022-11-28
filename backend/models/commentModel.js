@@ -1,4 +1,4 @@
-import mongoose from 'mongoose'
+import mongoose from "mongoose";
 
 const commentSchema = mongoose.Schema({
   body: {
@@ -27,4 +27,4 @@ const commentSchema = mongoose.Schema({
   },
 });
 
-export default mongoose.model("Comment", commentSchema)
+export default mongoose.model("Comment", commentSchema);

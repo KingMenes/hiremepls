@@ -1,30 +1,6 @@
-import { useState, useEffect } from 'react'
-import { motion } from "framer-motion";
-import Backdrop from '../Backdrop/Backdrop';
-import './SignupForm.css'
+import { useState, useEffect } from "react";
 
-const dropIn = {
-    hidden: {
-      y: "-100vh",
-      opacity: 0,
-    },
-    visible: {
-      y: "0",
-      opacity: 1,
-      transition: {
-        duration: 0.1,
-        type: "spring",
-        damping: 25,
-        stiffness: 500,
-      },
-    },
-    exit: {
-      y: "100vh",
-      opacity: 0,
-    },
-  };
-
-function SignupForm({handleClose}) {
+const SignUpForm = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -33,18 +9,8 @@ function SignupForm({handleClose}) {
   const onSubmit = (e) => {
     e.preventDefault();
   };
-    return (
-        <Backdrop onClick={handleClose}>
-      
-        <motion.div
-          onClick={(e) => e.stopPropagation()}  // Prevent click from closing modal
-          className="modal"
-          variants={dropIn}
-          initial="hidden"
-          animate="visible"
-          exit="exit"
-        >
-           <form onSubmit={onSubmit}>
+  return (
+    <form onSubmit={onSubmit}>
       <div>
         <div>Username must be at least 5 characters</div>
         <label>
@@ -89,9 +55,7 @@ function SignupForm({handleClose}) {
         password.length > 4 &&
         password === confirm && <button>Submit</button>}
     </form>
-        </motion.div>
-       </Backdrop>
-    )
-}
+  );
+};
 
-export default SignupForm
+export default SignUpForm;

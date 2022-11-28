@@ -2,7 +2,6 @@ import asyncHandler from "express-async-handler";
 import Question from "../models/questionModel.js";
 import User from "../models/userModel.js";
 
-
 export const getQuestions = asyncHandler(async (req, res) => {
   // const { questionsList } = await DBDAO.getQuestions({})
   const questionsList = await Question.find();

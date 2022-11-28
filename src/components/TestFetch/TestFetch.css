@@ -1,36 +1,32 @@
 #questionsContainer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    width: 100%;
-    border: solid black 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  border: solid black 1px;
 }
 
 .questionBox {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: solid black 1px;
-    width: 200px;
-    height: 200px;
-    margin: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: solid black 1px;
+  width: 200px;
+  height: 200px;
+  margin: 15px;
 }
 
-
-
 .questionBox:hover {
-
-    cursor: pointer;
-    box-shadow: 0 0 5px black;
-    height: 210px;
-    width: 210px;
-    transition: .5s;
-
+  cursor: pointer;
+  box-shadow: 0 0 5px black;
+  height: 210px;
+  width: 210px;
+  transition: 0.5s;
 }
 
 .questionBox:not(:hover) {
-    height: 200px;
-    width: 200px;
-    transition: .5s;
+  height: 200px;
+  width: 200px;
+  transition: 0.5s;
 }
