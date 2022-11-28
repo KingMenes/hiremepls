@@ -1,10 +1,14 @@
 import "./Footer.css";
+import logo from "../../assets/hiremepls_logo.svg";
 
 function Footer() {
   return (
     <div className="footer">
       <footer>
-        <div className="products">
+        <div className="logo">
+          <img src={logo} alt="" />
+        </div>
+        <div className="products footer-header">
           <span>Products</span>
           <ul>
             <li>
@@ -18,7 +22,7 @@ function Footer() {
             </li>
           </ul>
         </div>
-        <div className="company">
+        <div className="company footer-header">
           <span>Company</span>
           <ul>
             <li>
@@ -32,7 +36,7 @@ function Footer() {
             </li>
           </ul>
         </div>
-        <div className="support">
+        <div className="support footer-header">
           <span>Support</span>
           <ul>
             <li>
@@ -46,7 +50,7 @@ function Footer() {
             </li>
           </ul>
         </div>
-        <div className="socials">
+        <div className="socials footer-header">
           <span>Socials</span>
           <ul>
             <li>
@@ -61,7 +65,9 @@ function Footer() {
           </ul>
         </div>
       </footer>
-      <span>© {new Date().getFullYear()} HireMePls. All rights reserved</span>
+      <span className="copyright">
+        © {new Date().getFullYear()} HireMePls. All rights reserved.
+      </span>
     </div>
   );
 }
