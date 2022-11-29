@@ -1,5 +1,4 @@
 import express from "express";
-const router = express.Router();
 import { protect } from "../middleware/authMiddleware.js";
 import {
   getUser,
@@ -9,6 +8,9 @@ import {
   logInUser,
   getMe,
 } from "../controllers/userController.js";
+
+
+const router = express.Router();
 
 router.get("/me", protect, getMe);
 router.get("/:id", getUser);

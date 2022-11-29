@@ -44,51 +44,30 @@ function SignupForm({handleClose}) {
           animate="visible"
           exit="exit"
         >
-           <form onSubmit={onSubmit}>
-      <div>
-        <div>Username must be at least 5 characters</div>
-        <label>
-          Username*
-          <input onChange={(e) => setUsername(e.target.value)}></input>
-        </label>
-      </div>
-      {username.length > 4 && (
-        <div>
-          <label>
-            Email*
-            <input onChange={(e) => setEmail(e.target.value)}></input>
-          </label>
-        </div>
-      )}
-      {username.length > 4 && email.match(emailRegex) && (
-        <div>
-          <label>
-            Password*
-            <input
-              type="password"
-              onChange={(e) => setPassword(e.target.value)}
-            ></input>
-          </label>
-        </div>
-      )}
-      {username.length > 4 &&
-        email.match(emailRegex) &&
-        password.length > 4 && (
-          <div>
-            <label>
-              Confirm Password*
-              <input
-                type="password"
-                onChange={(e) => setConfirm(e.target.value)}
-              ></input>
-            </label>
-          </div>
-        )}
-      {username.length > 4 &&
-        email.match(emailRegex) &&
-        password.length > 4 &&
-        password === confirm && <button>Submit</button>}
-    </form>
+           
+
+<div className="login-box">
+  <h2>Login</h2>
+  <form>
+    <div className="user-box">
+      <input type="text" name="" required=""/>
+      <label>Username</label>
+    </div>
+    <div className="user-box">
+      <input type="password" name="" required=""/>
+      <label>Password</label>
+    </div>
+    <a href="#">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      Submit
+    </a>
+  </form>
+</div>
+
+
         </motion.div>
        </Backdrop>
     )
