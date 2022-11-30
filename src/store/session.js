@@ -7,22 +7,46 @@ const SET_USER = "session/SET_USER";
 const REMOVE_USER = "session/REMOVE_USER";
 const CHECK_USER = "sesesefgsefsegfsda";
 
-export const login = createAsyncThunk(SET_USER, async ({ email, password }) => {
-  const res = await http.post("/users/login", { email, password });
+export const login = createAsyncThunk(SET_USER, async ({ username, password }) => {
+  const res = await http.post("/users/login", { username, email: username, password });
   return res.data;
 });
 
+export const registerUser = createAsyncThunk(SET_USER, async ({ username, email, password, password2 }) => {
+  const res = await http.post("/users", { username, email, password, confirmPassword: password2 });
+
+  return res.data;
+});
+
+export const logout = createAsyncThunk(REMOVE_USER, async () => {
+
+  return
+});
+
+// export const logout = () => async (dispatch) => {
+//   const response = await fetch("/api/auth/logout", {
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//   });
+
+//   if (response.ok) {
+//     dispatch(removeUser());
+//   }
+// };
 const sessionSlice = createSlice({
   name: "session",
   initialState: {},
   extraReducers: {
     [login.fulfilled]: (state, action) => {
-      console.log("action");
       state.user = action.payload;
     },
-    removeUser(state, action) {
-      state = {};
+    [logout.fulfilled]: (state, action) => {
+      state.user = undefined;
     },
+    [registerUser.fulfilled]: (state, action) => {
+      state.user = action.payload
+    }
   },
 });
 // export const login = (email, password) => async (dispatch) => {
@@ -95,17 +119,6 @@ export const authenticate = () => async (dispatch) => {
   }
 };
 
-export const logout = () => async (dispatch) => {
-  const response = await fetch("/api/auth/logout", {
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-
-  if (response.ok) {
-    dispatch(removeUser());
-  }
-};
 
 export const signUp = (username, email, password) => async (dispatch) => {
   const response = await fetch("/api/auth/signup", {

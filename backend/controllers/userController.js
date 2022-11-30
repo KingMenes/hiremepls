@@ -2,6 +2,7 @@ import User from "../models/userModel.js";
 import asyncHandler from "express-async-handler";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
+import { ErrorResponse } from "@remix-run/router";
 
 export const getUser = asyncHandler(async (req, res) => {
   const user = await User.findById(req.params.id);
@@ -20,6 +21,7 @@ const generateToken = (id) => {
 
 export const createUser = asyncHandler(async (req, res) => {
   const { username, email, password, role } = req.body;
+
   if (!username) {
     res.status(400);
     throw new Error("Please add a username");
@@ -32,10 +34,16 @@ export const createUser = asyncHandler(async (req, res) => {
     res.status(400);
     throw new Error("Please add an email address");
   }
-  const userExist = await User.findOne({ email });
+  let userExist = await User.findOne({ email });
+  if (!userExist) {
+    userExist = await User.findOne({ username })
+    if (userExist) {
+      throw new Error("Username already used")
+    }
+  }
   if (userExist) {
     res.status(400);
-    throw new Error("User already exists");
+    throw new Error("Email already used");
   }
   //password hashing
   const salt = await bcrypt.genSalt(10);
@@ -45,12 +53,12 @@ export const createUser = asyncHandler(async (req, res) => {
     username,
     email,
     password: hashedPassword,
-    role,
+    role: 'user',
     reputation: [],
   });
 
   if (user) {
-    res.status(201).json({
+    res.json({
       _id: user.id,
       token: generateToken(user._id),
       username: user.username,
@@ -73,8 +81,12 @@ export const getMe = asyncHandler(async (req, res) => {
 });
 
 export const logInUser = asyncHandler(async (req, res) => {
-  const { email, password } = req.body;
-  const user = await User.findOne({ email });
+  const { username, email, password } = req.body;
+  let user = await User.findOne({ username });
+  if (!user) {
+    user = await User.findOne({ email })
+  }
+
   if (!user) {
     res.status(400);
     throw new Error("User not found");

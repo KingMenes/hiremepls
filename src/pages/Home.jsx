@@ -1,14 +1,11 @@
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import TestFetch from "../components/TestFetch/TestFetch";
-import { login } from "../store/session";
+import { login, logout } from "../store/session";
 import { useDispatch } from "react-redux";
 
 function Home() {
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(login({ email: "blau4000@gmail.com", password: "password" }));
-  }, []);
 
   return (
     <>
