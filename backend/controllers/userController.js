@@ -4,6 +4,11 @@ import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 import { ErrorResponse } from "@remix-run/router";
 
+export const logoutUser = asyncHandler(async (req, res) => {
+  req.session.user = null
+  res.json({ message: 'Logged out' })
+})
+
 export const getUser = asyncHandler(async (req, res) => {
   const user = await User.findById(req.params.id);
   if (!user) {
@@ -18,6 +23,22 @@ const generateToken = (id) => {
     expiresIn: "30d",
   });
 };
+
+export const isAuth = asyncHandler(async (req, res) => {
+
+  if (req.session.user) {
+    const user = await User.findOne({ email: req.session.user.email })
+    return res.json({
+      _id: user.id,
+      token: generateToken(user._id),
+      username: user.username,
+      email: user.email,
+      reputation: user.reputation,
+    })
+  } else {
+    return res.status(401).json('unauthorized')
+  }
+});
 
 export const createUser = asyncHandler(async (req, res) => {
   const { username, email, password, role } = req.body;
@@ -58,6 +79,8 @@ export const createUser = asyncHandler(async (req, res) => {
   });
 
   if (user) {
+    const userSession = { email: user.email }
+    req.session.user = userSession
     res.json({
       _id: user.id,
       token: generateToken(user._id),
@@ -92,12 +115,15 @@ export const logInUser = asyncHandler(async (req, res) => {
     throw new Error("User not found");
   }
   if (user && (await bcrypt.compare(password, user.password))) {
+    const userSession = { email: user.email }
+    req.session.user = userSession
     res.json({
       _id: user.id,
       token: generateToken(user._id),
       username: user.username,
       email: user.email,
       reputation: user.reputation,
+      userSession
     });
   } else {
     res.status(400);

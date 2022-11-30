@@ -31,7 +31,7 @@ const dropIn = {
   },
 };
 
-function SignupForm({ handleClose, setLoggedIn }) {
+function SignupForm({ handleClose, setSessionUser }) {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -83,7 +83,7 @@ function SignupForm({ handleClose, setLoggedIn }) {
       const res = await dispatch(registerUser(userData))
       if (res.payload.username === userData.username) {
         handleClose()
-        setLoggedIn(true)
+        setSessionUser(res.payload)
       }
     }
   }

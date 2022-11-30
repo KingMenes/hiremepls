@@ -11,19 +11,21 @@ import { useDispatch, useSelector } from "react-redux"
 import { logout, login } from "../../store/session"
 import { useState, useEffect } from 'react'
 
-function Navbar() {
+function Navbar({ sessionUser, setSessionUser }) {
 
   const dispatch = useDispatch()
   const user = useSelector(state => state.session)
-
+  console.log(sessionUser)
   const { loginModalOpen, loginClose, loginOpen } = useLoginModal();
   const { signupModalOpen, signupClose, signupOpen } = useSignupModal();
-  const [loggedIn, setLoggedIn] = useState(false)
+
+
+
 
   const handleLogout = async (e) => {
     e.preventDefault()
     await dispatch(logout())
-    setLoggedIn(false)
+    setSessionUser(null)
     return
   }
 
@@ -33,7 +35,7 @@ function Navbar() {
         <div className="nav-section1">
           <MdMenu className="menu-icon" />
           <div className="logo">
-           <a href="/"><img src={logo} alt="" /></a> 
+            <a href="/"><img src={logo} alt="" /></a>
           </div>
         </div>
         <nav>
@@ -50,7 +52,7 @@ function Navbar() {
           </ul>
         </nav>
         <SearchBar />
-        {(!loggedIn) && <motion.button
+        {(!sessionUser) && <motion.button
           className="btn-login"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
@@ -58,7 +60,7 @@ function Navbar() {
         >
           <span>Login</span>
         </motion.button>}
-        {(!loggedIn) && <motion.button
+        {(!sessionUser) && <motion.button
           className="btn-signup"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
@@ -66,7 +68,7 @@ function Navbar() {
         >
           <span>Sign Up</span>
         </motion.button>}
-        {loggedIn && <motion.button
+        {sessionUser && <motion.button
           className="btn-login"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
@@ -77,10 +79,10 @@ function Navbar() {
 
         <ModalContainer>
           {loginModalOpen && (
-            <LoginForm modalOpen={loginModalOpen} handleClose={loginClose} setLoggedIn={setLoggedIn} user={user} />
+            <LoginForm modalOpen={loginModalOpen} handleClose={loginClose} setSessionUser={setSessionUser} user={user} />
           )}
           {signupModalOpen && (
-            <SignupForm modalOpen={signupModalOpen} handleClose={signupClose} setLoggedIn={setLoggedIn} user={user} />
+            <SignupForm modalOpen={signupModalOpen} handleClose={signupClose} setSessionUser={setSessionUser} user={user} />
           )}
         </ModalContainer>
       </div>

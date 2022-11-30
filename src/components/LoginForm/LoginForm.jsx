@@ -27,7 +27,7 @@ const dropIn = {
   },
 };
 
-function LoginForm({ handleClose, setLoggedIn, user }) {
+function LoginForm({ handleClose, user, setSessionUser }) {
   const dispatch = useDispatch()
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -35,7 +35,7 @@ function LoginForm({ handleClose, setLoggedIn, user }) {
     e.preventDefault();
     const res = await dispatch(login({ username, password, email: username }))
     if (res.payload.username === username || res.payload.email === username) {
-      setLoggedIn(true)
+      setSessionUser(res.payload)
       handleClose()
     }
 

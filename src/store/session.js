@@ -19,9 +19,14 @@ export const registerUser = createAsyncThunk(SET_USER, async ({ username, email,
 });
 
 export const logout = createAsyncThunk(REMOVE_USER, async () => {
-
+  const res = await http.delete('/users')
   return
 });
+
+export const setUserThunk = createAsyncThunk(SET_USER, async (data) => {
+  console.log(data.data)
+  return data.data
+})
 
 // export const logout = () => async (dispatch) => {
 //   const response = await fetch("/api/auth/logout", {
