@@ -33,7 +33,7 @@ function Navbar() {
         <div className="nav-section1">
           <MdMenu className="menu-icon" />
           <div className="logo">
-            <img src={logo} alt="" />
+           <a href="/"><img src={logo} alt="" /></a> 
           </div>
         </div>
         <nav>
