@@ -8,6 +8,7 @@ import Backdrop from "../Backdrop/Backdrop";
 import { BsFillPersonLinesFill } from "react-icons/bs";
 import "./SignupForm.css";
 import Spinner from "../Spinner/Spinner";
+import { registerUser } from "../../store/session";
 
 const dropIn = {
   hidden: {
@@ -41,7 +42,7 @@ function SignupForm({ handleClose }) {
   const { username, email, password, password2 } = formData;
 
   // const navigate = useNavigate()
-  // const dispatch = useDispatch()
+  const dispatch = useDispatch()
 
   // const { user, isLoading, isError, isSuccess, message } = useSelector(
   //   (state) => state.auth
@@ -66,21 +67,22 @@ function SignupForm({ handleClose }) {
     }));
   };
 
-  // const onSubmit = (e) => {
-  //   e.preventDefault()
+  const onSubmit = async (e) => {
+    e.preventDefault()
 
-  //   if (password !== password2) {
-  //     toast.error('Passwords do not match')
-  //   } else {
-  //     const userData = {
-  //       username,
-  //       email,
-  //       password,
-  //     }
+    if (formData.password !== formData.password2) {
+      // toast.error('Passwords do not match')
+    } else {
+      const userData = {
+        username,
+        email,
+        password,
+        confirmPassword: password2
+      }
 
-  //     dispatch(register(userData))
-  //   }
-  // }
+      await dispatch(register(userData))
+    }
+  }
 
   // if (isLoading) {
   //   return <Spinner />

@@ -14,19 +14,16 @@ import { useState, useEffect } from 'react'
 function Navbar() {
 
   const dispatch = useDispatch()
-  const session = useSelector(state => state.session)
-  let log = false
-  if (session) {
-    log = true
-  }
+  const user = useSelector(state => state.session)
+
   const { loginModalOpen, loginClose, loginOpen } = useLoginModal();
   const { signupModalOpen, signupClose, signupOpen } = useSignupModal();
-  const [loggedIn, setLoggedIn] = useState(log)
+  const [loggedIn, setLoggedIn] = useState(false)
 
   const handleLogout = async (e) => {
     e.preventDefault()
     await dispatch(logout())
-    setLoggedIn(!loggedIn)
+    setLoggedIn(false)
     return
   }
 
@@ -53,7 +50,7 @@ function Navbar() {
           </ul>
         </nav>
         <SearchBar />
-        {loggedIn && <motion.button
+        {(!loggedIn) && <motion.button
           className="btn-login"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
@@ -61,7 +58,7 @@ function Navbar() {
         >
           <span>Login</span>
         </motion.button>}
-        {loggedIn && <motion.button
+        {(!loggedIn) && <motion.button
           className="btn-signup"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
@@ -69,7 +66,7 @@ function Navbar() {
         >
           <span>Sign Up</span>
         </motion.button>}
-        {!loggedIn && <motion.button
+        {loggedIn && <motion.button
           className="btn-login"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
@@ -80,10 +77,10 @@ function Navbar() {
 
         <ModalContainer>
           {loginModalOpen && (
-            <LoginForm modalOpen={loginModalOpen} handleClose={loginClose} />
+            <LoginForm modalOpen={loginModalOpen} handleClose={loginClose} setLoggedIn={setLoggedIn} user={user} />
           )}
           {signupModalOpen && (
-            <SignupForm modalOpen={signupModalOpen} handleClose={signupClose} />
+            <SignupForm modalOpen={signupModalOpen} handleClose={signupClose} setLoggedIn={setLoggedIn} user={user} />
           )}
         </ModalContainer>
       </div>
