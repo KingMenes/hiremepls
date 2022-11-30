@@ -8,6 +8,7 @@ import Backdrop from "../Backdrop/Backdrop";
 import { BsFillPersonLinesFill } from "react-icons/bs";
 import "./SignupForm.css";
 import Spinner from "../Spinner/Spinner";
+import { registerUser } from "../../store/session";
 
 const dropIn = {
   hidden: {
@@ -30,7 +31,7 @@ const dropIn = {
   },
 };
 
-function SignupForm({ handleClose }) {
+function SignupForm({ handleClose, setLoggedIn }) {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -41,7 +42,7 @@ function SignupForm({ handleClose }) {
   const { username, email, password, password2 } = formData;
 
   // const navigate = useNavigate()
-  // const dispatch = useDispatch()
+  const dispatch = useDispatch()
 
   // const { user, isLoading, isError, isSuccess, message } = useSelector(
   //   (state) => state.auth
@@ -66,21 +67,26 @@ function SignupForm({ handleClose }) {
     }));
   };
 
-  // const onSubmit = (e) => {
-  //   e.preventDefault()
+  const onSubmit = async (e) => {
+    e.preventDefault()
 
-  //   if (password !== password2) {
-  //     toast.error('Passwords do not match')
-  //   } else {
-  //     const userData = {
-  //       username,
-  //       email,
-  //       password,
-  //     }
+    if (formData.password !== formData.password2) {
+      // toast.error('Passwords do not match')
+    } else {
+      const userData = {
+        username,
+        email,
+        password,
+        confirmPassword: password2
+      }
 
-  //     dispatch(register(userData))
-  //   }
-  // }
+      const res = await dispatch(registerUser(userData))
+      if (res.payload.username === userData.username) {
+        handleClose()
+        setLoggedIn(true)
+      }
+    }
+  }
 
   // if (isLoading) {
   //   return <Spinner />
@@ -102,7 +108,7 @@ function SignupForm({ handleClose }) {
             <BsFillPersonLinesFill />
           </h2>
           <form
-          // onSubmit={onSubmit}
+            onSubmit={onSubmit}
           >
             <div className="user-box">
               <input

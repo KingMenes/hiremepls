@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import Backdrop from "../Backdrop/Backdrop";
 import { FiLogIn } from "react-icons/fi";
 import "./LoginForm.css";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../../store/session";
 
 const dropIn = {
   hidden: {
@@ -25,15 +27,19 @@ const dropIn = {
   },
 };
 
-function LoginForm({ handleClose }) {
-  // const [username, setUsername] = useState("");
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
-  // const [confirm, setConfirm] = useState("");
-  // const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
-  // const onSubmit = (e) => {
-  //   e.preventDefault();
-  // };
+function LoginForm({ handleClose, setLoggedIn, user }) {
+  const dispatch = useDispatch()
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    const res = await dispatch(login({ username, password, email: username }))
+    if (res.payload.username === username || res.payload.email === username) {
+      setLoggedIn(true)
+      handleClose()
+    }
+
+  };
   return (
     <Backdrop onClick={handleClose}>
       <motion.div
@@ -49,22 +55,22 @@ function LoginForm({ handleClose }) {
             Login
             <FiLogIn />
           </h2>
-          <form>
+          <form onSubmit={onSubmit}>
             <div className="user-box">
-              <input type="text" name="" required="" />
-              <label>Username</label>
+              <input type="text" name="" required="" onChange={(e) => { setUsername(e.target.value) }} />
+              <label>Username/Email</label>
             </div>
             <div className="user-box">
-              <input type="password" name="" required="" />
+              <input type="password" name="" required="" onChange={(e) => { setPassword(e.target.value) }} />
               <label>Password</label>
             </div>
-            <a href="#">
+            <button>
               <span></span>
               <span></span>
               <span></span>
               <span></span>
               Submit
-            </a>
+            </button>
           </form>
         </div>
       </motion.div>
