@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
-import SignUpForm from "../components/SignupForm/SignupForm_old";
 import TestFetch from "../components/TestFetch/TestFetch";
 import { login } from "../store/session";
 import { useDispatch } from "react-redux";

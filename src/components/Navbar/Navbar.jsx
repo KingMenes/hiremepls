@@ -3,11 +3,14 @@ import { MdMenu } from "react-icons/md";
 import "./Navbar.css";
 import SearchBar from "../SearchBar/SearchBar";
 import { AnimatePresence, motion } from "framer-motion";
-import useModal from "../../hooks/useModal";
+import useLoginModal from "../../hooks/useLoginModal";
+import useSignupModal from "../../hooks/useSignupModal";
+import LoginForm from "../LoginForm/LoginForm";
 import SignupForm from "../SignupForm/SignupForm";
 
 function Navbar() {
-  const { modalOpen, close, open } = useModal();
+  const { loginModalOpen, loginClose, loginOpen } = useLoginModal();
+  const { signupModalOpen, signupClose, signupOpen } = useSignupModal();
 
   return (
     <div className="navbar">
@@ -36,7 +39,7 @@ function Navbar() {
           className="btn-login"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
-          onClick={open}
+          onClick={loginOpen}
         >
           <span>Login</span>
         </motion.button>
@@ -44,13 +47,16 @@ function Navbar() {
           className="btn-signup"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
-          onClick={open}
+          onClick={signupOpen}
         >
           <span>Sign Up</span>
         </motion.button>
         <ModalContainer>
-          {modalOpen && (
-            <SignupForm modalOpen={modalOpen} handleClose={close} />
+          {loginModalOpen && (
+            <LoginForm modalOpen={loginModalOpen} handleClose={loginClose} />
+          )}
+          {signupModalOpen && (
+            <SignupForm modalOpen={signupModalOpen} handleClose={signupClose} />
           )}
         </ModalContainer>
       </div>

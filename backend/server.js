@@ -6,7 +6,6 @@ import connectDB from "./config/db.js";
 import questions from "./routes/questionRoutes.js";
 import users from "./routes/userRoutes.js";
 
-
 // Connect to DB
 const port = process.env.PORT || 8000;
 const app = express();
