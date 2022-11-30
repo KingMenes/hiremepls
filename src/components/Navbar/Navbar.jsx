@@ -7,10 +7,28 @@ import useLoginModal from "../../hooks/useLoginModal";
 import useSignupModal from "../../hooks/useSignupModal";
 import LoginForm from "../LoginForm/LoginForm";
 import SignupForm from "../SignupForm/SignupForm";
+import { useDispatch, useSelector } from "react-redux"
+import { logout, login } from "../../store/session"
+import { useState, useEffect } from 'react'
 
 function Navbar() {
+
+  const dispatch = useDispatch()
+  const session = useSelector(state => state.session)
+  let log = false
+  if (session) {
+    log = true
+  }
   const { loginModalOpen, loginClose, loginOpen } = useLoginModal();
   const { signupModalOpen, signupClose, signupOpen } = useSignupModal();
+  const [loggedIn, setLoggedIn] = useState(log)
+
+  const handleLogout = async (e) => {
+    e.preventDefault()
+    await dispatch(logout())
+    setLoggedIn(!loggedIn)
+    return
+  }
 
   return (
     <div className="navbar">
@@ -35,22 +53,31 @@ function Navbar() {
           </ul>
         </nav>
         <SearchBar />
-        <motion.button
+        {loggedIn && <motion.button
           className="btn-login"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           onClick={loginOpen}
         >
           <span>Login</span>
-        </motion.button>
-        <motion.button
+        </motion.button>}
+        {loggedIn && <motion.button
           className="btn-signup"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           onClick={signupOpen}
         >
           <span>Sign Up</span>
-        </motion.button>
+        </motion.button>}
+        {!loggedIn && <motion.button
+          className="btn-login"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          onClick={handleLogout}
+        >
+          <span>Log out</span>
+        </motion.button>}
+
         <ModalContainer>
           {loginModalOpen && (
             <LoginForm modalOpen={loginModalOpen} handleClose={loginClose} />
