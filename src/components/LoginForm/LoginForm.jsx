@@ -35,7 +35,6 @@ function LoginForm({ handleClose, setLoggedIn, user }) {
     e.preventDefault();
     const res = await dispatch(login({ username, password, email: username }))
     if (res.payload.username === username || res.payload.email === username) {
-      console.log(res.payload.username)
       setLoggedIn(true)
       handleClose()
     }

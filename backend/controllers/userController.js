@@ -53,12 +53,12 @@ export const createUser = asyncHandler(async (req, res) => {
     username,
     email,
     password: hashedPassword,
-    role,
+    role: 'user',
     reputation: [],
   });
 
   if (user) {
-    res.status(201).json({
+    res.json({
       _id: user.id,
       token: generateToken(user._id),
       username: user.username,

@@ -31,7 +31,7 @@ const dropIn = {
   },
 };
 
-function SignupForm({ handleClose }) {
+function SignupForm({ handleClose, setLoggedIn }) {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -80,7 +80,11 @@ function SignupForm({ handleClose }) {
         confirmPassword: password2
       }
 
-      await dispatch(register(userData))
+      const res = await dispatch(registerUser(userData))
+      if (res.payload.username === userData.username) {
+        handleClose()
+        setLoggedIn(true)
+      }
     }
   }
 
@@ -104,7 +108,7 @@ function SignupForm({ handleClose }) {
             <BsFillPersonLinesFill />
           </h2>
           <form
-          // onSubmit={onSubmit}
+            onSubmit={onSubmit}
           >
             <div className="user-box">
               <input

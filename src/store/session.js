@@ -13,7 +13,8 @@ export const login = createAsyncThunk(SET_USER, async ({ username, password }) =
 });
 
 export const registerUser = createAsyncThunk(SET_USER, async ({ username, email, password, password2 }) => {
-  const res = await http.post("/users/login", { username, email, password, confirmPassword: password2 });
+  const res = await http.post("/users", { username, email, password, confirmPassword: password2 });
+
   return res.data;
 });
 
