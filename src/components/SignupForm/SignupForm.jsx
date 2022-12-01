@@ -71,7 +71,7 @@ function SignupForm({ handleClose, setSessionUser }) {
     e.preventDefault()
 
     if (formData.password !== formData.password2) {
-      // toast.error('Passwords do not match')
+       // toast.error('Passwords do not match')
     } else {
       const userData = {
         username,

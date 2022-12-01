@@ -71,8 +71,7 @@
   background: #03e9f4;
   color: #fff;
   border-radius: 5px;
-  box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4,
-    0 0 100px #03e9f4;
+  box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4, 0 0 100px #03e9f4;
 }
 
 .login-box a span {
@@ -87,15 +86,14 @@
   height: 2px;
   background: linear-gradient(90deg, transparent, #03e9f4);
   -webkit-animation: btn-anim1 1s linear infinite;
-  animation: btn-anim1 1s linear infinite;
+          animation: btn-anim1 1s linear infinite;
 }
 
 @-webkit-keyframes btn-anim1 {
   0% {
     left: -100%;
   }
-  50%,
-  100% {
+  50%, 100% {
     left: 100%;
   }
 }
@@ -104,8 +102,7 @@
   0% {
     left: -100%;
   }
-  50%,
-  100% {
+  50%, 100% {
     left: 100%;
   }
 }
@@ -116,17 +113,16 @@
   height: 100%;
   background: linear-gradient(180deg, transparent, #03e9f4);
   -webkit-animation: btn-anim2 1s linear infinite;
-  animation: btn-anim2 1s linear infinite;
+          animation: btn-anim2 1s linear infinite;
   -webkit-animation-delay: 0.25s;
-  animation-delay: 0.25s;
+          animation-delay: 0.25s;
 }
 
 @-webkit-keyframes btn-anim2 {
   0% {
     top: -100%;
   }
-  50%,
-  100% {
+  50%, 100% {
     top: 100%;
   }
 }
@@ -135,8 +131,7 @@
   0% {
     top: -100%;
   }
-  50%,
-  100% {
+  50%, 100% {
     top: 100%;
   }
 }
@@ -147,17 +142,16 @@
   height: 2px;
   background: linear-gradient(270deg, transparent, #03e9f4);
   -webkit-animation: btn-anim3 1s linear infinite;
-  animation: btn-anim3 1s linear infinite;
+          animation: btn-anim3 1s linear infinite;
   -webkit-animation-delay: 0.5s;
-  animation-delay: 0.5s;
+          animation-delay: 0.5s;
 }
 
 @-webkit-keyframes btn-anim3 {
   0% {
     right: -100%;
   }
-  50%,
-  100% {
+  50%, 100% {
     right: 100%;
   }
 }
@@ -166,8 +160,7 @@
   0% {
     right: -100%;
   }
-  50%,
-  100% {
+  50%, 100% {
     right: 100%;
   }
 }
@@ -178,17 +171,16 @@
   height: 100%;
   background: linear-gradient(360deg, transparent, #03e9f4);
   -webkit-animation: btn-anim4 1s linear infinite;
-  animation: btn-anim4 1s linear infinite;
+          animation: btn-anim4 1s linear infinite;
   -webkit-animation-delay: 0.75s;
-  animation-delay: 0.75s;
+          animation-delay: 0.75s;
 }
 
 @-webkit-keyframes btn-anim4 {
   0% {
     bottom: -100%;
   }
-  50%,
-  100% {
+  50%, 100% {
     bottom: 100%;
   }
 }
@@ -197,8 +189,7 @@
   0% {
     bottom: -100%;
   }
-  50%,
-  100% {
+  50%, 100% {
     bottom: 100%;
   }
 }
@@ -206,4 +197,4 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-} /*# sourceMappingURL=LoginForm.css.map */
+}/*# sourceMappingURL=LoginForm.css.map */

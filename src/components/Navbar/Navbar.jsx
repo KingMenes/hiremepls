@@ -41,13 +41,13 @@ function Navbar({ sessionUser, setSessionUser }) {
         <nav>
           <ul>
             <li>
-              <a>Option 1</a>
+              <a>Questions</a>
             </li>
             <li>
-              <a>Option 2</a>
+              <a>Salaries</a>
             </li>
             <li>
-              <a>Option 3</a>
+              <a>Jobs Board</a>
             </li>
           </ul>
         </nav>

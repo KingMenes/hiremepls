@@ -23,14 +23,15 @@ function TestFetch() {
     <div id="questionsContainer">
       {questions
         ? questions.map((question) => {
-          return (
-            <div className="questionBox">
-              <NavLink to={`/questions/${question._id}`}>
-                {question.question}
-              </NavLink>
-            </div>
-          );
-        })
+            return (
+              <div className="questionBox">
+                <NavLink to={`/questions/${question._id}`}
+                className='question'>
+                  {question.question}
+                </NavLink>
+              </div>
+            );
+          })
         : null}
     </div>
   );
