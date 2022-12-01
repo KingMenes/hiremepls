@@ -17,13 +17,11 @@ const commentSchema = mongoose.Schema({
   },
   replies: {
     type: Array,
+    default:[],
   },
   date: {
     type: Date,
     required: [true, "Please add date"],
-  },
-  replies: {
-    type: String,
   },
 });
 
