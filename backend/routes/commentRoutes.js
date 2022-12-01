@@ -7,7 +7,7 @@ import {
   deleteComment,
   getComments,
   updateComment,
-} from "../controllers/commentController.js";
+} from "../controllers/commentsController.js";
 
 router.get("/", getComments);
 router.post("/", protect, createComment);
