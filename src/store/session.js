@@ -7,26 +7,41 @@ const SET_USER = "session/SET_USER";
 const REMOVE_USER = "session/REMOVE_USER";
 const CHECK_USER = "sesesefgsefsegfsda";
 
-export const login = createAsyncThunk(SET_USER, async ({ username, password }) => {
-  const res = await http.post("/users/login", { username, email: username, password });
-  return res.data;
-});
+export const login = createAsyncThunk(
+  SET_USER,
+  async ({ username, password }) => {
+    const res = await http.post("/users/login", {
+      username,
+      email: username,
+      password,
+    });
+    return res.data;
+  }
+);
 
-export const registerUser = createAsyncThunk(SET_USER, async ({ username, email, password, password2 }) => {
-  const res = await http.post("/users", { username, email, password, confirmPassword: password2 });
+export const registerUser = createAsyncThunk(
+  SET_USER,
+  async ({ username, email, password, password2 }) => {
+    const res = await http.post("/users", {
+      username,
+      email,
+      password,
+      confirmPassword: password2,
+    });
 
-  return res.data;
-});
+    return res.data;
+  }
+);
 
 export const logout = createAsyncThunk(REMOVE_USER, async () => {
-  const res = await http.delete('/users')
-  return
+  const res = await http.delete("/users");
+  return;
 });
 
 export const setUserThunk = createAsyncThunk(SET_USER, async (data) => {
-  console.log(data.data)
-  return data.data
-})
+  console.log(data.data);
+  return data.data;
+});
 
 // export const logout = () => async (dispatch) => {
 //   const response = await fetch("/api/auth/logout", {
@@ -50,8 +65,8 @@ const sessionSlice = createSlice({
       state.user = undefined;
     },
     [registerUser.fulfilled]: (state, action) => {
-      state.user = action.payload
-    }
+      state.user = action.payload;
+    },
   },
 });
 // export const login = (email, password) => async (dispatch) => {
@@ -123,7 +138,6 @@ export const authenticate = () => async (dispatch) => {
     dispatch(setUser(data));
   }
 };
-
 
 export const signUp = (username, email, password) => async (dispatch) => {
   const response = await fetch("/api/auth/signup", {

@@ -7,27 +7,23 @@ import useLoginModal from "../../hooks/useLoginModal";
 import useSignupModal from "../../hooks/useSignupModal";
 import LoginForm from "../LoginForm/LoginForm";
 import SignupForm from "../SignupForm/SignupForm";
-import { useDispatch, useSelector } from "react-redux"
-import { logout, login } from "../../store/session"
-import { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from "react-redux";
+import { logout, login } from "../../store/session";
+import { useState, useEffect } from "react";
 
 function Navbar({ sessionUser, setSessionUser }) {
-
-  const dispatch = useDispatch()
-  const user = useSelector(state => state.session)
-  console.log(sessionUser)
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.session);
+  console.log(sessionUser);
   const { loginModalOpen, loginClose, loginOpen } = useLoginModal();
   const { signupModalOpen, signupClose, signupOpen } = useSignupModal();
 
-
-
-
   const handleLogout = async (e) => {
-    e.preventDefault()
-    await dispatch(logout())
-    setSessionUser(null)
-    return
-  }
+    e.preventDefault();
+    await dispatch(logout());
+    setSessionUser(null);
+    return;
+  };
 
   return (
     <div className="navbar">
@@ -35,7 +31,9 @@ function Navbar({ sessionUser, setSessionUser }) {
         <div className="nav-section1">
           <MdMenu className="menu-icon" />
           <div className="logo">
-            <a href="/"><img src={logo} alt="" /></a>
+            <a href="/">
+              <img src={logo} alt="" />
+            </a>
           </div>
         </div>
         <nav>
@@ -52,37 +50,53 @@ function Navbar({ sessionUser, setSessionUser }) {
           </ul>
         </nav>
         <SearchBar />
-        {(!sessionUser) && <motion.button
-          className="btn-login"
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          onClick={loginOpen}
-        >
-          <span>Login</span>
-        </motion.button>}
-        {(!sessionUser) && <motion.button
-          className="btn-signup"
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          onClick={signupOpen}
-        >
-          <span>Sign Up</span>
-        </motion.button>}
-        {sessionUser && <motion.button
-          className="btn-login"
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          onClick={handleLogout}
-        >
-          <span>Log out</span>
-        </motion.button>}
+        {!sessionUser && (
+          <motion.button
+            className="btn-login"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            onClick={loginOpen}
+          >
+            <span>Login</span>
+          </motion.button>
+        )}
+        {!sessionUser && (
+          <motion.button
+            className="btn-signup"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            onClick={signupOpen}
+          >
+            <span>Sign Up</span>
+          </motion.button>
+        )}
+        {sessionUser && (
+          <motion.button
+            className="btn-login"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            onClick={handleLogout}
+          >
+            <span>Log out</span>
+          </motion.button>
+        )}
 
         <ModalContainer>
           {loginModalOpen && (
-            <LoginForm modalOpen={loginModalOpen} handleClose={loginClose} setSessionUser={setSessionUser} user={user} />
+            <LoginForm
+              modalOpen={loginModalOpen}
+              handleClose={loginClose}
+              setSessionUser={setSessionUser}
+              user={user}
+            />
           )}
           {signupModalOpen && (
-            <SignupForm modalOpen={signupModalOpen} handleClose={signupClose} setSessionUser={setSessionUser} user={user} />
+            <SignupForm
+              modalOpen={signupModalOpen}
+              handleClose={signupClose}
+              setSessionUser={setSessionUser}
+              user={user}
+            />
           )}
         </ModalContainer>
       </div>

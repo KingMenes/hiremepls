@@ -13,7 +13,7 @@ const userSchema = mongoose.Schema(
       // first element is a boolean to describe if this property is required.
       // second element is the message returned if the required property is not provided.
       required: [true, "Please add a name"],
-      unique: true
+      unique: true,
     },
     email: {
       type: String,

@@ -25,8 +25,7 @@ function TestFetch() {
         ? questions.map((question) => {
             return (
               <div className="questionBox">
-                <NavLink to={`/questions/${question._id}`}
-                className='question'>
+                <NavLink to={`/questions/${question._id}`} className="question">
                   {question.question}
                 </NavLink>
               </div>

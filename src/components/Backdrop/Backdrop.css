@@ -8,5 +8,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow-y: hidden;
-}/*# sourceMappingURL=Backdrop.css.map */
+  overflow: hidden;
+  z-index: 9;
+  position: fixed;
+} /*# sourceMappingURL=Backdrop.css.map */

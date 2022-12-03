@@ -15,31 +15,31 @@ import { setUserThunk } from "../store/session";
 import { useDispatch } from "react-redux";
 
 function App() {
-  const dispatch = useDispatch()
-  const [loading, setLoading] = useState(true)
-  const [userSession, setUserSession] = useState(true)
-  const [sessionUser, setSessionUser] = useState()
+  const dispatch = useDispatch();
+  const [loading, setLoading] = useState(true);
+  const [userSession, setUserSession] = useState(true);
+  const [sessionUser, setSessionUser] = useState();
   useEffect(() => {
     const fetchUserAuth = async () => {
       try {
-        setLoading(true)
-        const res = await fetch('/api/users/isAuth')
-        if (!res.ok) return setLoading(false)
-        const data = await res.json()
-        await setUserSession(data)
+        setLoading(true);
+        const res = await fetch("/api/users/isAuth");
+        if (!res.ok) return setLoading(false);
+        const data = await res.json();
+        await setUserSession(data);
         if (data.email) {
-          dispatch(setUserThunk({ data }))
-          setSessionUser(data)
+          dispatch(setUserThunk({ data }));
+          setSessionUser(data);
         }
-        setLoading(false)
+        setLoading(false);
       } catch (error) {
-        setLoading(false)
-        console.error('There was an error fetch auth', error)
-        return
+        setLoading(false);
+        console.error("There was an error fetch auth", error);
+        return;
       }
-    }
-    fetchUserAuth()
-  }, [dispatch])
+    };
+    fetchUserAuth();
+  }, [dispatch]);
 
   return (
     <>

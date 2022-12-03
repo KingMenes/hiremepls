@@ -5,9 +5,9 @@ import bcrypt from "bcryptjs";
 import { ErrorResponse } from "@remix-run/router";
 
 export const logoutUser = asyncHandler(async (req, res) => {
-  req.session.user = null
-  res.json({ message: 'Logged out' })
-})
+  req.session.user = null;
+  res.json({ message: "Logged out" });
+});
 
 export const getUser = asyncHandler(async (req, res) => {
   const user = await User.findById(req.params.id);
@@ -25,18 +25,17 @@ const generateToken = (id) => {
 };
 
 export const isAuth = asyncHandler(async (req, res) => {
-
   if (req.session.user) {
-    const user = await User.findOne({ email: req.session.user.email })
+    const user = await User.findOne({ email: req.session.user.email });
     return res.json({
       _id: user.id,
       token: generateToken(user._id),
       username: user.username,
       email: user.email,
       reputation: user.reputation,
-    })
+    });
   } else {
-    return res.status(401).json('unauthorized')
+    return res.status(401).json("unauthorized");
   }
 });
 
@@ -57,9 +56,9 @@ export const createUser = asyncHandler(async (req, res) => {
   }
   let userExist = await User.findOne({ email });
   if (!userExist) {
-    userExist = await User.findOne({ username })
+    userExist = await User.findOne({ username });
     if (userExist) {
-      throw new Error("Username already used")
+      throw new Error("Username already used");
     }
   }
   if (userExist) {
@@ -74,13 +73,13 @@ export const createUser = asyncHandler(async (req, res) => {
     username,
     email,
     password: hashedPassword,
-    role: 'user',
+    role: "user",
     reputation: [],
   });
 
   if (user) {
-    const userSession = { email: user.email }
-    req.session.user = userSession
+    const userSession = { email: user.email };
+    req.session.user = userSession;
     res.json({
       _id: user.id,
       token: generateToken(user._id),
@@ -107,7 +106,7 @@ export const logInUser = asyncHandler(async (req, res) => {
   const { username, email, password } = req.body;
   let user = await User.findOne({ username });
   if (!user) {
-    user = await User.findOne({ email })
+    user = await User.findOne({ email });
   }
 
   if (!user) {
@@ -115,15 +114,15 @@ export const logInUser = asyncHandler(async (req, res) => {
     throw new Error("User not found");
   }
   if (user && (await bcrypt.compare(password, user.password))) {
-    const userSession = { email: user.email }
-    req.session.user = userSession
+    const userSession = { email: user.email };
+    req.session.user = userSession;
     res.json({
       _id: user.id,
       token: generateToken(user._id),
       username: user.username,
       email: user.email,
       reputation: user.reputation,
-      userSession
+      userSession,
     });
   } else {
     res.status(400);

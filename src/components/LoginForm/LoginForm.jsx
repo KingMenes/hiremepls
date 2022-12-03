@@ -28,17 +28,16 @@ const dropIn = {
 };
 
 function LoginForm({ handleClose, user, setSessionUser }) {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const onSubmit = async (e) => {
     e.preventDefault();
-    const res = await dispatch(login({ username, password, email: username }))
+    const res = await dispatch(login({ username, password, email: username }));
     if (res.payload.username === username || res.payload.email === username) {
-      setSessionUser(res.payload)
-      handleClose()
+      setSessionUser(res.payload);
+      handleClose();
     }
-
   };
   return (
     <Backdrop onClick={handleClose}>
@@ -57,11 +56,25 @@ function LoginForm({ handleClose, user, setSessionUser }) {
           </h2>
           <form onSubmit={onSubmit}>
             <div className="user-box">
-              <input type="text" name="" required="" onChange={(e) => { setUsername(e.target.value) }} />
+              <input
+                type="text"
+                name=""
+                required=""
+                onChange={(e) => {
+                  setUsername(e.target.value);
+                }}
+              />
               <label>Username/Email</label>
             </div>
             <div className="user-box">
-              <input type="password" name="" required="" onChange={(e) => { setPassword(e.target.value) }} />
+              <input
+                type="password"
+                name=""
+                required=""
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                }}
+              />
               <label>Password</label>
             </div>
             <button>
