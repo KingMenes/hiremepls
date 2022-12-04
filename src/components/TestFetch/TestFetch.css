@@ -7,10 +7,4 @@
   margin-left: auto;
   margin-right: auto;
   padding: 15px;
-}
-
-#questionsContainer .questionBox:not(:hover) {
-  height: 200px;
-  width: 200px;
-  transition: 0.5s;
 } /*# sourceMappingURL=TestFetch.css.map */

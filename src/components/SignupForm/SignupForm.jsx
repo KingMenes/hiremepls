@@ -42,7 +42,7 @@ function SignupForm({ handleClose, setSessionUser }) {
     password2: "",
   });
 
-  const [throwError, setThrowError] = useState(false);
+  const [throwError, setThrowError] = useState(null);
   const { username, email, password, password2 } = formData;
 
   // const navigate = useNavigate()
@@ -74,21 +74,21 @@ function SignupForm({ handleClose, setSessionUser }) {
   const onSubmit = async (e) => {
     e.preventDefault();
 
-    if (formData.password !== formData.password2) {
-      // toast.error('Passwords do not match')
-    } else {
-      const userData = {
-        username,
-        email,
-        password,
-        confirmPassword: password2,
-      };
+    const userData = {
+      username,
+      email,
+      password,
+      confirmPassword: password2,
+    };
 
-      const res = await dispatch(registerUser(userData));
+    const res = dispatch(registerUser(userData));
+    try {
       if (res.payload.username === userData.username) {
         handleClose();
         setSessionUser(res.payload);
       }
+    } catch (error) {
+      setThrowError(error);
     }
   };
 
@@ -130,6 +130,10 @@ function SignupForm({ handleClose, setSessionUser }) {
                     Username must not contain special characters
                   </span>
                 )}
+              {throwError == "Username already used" &&
+                console.log(throwError) && (
+                  <span className="error">Username already exists</span>
+                )}
             </div>
             <div className="user-box">
               <input
@@ -145,6 +149,10 @@ function SignupForm({ handleClose, setSessionUser }) {
               {!formData.email.match(emailRegex) &&
                 formData.email.length > 2 && (
                   <span className="error">Must be a valid Email</span>
+                )}
+              {throwError == "Email already used" &&
+                console.log(throwError) && (
+                  <span className="error">Email currently in use</span>
                 )}
             </div>
             <div className="user-box">
@@ -169,7 +177,7 @@ function SignupForm({ handleClose, setSessionUser }) {
                 required
               />
               <label>Confirm Password</label>
-              {formData.password != formData.password2 &&
+              {formData.password !== formData.password2 &&
                 formData.password.length > 7 && (
                   <span className="error">Passwords don't match</span>
                 )}
