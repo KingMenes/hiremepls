@@ -33,8 +33,8 @@ function LoginForm({ handleClose, user, setSessionUser }) {
   const [password, setPassword] = useState("");
   const onSubmit = async (e) => {
     e.preventDefault();
-    const res = await dispatch(login({ username, password, email: username }));
-    if (res.payload.username === username || res.payload.email === username) {
+    const res = await dispatch(login({ username: username.toLowerCase(), password, email: username.toLowerCase() }));
+    if (res.payload?.username?.toLowerCase() === username.toLowerCase() || res?.payload?.email?.toLowerCase() === username.toLowerCase()) {
       setSessionUser(res.payload);
       handleClose();
     }

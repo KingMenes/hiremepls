@@ -72,7 +72,7 @@ export const createUser = asyncHandler(async (req, res) => {
 
   const user = await User.create({
     username,
-    email,
+    email: email.toLowerCase(),
     password: hashedPassword,
     role: "user",
     reputation: [],
