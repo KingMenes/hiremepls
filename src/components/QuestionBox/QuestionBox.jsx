@@ -30,7 +30,7 @@ function QuestionBox({
         </div>
         <div className="tags">
           {tags.map((tag) => (
-            <div className="tag">
+            <div className="tag" key={tag}>
               <span>{tag}</span>
             </div>
           ))}

@@ -23,25 +23,25 @@ function TestFetch() {
     <div id="questionsContainer">
       {questions
         ? questions.map((question) => {
-            return (
-              <QuestionBox
-                id={question._id}
-                question={question.question}
-                author={"menai"}
-                date={"3h ago"}
-                rep={Math.floor(Math.random() * (200 - -100 + 1) + -100)}
-                tags={[
-                  "general",
-                  "engineering",
-                  "software",
-                  "management",
-                  "personal",
-                ]}
-                views={Math.floor(Math.random() * (10000 - 0 + 1) + 0)}
-                numComments={Math.floor(Math.random() * (100 - 0 + 1) + 0)}
-              />
-            );
-          })
+          return (
+            <QuestionBox
+              id={question._id}
+              question={question.question}
+              author={"menai"}
+              date={"3h ago"}
+              rep={Math.floor(Math.random() * (200 - -100 + 1) + -100)}
+              tags={[
+                "general",
+                "engineering",
+                "software",
+                "management",
+                "personal",
+              ]}
+              views={Math.floor(Math.random() * (10000 - 0 + 1) + 0)}
+              numComments={Math.floor(Math.random() * (100 - 0 + 1) + 0)}
+              key={question._id} />
+          );
+        })
         : null}
     </div>
   );
