@@ -81,15 +81,13 @@ function SignupForm({ handleClose, setSessionUser }) {
       confirmPassword: password2,
     };
 
-    const res = dispatch(registerUser(userData));
-    try {
-      if (res.payload.username === userData.username) {
-        handleClose();
-        setSessionUser(res.payload);
-      }
-    } catch (error) {
-      setThrowError(error);
+    const res = await dispatch(registerUser(userData));
+
+    if (res?.payload?.username == userData.username) {
+      setSessionUser(res.payload);
+      handleClose();
     }
+
   };
 
   // if (isLoading) {
