@@ -41,7 +41,7 @@ export const isAuth = asyncHandler(async (req, res) => {
 
 export const createUser = asyncHandler(async (req, res) => {
   const { username, email, password, role } = req.body;
-
+  // console.log(username)
   if (!username) {
     res.status(400);
     throw new Error("Please add a username");
@@ -55,15 +55,16 @@ export const createUser = asyncHandler(async (req, res) => {
     throw new Error("Please add an email address");
   }
   let userExist = await User.findOne({ email });
-  if (!userExist) {
-    userExist = await User.findOne({ username });
-    if (userExist) {
-      throw new Error("Username already used");
-    }
-  }
   if (userExist) {
     res.status(400);
     throw new Error("Email already used");
+  }
+  if (!userExist) {
+    userExist = await User.findOne({ nameLower: username.toLowerCase() });
+    console.log(userExist)
+    if (userExist) {
+      throw new Error("Username already used");
+    }
   }
   //password hashing
   const salt = await bcrypt.genSalt(10);
@@ -75,6 +76,7 @@ export const createUser = asyncHandler(async (req, res) => {
     password: hashedPassword,
     role: "user",
     reputation: [],
+    nameLower: username.toLowerCase()
   });
 
   if (user) {
@@ -104,7 +106,7 @@ export const getMe = asyncHandler(async (req, res) => {
 
 export const logInUser = asyncHandler(async (req, res) => {
   const { username, email, password } = req.body;
-  let user = await User.findOne({ username });
+  let user = await User.findOne({ nameLower: username.toLowerCase() });
   if (!user) {
     user = await User.findOne({ email });
   }

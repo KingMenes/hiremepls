@@ -33,6 +33,11 @@ const userSchema = mongoose.Schema(
       type: Array,
       required: [true, "Please provide an array of likes/dislikes"],
     },
+    nameLower: {
+      type: String,
+      required: [true]
+    }
+
   },
   {
     timestamps: true, //timestamps of when objects are created in DB.
