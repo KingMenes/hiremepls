@@ -31,12 +31,17 @@ function LoginForm({ handleClose, user, setSessionUser }) {
   const dispatch = useDispatch();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
   const onSubmit = async (e) => {
     e.preventDefault();
     const res = await dispatch(login({ username: username.toLowerCase(), password, email: username.toLowerCase() }));
     if (res.payload?.username?.toLowerCase() === username.toLowerCase() || res?.payload?.email?.toLowerCase() === username.toLowerCase()) {
       setSessionUser(res.payload);
       handleClose();
+    }
+    if (res.payload?.error) {
+      setError(res.payload.error)
     }
   };
   return (
@@ -54,6 +59,9 @@ function LoginForm({ handleClose, user, setSessionUser }) {
             Login
             <FiLogIn />
           </h2>
+
+          <div className="error-display-login">{error}</div>
+
           <form onSubmit={onSubmit}>
             <div className="user-box">
               <input

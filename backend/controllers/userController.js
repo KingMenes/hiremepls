@@ -112,8 +112,8 @@ export const logInUser = asyncHandler(async (req, res) => {
   }
 
   if (!user) {
-    res.status(400);
-    throw new Error("User not found");
+    res.json({ 'error': 'Incorrect Login Information' });
+    throw new Error("Login information incorrect");
   }
   if (user && (await bcrypt.compare(password, user.password))) {
     const userSession = { email: user.email };

@@ -11,6 +11,7 @@
   border-radius: 10px;
   z-index: 10;
 }
+
 .login-box h2 {
   margin: 0 0 30px;
   padding: 0;
@@ -20,17 +21,20 @@
   justify-content: space-between;
   align-items: center;
 }
+
 .login-box .user-box {
   position: relative;
   display: flex;
   flex-direction: column;
 }
+
 .login-box .user-box .error {
   color: red;
   font-size: 14px;
   position: absolute;
   top: 3em;
 }
+
 .login-box .user-box input {
   width: 100%;
   padding: 10px 0;
@@ -42,6 +46,7 @@
   outline: none;
   background: transparent;
 }
+
 .login-box .user-box label {
   position: absolute;
   padding: 10px 0;
@@ -53,6 +58,7 @@
   color: #03e9f4;
   font-size: 12px;
 }
+
 .login-box form button {
   position: relative;
   display: flex;
@@ -67,8 +73,18 @@
   letter-spacing: 4px;
   width: 120px;
 }
+
 .login-box form button:hover {
   background: #03e9f4;
   color: #fff;
   border-radius: 5px;
-} /*# sourceMappingURL=LoginForm.css.map */
+}
+
+/*# sourceMappingURL=LoginForm.css.map */
+.error-display-login {
+  color: red;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
