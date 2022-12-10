@@ -6,9 +6,9 @@
   height: 40px;
   font-family: "Nunito", sans-serif;
   font-weight: 500;
-  box-shadow: 0 1px 2px hsla(0deg, 0%, 0%, 0.05),
-    0 1px 4px hsla(0deg, 0%, 0%, 0.05), 0 2px 8px hsla(0deg, 0%, 0%, 0.05);
+  box-shadow: 0 1px 2px hsla(0deg, 0%, 0%, 0.05), 0 1px 4px hsla(0deg, 0%, 0%, 0.05), 0 2px 8px hsla(0deg, 0%, 0%, 0.05);
   border-radius: 5px;
+  background-color: white;
 }
 .navbar .nav-main {
   margin: 0 auto;
@@ -56,10 +56,12 @@
   align-items: center;
   color: hsl(210deg, 8%, 35%);
 }
-.navbar nav ul li a {
+.navbar nav ul li .navlink {
   padding: 5px;
+  text-decoration: none;
+  color: inherit;
 }
-.navbar nav ul li a:hover {
+.navbar nav ul li .navlink:hover {
   background-color: hsl(210deg, 8%, 90%);
   color: hsl(210deg, 8%, 15%);
   cursor: pointer;
@@ -87,4 +89,4 @@
   border: 1px solid hsl(203deg, 89%, 21%);
   background-color: inherit;
   color: hsl(203deg, 89%, 21%);
-} /*# sourceMappingURL=Navbar.css.map */
+}/*# sourceMappingURL=Navbar.css.map */

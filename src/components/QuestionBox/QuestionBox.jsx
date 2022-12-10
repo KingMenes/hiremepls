@@ -1,5 +1,5 @@
 import "./QuestionBox.css";
-import { NavLink } from "react-router-dom";
+// import { NavLink } from "react-router-dom";
 import { BsHandThumbsUp, BsHandThumbsDown } from "react-icons/bs";
 import { AiOutlineEye } from "react-icons/ai";
 import { BiComment } from "react-icons/bi";

@@ -1,18 +1,10 @@
-import { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
-import TestFetch from "../components/TestFetch/TestFetch";
-import { login, logout } from "../store/session";
-import { useDispatch } from "react-redux";
+import Header from "../components/Header/Header";
 
 function Home() {
-  const dispatch = useDispatch();
-
   return (
-    <>
-      {/* <SignUpForm /> */}
-      <TestFetch />
-    </>
-  );
+    <Header/>
+  )
+  
 }
 
 export default Home;

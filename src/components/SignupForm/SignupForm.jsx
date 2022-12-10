@@ -1,13 +1,9 @@
-import { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { NavLink, useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
+import { useState} from "react";
+import { useDispatch } from "react-redux";
 import { motion } from "framer-motion";
-import { register, reset } from "../../features/auth/authSlice";
 import Backdrop from "../Backdrop/Backdrop";
 import { BsFillPersonLinesFill } from "react-icons/bs";
 import "./SignupForm.css";
-import Spinner from "../Spinner/Spinner";
 import { registerUser } from "../../store/session";
 
 const dropIn = {
@@ -44,25 +40,7 @@ function SignupForm({ handleClose, setSessionUser }) {
 
   const [throwError, setThrowError] = useState(null);
   const { username, email, password, password2 } = formData;
-
-  // const navigate = useNavigate()
   const dispatch = useDispatch();
-
-  // const { user, isLoading, isError, isSuccess, message } = useSelector(
-  //   (state) => state.auth
-  // )
-
-  // useEffect(() => {
-  //   if (isError) {
-  //     toast.error(message)
-  //   }
-
-  //   if (isSuccess || user) {
-  //     navigate('/')
-  //   }
-
-  //   dispatch(reset())
-  // }, [user, isError, isSuccess, message, navigate, dispatch])
 
   const onChange = (e) => {
     setFormData((prevState) => ({
@@ -83,16 +61,12 @@ function SignupForm({ handleClose, setSessionUser }) {
 
     const res = await dispatch(registerUser(userData));
 
-    if (res?.payload?.username == userData.username) {
+    if (res?.payload?.username === userData.username) {
       setSessionUser(res.payload);
       handleClose();
     }
 
   };
-
-  // if (isLoading) {
-  //   return <Spinner />
-  // }
 
   return (
     <Backdrop onClick={handleClose}>
@@ -128,7 +102,7 @@ function SignupForm({ handleClose, setSessionUser }) {
                     Username must not contain special characters
                   </span>
                 )}
-              {throwError == "Username already used" &&
+              {throwError === "Username already used" &&
                 console.log(throwError) && (
                   <span className="error">Username already exists</span>
                 )}
@@ -148,7 +122,7 @@ function SignupForm({ handleClose, setSessionUser }) {
                 formData.email.length > 2 && (
                   <span className="error">Must be a valid Email</span>
                 )}
-              {throwError == "Email already used" &&
+              {throwError === "Email already used" &&
                 console.log(throwError) && (
                   <span className="error">Email currently in use</span>
                 )}

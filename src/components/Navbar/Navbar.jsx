@@ -9,7 +9,7 @@ import LoginForm from "../LoginForm/LoginForm";
 import SignupForm from "../SignupForm/SignupForm";
 import { useDispatch, useSelector } from "react-redux";
 import { logout, login } from "../../store/session";
-import { useState, useEffect } from "react";
+import { NavLink } from 'react-router-dom';
 
 function Navbar({ sessionUser, setSessionUser }) {
   const dispatch = useDispatch();
@@ -31,21 +31,21 @@ function Navbar({ sessionUser, setSessionUser }) {
         <div className="nav-section1">
           <MdMenu className="menu-icon" />
           <div className="logo">
-            <a href="/">
+            <NavLink to='/' className='navlink'>
               <img src={logo} alt="" />
-            </a>
+            </NavLink>
           </div>
         </div>
         <nav>
           <ul>
             <li>
-              <a>Questions</a>
+              <NavLink to='/questions' className='navlink'>Questions</NavLink>
             </li>
             <li>
-              <a>Salaries</a>
+              <NavLink to='/' className='navlink'>Salaries</NavLink>
             </li>
             <li>
-              <a>Jobs Board</a>
+            <NavLink to='/' className='navlink'>Jobs</NavLink>
             </li>
           </ul>
         </nav>

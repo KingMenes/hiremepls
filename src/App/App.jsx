@@ -13,6 +13,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useEffect, useState } from "react";
 import { setUserThunk } from "../store/session";
 import { useDispatch } from "react-redux";
+import Questions from "../pages/Questions";
 
 function App() {
   const dispatch = useDispatch();
@@ -48,6 +49,8 @@ function App() {
         <div className="App">
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/questions" element={<Questions />} />
+
 
             {/* 👇Navigates all other paths back to home👇 */}
             <Route path="*" element={<Navigate to="/" />} />

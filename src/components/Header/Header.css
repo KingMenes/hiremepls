@@ -1,0 +1,64 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap");
+.header {
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+  height: auto;
+  background-color: #064165;
+  border-radius: 15px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  margin-top: 30px;
+}
+.header .header-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-family: "Roboto Slab", serif;
+  font-weight: 400;
+  font-size: 20px;
+  width: 100%;
+}
+.header .header-main .logo {
+  aspect-ratio: 1/1;
+  width: 35%;
+}
+.header .header-main hr {
+  width: 10%;
+  color: white;
+  margin-top: -20px;
+  margin-bottom: -10px;
+}
+.header .header-main p {
+  font-size: 16px;
+}
+.header .header-main button {
+  border: none;
+  margin: 20px auto 60px auto;
+  width: 45%;
+  height: 40px;
+  border-radius: 5px;
+  font-family: "Nunito", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  background-color: #0269a9;
+  color: white;
+}
+.header .header-svg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.header .header-svg img {
+  aspect-ratio: 1/1;
+  width: 100%;
+  height: 100%;
+}
+
+.mirror {
+  transform: rotateY();
+}/*# sourceMappingURL=Header.css.map */
