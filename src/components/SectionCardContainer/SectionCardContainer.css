@@ -29,4 +29,10 @@
 }
 .sectioncard-container .btn-blue {
   background-color: hsl(206deg, 100%, 52%);
-} /*# sourceMappingURL=SectionCardContainer.css.map */
+}
+
+@media only screen and (min-width: 1300px) {
+  .sectioncard-container {
+    margin-top: -350px;
+  }
+}/*# sourceMappingURL=SectionCardContainer.css.map */
