@@ -4,11 +4,14 @@
 body {
   /* background-color: #f8f9f9; */
   padding: 0;
-  list-style: none;
   background-color: #dae0e6;
 }
 
 .navlink {
   text-decoration: none;
   color: inherit;
+}
+
+ul{
+  list-style: none;
 }

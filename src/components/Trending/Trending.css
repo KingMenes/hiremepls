@@ -1,0 +1,47 @@
+.trending {
+  width: 50%;
+  height: 80px;
+  margin: auto;
+  font-family: "Nunito", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.trending h2 {
+  display: flex;
+  justify-content: flex-start;
+  color: rgb(88, 85, 85);
+  margin: 10px 0;
+  font-size: 14px;
+}
+.trending .tags-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100%;
+}
+.trending .tags-container .tag {
+  background-color: rgb(57, 67, 94);
+  color: rgb(228, 228, 228);
+  border-radius: 999px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 5px;
+  height: 30px;
+}
+.trending .tags-container .tag span {
+  margin: 5px 10px;
+  font-size: 12px;
+  font-weight: 800;
+}
+.trending .tags-container .tag span .icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto 10px;
+}/*# sourceMappingURL=Trending.css.map */
