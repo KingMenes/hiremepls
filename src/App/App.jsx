@@ -51,7 +51,6 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/questions" element={<Questions />} />
 
-
             {/* 👇Navigates all other paths back to home👇 */}
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>

@@ -1,4 +1,4 @@
-import { useState} from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { motion } from "framer-motion";
 import Backdrop from "../Backdrop/Backdrop";
@@ -65,7 +65,6 @@ function SignupForm({ handleClose, setSessionUser }) {
       setSessionUser(res.payload);
       handleClose();
     }
-
   };
 
   return (

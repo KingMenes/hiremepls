@@ -2,25 +2,27 @@
 .header {
   margin-left: auto;
   margin-right: auto;
-  width: 90%;
-  height: auto;
+  width: 95%;
+  height: 95vh;
   background-color: #064165;
   border-radius: 15px;
   overflow: hidden;
   display: flex;
   flex-direction: row;
   margin-top: 30px;
+  position: relative;
 }
 .header .header-main {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   color: white;
   font-family: "Roboto Slab", serif;
   font-weight: 400;
   font-size: 20px;
   width: 100%;
+  height: 90vh;
 }
 .header .header-main .logo {
   aspect-ratio: 1/1;
@@ -29,7 +31,7 @@
 .header .header-main hr {
   width: 10%;
   color: white;
-  margin-top: -20px;
+  margin-top: -40px;
   margin-bottom: -10px;
 }
 .header .header-main p {
@@ -52,13 +54,53 @@
   align-items: center;
   justify-content: center;
   width: 100%;
+  position: relative;
 }
 .header .header-svg img {
   aspect-ratio: 1/1;
   width: 100%;
   height: 100%;
 }
+.header .header-svg .sz-128 {
+  height: 128px;
+  width: 128px;
+}
+.header .header-svg .sz-64 {
+  height: 64px;
+  width: 64px;
+}
+.header .header-svg .sz-96 {
+  height: 96px;
+  width: 96px;
+}
+.header .header-svg .square {
+  background-color: white;
+  display: block;
+  border-radius: 10%;
+  z-index: 10;
+}
 
 .mirror {
   transform: rotateY();
-}/*# sourceMappingURL=Header.css.map */
+}
+
+.custom-shape-divider-bottom-1670716559 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1670716559 svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 58px;
+}
+
+.custom-shape-divider-bottom-1670716559 .shape-fill {
+  fill: #dae0e6;
+} /*# sourceMappingURL=Header.css.map */

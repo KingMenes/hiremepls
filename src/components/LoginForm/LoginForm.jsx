@@ -35,13 +35,22 @@ function LoginForm({ handleClose, user, setSessionUser }) {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    const res = await dispatch(login({ username: username.toLowerCase(), password, email: username.toLowerCase() }));
-    if (res.payload?.username?.toLowerCase() === username.toLowerCase() || res?.payload?.email?.toLowerCase() === username.toLowerCase()) {
+    const res = await dispatch(
+      login({
+        username: username.toLowerCase(),
+        password,
+        email: username.toLowerCase(),
+      })
+    );
+    if (
+      res.payload?.username?.toLowerCase() === username.toLowerCase() ||
+      res?.payload?.email?.toLowerCase() === username.toLowerCase()
+    ) {
       setSessionUser(res.payload);
       handleClose();
     }
     if (res.payload?.error) {
-      setError(res.payload.error)
+      setError(res.payload.error);
     }
   };
   return (

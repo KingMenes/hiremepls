@@ -35,9 +35,8 @@ const userSchema = mongoose.Schema(
     },
     nameLower: {
       type: String,
-      required: [true]
-    }
-
+      required: [true],
+    },
   },
   {
     timestamps: true, //timestamps of when objects are created in DB.

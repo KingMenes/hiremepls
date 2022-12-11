@@ -61,7 +61,7 @@ export const createUser = asyncHandler(async (req, res) => {
   }
   if (!userExist) {
     userExist = await User.findOne({ nameLower: username.toLowerCase() });
-    console.log(userExist)
+    console.log(userExist);
     if (userExist) {
       throw new Error("Username already used");
     }
@@ -76,7 +76,7 @@ export const createUser = asyncHandler(async (req, res) => {
     password: hashedPassword,
     role: "user",
     reputation: [],
-    nameLower: username.toLowerCase()
+    nameLower: username.toLowerCase(),
   });
 
   if (user) {
@@ -112,7 +112,7 @@ export const logInUser = asyncHandler(async (req, res) => {
   }
 
   if (!user) {
-    res.json({ 'error': 'Incorrect Login Information' });
+    res.json({ error: "Incorrect Login Information" });
     throw new Error("Login information incorrect");
   }
   if (user && (await bcrypt.compare(password, user.password))) {

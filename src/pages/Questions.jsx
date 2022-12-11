@@ -2,13 +2,13 @@ import TestFetch from "../components/TestFetch/TestFetch";
 import { useDispatch } from "react-redux";
 
 function Questions() {
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-    return (
-      <>
-        <TestFetch />
-      </>
-    );
+  return (
+    <>
+      <TestFetch />
+    </>
+  );
 }
 
-export default Questions
+export default Questions;
