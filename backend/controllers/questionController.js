@@ -5,7 +5,6 @@ import User from "../models/userModel.js";
 export const getQuestions = asyncHandler(async (req, res) => {
   // const { questionsList } = await DBDAO.getQuestions({})
   const questionsList = await Question.find();
-  console.log(req.user);
   res.json(questionsList);
 });
 
@@ -15,9 +14,10 @@ export const createQuestion = asyncHandler(async (req, res) => {
     throw new Error("Please add a question");
   }
 
+  console.log(req.body.user)
   const question = await Question.create({
     question: req.body.question,
-    author: req.user.id,
+    author: req.body.user,
     date: new Date(),
     comments: [],
     reputation: [],

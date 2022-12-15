@@ -39,7 +39,6 @@ export const logout = createAsyncThunk(REMOVE_USER, async () => {
 });
 
 export const setUserThunk = createAsyncThunk(SET_USER, async (data) => {
-  console.log(data.data);
   return data.data;
 });
 
@@ -60,41 +59,19 @@ const sessionSlice = createSlice({
   extraReducers: {
     [login.fulfilled]: (state, action) => {
       state.user = action.payload;
+      return state
     },
     [logout.fulfilled]: (state, action) => {
       state.user = undefined;
+      return state
     },
     [registerUser.fulfilled]: (state, action) => {
       state.user = action.payload;
+      return state
     },
   },
 });
-// export const login = (email, password) => async (dispatch) => {
-//     const response = await fetch('/api/auth/login', {
-//         method: 'POST',
-//         headers: {
-//             'Content-Type': 'application/json'
-//         },
-//         body: JSON.stringify({
-//             email,
-//             password
-//         })
-//     });
 
-//     if (response.ok) {
-//         const data = await response.json();
-//         dispatch(setUser(data))
-//         return data;
-//     } else if (response.status < 500) {
-//         const data = await response.json();
-//         if (data.errors) {
-//             return data;
-//         }
-//     } else {
-//         return ['An error occurred. Please try again.']
-//     }
-
-// }
 const { reducer } = sessionSlice;
 export default reducer;
 

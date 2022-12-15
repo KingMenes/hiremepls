@@ -10,7 +10,7 @@ import {
 } from "../controllers/questionController.js";
 
 router.get("/", getQuestions);
-router.post("/", protect, createQuestion);
+router.post("/", createQuestion);
 router.put("/:id", protect, updateQuestion);
 router.delete("/id", protect, deleteQuestion);
 
