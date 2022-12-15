@@ -14,7 +14,6 @@ import { NavLink } from "react-router-dom";
 function Navbar({ sessionUser, setSessionUser }) {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session);
-  console.log(sessionUser);
   const { loginModalOpen, loginClose, loginOpen } = useLoginModal();
   const { signupModalOpen, signupClose, signupOpen } = useSignupModal();
 

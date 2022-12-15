@@ -12,6 +12,6 @@ import {
 router.get("/", getQuestions);
 router.post("/", createQuestion);
 router.put("/:id", protect, updateQuestion);
-router.delete("/id", protect, deleteQuestion);
+router.delete("/:id", deleteQuestion);
 
 export default router;
