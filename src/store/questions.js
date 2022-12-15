@@ -23,8 +23,7 @@ const sessionSlice = createSlice({
     initialState: {},
     extraReducers: {
         [createQuestion.fulfilled]: (state, action) => {
-            console.log(action.payload)
-            state = action.payload;
+            state[action.payload._id] = action.payload;
             return state
         },
         // [logout.fulfilled]: (state, action) => {
