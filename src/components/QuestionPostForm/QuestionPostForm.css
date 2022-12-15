@@ -1,1 +1,20 @@
-/*# sourceMappingURL=QuestionPostForm.css.map */
+.question-post {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 100px;
+}
+.question-post .post-box {
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.question-post form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}/*# sourceMappingURL=QuestionPostForm.css.map */

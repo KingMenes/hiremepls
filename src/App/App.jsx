@@ -14,6 +14,7 @@ import { useEffect, useState } from "react";
 import { setUserThunk } from "../store/session";
 import { useDispatch } from "react-redux";
 import Questions from "../pages/Questions";
+import QuestionPostForm from '../components/QuestionPostForm/QuestionPostForm'
 
 function App() {
   const dispatch = useDispatch();
@@ -50,6 +51,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/questions" element={<Questions />} />
+            <Route path="/askquestion" element={<QuestionPostForm/>} />
 
             {/* 👇Navigates all other paths back to home👇 */}
             <Route path="*" element={<Navigate to="/" />} />

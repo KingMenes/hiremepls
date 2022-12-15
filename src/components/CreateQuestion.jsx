@@ -8,7 +8,7 @@ function CreateQuestion() {
     const [question, setQuestion] = useState('')
     const handleSubmit = async (e) => {
         e.preventDefault()
-        await dispatch(createQuestion({ question, user: sessionUser }))
+        await dispatch(createQuestion({ question, user: sessionUser })) //Object to POST
     }
     return (
 
