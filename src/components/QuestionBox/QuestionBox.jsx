@@ -3,6 +3,13 @@ import "./QuestionBox.css";
 import { BsHandThumbsUp, BsHandThumbsDown } from "react-icons/bs";
 import { AiOutlineEye } from "react-icons/ai";
 import { BiComment } from "react-icons/bi";
+import Backdrop from "../Backdrop/Backdrop";
+import useDeleteQuestionModal from "../../hooks/useDeleteQuestionModal";
+import DeleteQuestion from "./deleteQuestion";
+import { AnimatePresence, motion } from "framer-motion";
+import { useState } from 'react'
+import { useSelector } from "react-redux";
+
 
 function QuestionBox({
   id,
@@ -14,6 +21,9 @@ function QuestionBox({
   views,
   numComments,
 }) {
+  const user = useSelector(state => state.session.user)
+  const [questionId, setQuestionId] = useState()
+  const { deleteQuestionModalOpen, deleteQuestionClose, deleteQuestionOpen } = useDeleteQuestionModal()
   return (
     <div className="questionBox">
       <div className="repCount">
@@ -44,6 +54,28 @@ function QuestionBox({
           <BiComment className="icn" /> <span>{numComments}</span> Answers
         </div>
       </div>
+      {user && author === user?._id && (
+        <motion.button
+          className="btn-signup"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          onClick={() => {
+            deleteQuestionOpen()
+            setQuestionId(id)
+          }}
+        >
+          <span>Delete</span>
+        </motion.button>
+      )}
+      <ModalContainer>
+        {deleteQuestionModalOpen && (
+          <DeleteQuestion
+            modalOpen={deleteQuestionModalOpen}
+            handleClose={deleteQuestionClose}
+            id={id}
+          />
+        )}
+      </ModalContainer>
       {/* <NavLink to={`/questions/${id}`} className="question">
           {question}
         </NavLink> */}
@@ -51,4 +83,19 @@ function QuestionBox({
   );
 }
 
+
+const ModalContainer = ({ children, label }) => (
+  // Enables the animation of components that have been removed from the tree
+  <AnimatePresence
+    // Disable any initial animations on children that
+    // are present when the component is first rendered
+    initial={false}
+    // Only render one component at a time.
+    // The exiting component will finish its exit
+    // animation before entering component is rendered
+    exitBeforeEnter={true}
+  >
+    {children}
+  </AnimatePresence>
+);
 export default QuestionBox;

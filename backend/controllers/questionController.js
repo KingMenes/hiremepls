@@ -62,17 +62,21 @@ export const deleteQuestion = asyncHandler(async (req, res) => {
     res.status(400);
     throw new Error("Question not found");
   }
-  const user = await User.findById(req.user.id);
+
+
+  const user = await User.findOne({ email: req.session.user.email });
+
   //check for user
   if (!user) {
     res.status(401);
     throw new Error("User not found");
   }
   //checking if author is same as user
-  if (question.author.toString() !== user.id) {
+  if (question.author.toString() !== user._id.toString()) {
     res.status(401);
     throw new Error("User not authorized");
   }
   await question.remove();
-  res.json({ id: req.params.id });
+
+  res.json({ question });
 });
