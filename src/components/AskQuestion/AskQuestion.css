@@ -7,7 +7,8 @@
   width: 50%;
   background-color: white;
   border-radius: 15px;
-  box-shadow: 0 1px 2px hsla(0deg, 0%, 0%, 0.05), 0 1px 4px hsla(0deg, 0%, 0%, 0.05), 0 2px 8px hsla(0deg, 0%, 0%, 0.05);
+  box-shadow: 0 1px 2px hsla(0deg, 0%, 0%, 0.05),
+    0 1px 4px hsla(0deg, 0%, 0%, 0.05), 0 2px 8px hsla(0deg, 0%, 0%, 0.05);
   margin-top: 10px;
   margin-bottom: -5px;
   font-family: "Nunito", sans-serif;
@@ -27,7 +28,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 1px 2px hsla(0deg, 0%, 0%, 0.397), 0 1px 4px hsla(0deg, 0%, 0%, 0.274), 0 2px 8px hsla(0deg, 0%, 0%, 0.05);
+  box-shadow: 0 1px 2px hsla(0deg, 0%, 0%, 0.397),
+    0 1px 4px hsla(0deg, 0%, 0%, 0.274), 0 2px 8px hsla(0deg, 0%, 0%, 0.05);
   width: 48px;
   height: 48px;
   text-align: center;
@@ -53,6 +55,7 @@
   font-size: 16px;
   padding-left: 10px;
 }
-.askquestion div textarea:focus, .askquestion div input:focus {
+.askquestion div textarea:focus,
+.askquestion div input:focus {
   outline: none;
-}/*# sourceMappingURL=AskQuestion.css.map */
+} /*# sourceMappingURL=AskQuestion.css.map */

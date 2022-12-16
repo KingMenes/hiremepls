@@ -1,11 +1,7 @@
-import './QuestionPostOpen.css'
+import "./QuestionPostOpen.css";
 
 function QuestionPostOpen() {
-  return (
-    <div className='questionpostopen'>
-      QuestionPostOpen
-    </div>
-  )
+  return <div className="questionpostopen">QuestionPostOpen</div>;
 }
 
-export default QuestionPostOpen
+export default QuestionPostOpen;

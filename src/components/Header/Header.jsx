@@ -6,7 +6,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import SectionCard from "../SectionCard/SectionCard";
 
 function Header() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   return (
     <section className="header">
       <div className="header-svg">
@@ -25,9 +25,14 @@ function Header() {
           suscipit dolores exercitationem molestias? Vel sapiente quas labore
           delectus maxime distinctio.
         </p>
-        <motion.button className="cursorAdd" onClick={() => {
-          navigate("/questions")
-        }} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+        <motion.button
+          className="cursorAdd"
+          onClick={() => {
+            navigate("/questions");
+          }}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+        >
           {/* <NavLink to="/questions" className="navlink">
             Explore Questions
           </NavLink> */}

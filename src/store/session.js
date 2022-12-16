@@ -59,15 +59,15 @@ const sessionSlice = createSlice({
   extraReducers: {
     [login.fulfilled]: (state, action) => {
       state.user = action.payload;
-      return state
+      return state;
     },
     [logout.fulfilled]: (state, action) => {
       state.user = undefined;
-      return state
+      return state;
     },
     [registerUser.fulfilled]: (state, action) => {
       state.user = action.payload;
-      return state
+      return state;
     },
   },
 });

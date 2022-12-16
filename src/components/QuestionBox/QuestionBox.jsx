@@ -7,9 +7,8 @@ import Backdrop from "../Backdrop/Backdrop";
 import useDeleteQuestionModal from "../../hooks/useDeleteQuestionModal";
 import DeleteQuestion from "./deleteQuestion";
 import { AnimatePresence, motion } from "framer-motion";
-import { useState } from 'react'
+import { useState } from "react";
 import { useSelector } from "react-redux";
-
 
 function QuestionBox({
   id,
@@ -21,9 +20,10 @@ function QuestionBox({
   views,
   numComments,
 }) {
-  const user = useSelector(state => state.session.user)
-  const [questionId, setQuestionId] = useState()
-  const { deleteQuestionModalOpen, deleteQuestionClose, deleteQuestionOpen } = useDeleteQuestionModal()
+  const user = useSelector((state) => state.session.user);
+  const [questionId, setQuestionId] = useState();
+  const { deleteQuestionModalOpen, deleteQuestionClose, deleteQuestionOpen } =
+    useDeleteQuestionModal();
   return (
     <div className="questionBox">
       <div className="repCount">
@@ -60,8 +60,8 @@ function QuestionBox({
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           onClick={() => {
-            deleteQuestionOpen()
-            setQuestionId(id)
+            deleteQuestionOpen();
+            setQuestionId(id);
           }}
         >
           <span>Delete</span>
@@ -82,7 +82,6 @@ function QuestionBox({
     </div>
   );
 }
-
 
 const ModalContainer = ({ children, label }) => (
   // Enables the animation of components that have been removed from the tree

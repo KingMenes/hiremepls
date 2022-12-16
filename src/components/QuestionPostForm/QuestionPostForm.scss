@@ -1,61 +1,60 @@
-.question-post{
+.question-post {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-top:20px;
+  margin-top: 20px;
 
-  .post-box{
+  .post-box {
     background-color: #fff;
     display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  flex-direction: column;
-  margin-bottom: 15px;
-  border-radius: 5px;
-  width: 75%;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    width: 75%;
 
-  h2 {
-    font-family: 'Nunito', sans-serif;
-    font-size: 18px;
-    line-height: 22px;
-    font-weight: 500;
-    color: #1c1c1c;
-    text-align: left;
-    padding-left: 20px;
-    margin-left: 10px;
+    h2 {
+      font-family: "Nunito", sans-serif;
+      font-size: 18px;
+      line-height: 22px;
+      font-weight: 500;
+      color: #1c1c1c;
+      text-align: left;
+      padding-left: 20px;
+      margin-left: 10px;
+    }
   }
 
-  }
-
-  form{
+  form {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     width: 100%;
 
-    div{
+    div {
       width: 100%;
     }
 
-    .post-title{
+    .post-title {
       width: 95%;
       position: relative;
       border: #48484b56 1px solid;
       border-radius: 5px;
       flex-direction: column;
 
-      &:focus{
+      &:focus {
         box-shadow: none;
         border: 1px solid #1a1a1b;
         outline: none;
       }
-      
-      #charcount{
+
+      #charcount {
         font-size: 10px;
         font-weight: 700;
-        letter-spacing: .5px;
+        letter-spacing: 0.5px;
         line-height: 12px;
         text-transform: uppercase;
         color: #878a8c;
@@ -63,10 +62,10 @@
         position: absolute;
         top: 16px;
         right: -420px;
-        font-family: 'Nunito', sans-serif;
+        font-family: "Nunito", sans-serif;
       }
 
-      #question-title{
+      #question-title {
         overflow-x: hidden;
         overflow-wrap: break-word;
         height: 40px;
@@ -75,58 +74,55 @@
         width: 95%;
         border: none;
         padding: none;
-        font-family: 'Nunito', sans-serif;
+        font-family: "Nunito", sans-serif;
         font-size: 16px;
         font-weight: 500;
-        
-  
-        &::placeholder{
+
+        &::placeholder {
           margin: auto;
-          font-family: 'Nunito', sans-serif;
+          font-family: "Nunito", sans-serif;
           display: flex;
           justify-content: center;
         }
       }
-
     }
 
-    .post-body{
+    .post-body {
       flex-direction: column;
       width: 95%;
       border: #48484b56 1px solid;
       border-radius: 5px;
       margin: 10px;
 
-      &:focus{
+      &:focus {
         box-shadow: none;
         border: 1px solid #1a1a1b;
         outline: none;
       }
 
-      #question-body{
+      #question-body {
         overflow-x: hidden;
         overflow-wrap: break-word;
         outline: none;
-        resize:block;
+        resize: block;
         width: 95%;
         border: none;
         outline: none;
-        font-family: 'Nunito', sans-serif;
+        font-family: "Nunito", sans-serif;
         font-size: 16px;
         font-weight: 500;
         margin: 10px;
         // border: black 1px solid;
 
-  
-        &::placeholder{
-          font-family: 'Nunito', sans-serif;
+        &::placeholder {
+          font-family: "Nunito", sans-serif;
           display: flex;
           justify-content: center;
         }
       }
     }
 
-    .company-info{
+    .company-info {
       width: 95%;
       justify-content: space-between;
       margin: 10px;
@@ -136,27 +132,27 @@
         width: 47%;
         border: #48484b56 1px solid;
         border-radius: 5px;
-        font-family: 'Nunito', sans-serif;
+        font-family: "Nunito", sans-serif;
         font-size: 16px;
         font-weight: 500;
         padding-left: 20px;
 
-        &::placeholder{
-          font-family: 'Nunito', sans-serif;
+        &::placeholder {
+          font-family: "Nunito", sans-serif;
           display: flex;
           justify-content: center;
         }
 
-      &:focus{
-        box-shadow: none;
-        border: 1px solid #1a1a1b;
-        outline: none;
-      }
+        &:focus {
+          box-shadow: none;
+          border: 1px solid #1a1a1b;
+          outline: none;
+        }
       }
     }
   }
 
-  .btn-div{
+  .btn-div {
     height: 40px;
     width: 95%;
     // border: #1a1a1b solid 1px;
@@ -178,20 +174,20 @@
       background-color: hsl(203, 86%, 44%);
       width: 100px;
       border-radius: 5px;
-      font-family: 'Nunito', sans-serif;
+      font-family: "Nunito", sans-serif;
     }
   }
 
-  .add-tag{
+  .add-tag {
     width: 95%;
     flex-direction: column;
-    // border: solid 1px black; 
+    // border: solid 1px black;
     align-items: flex-start;
 
-    h3{
+    h3 {
       // border: solid 1px blue;
-      font:inherit;
-      font-family: 'Nunito', sans-serif;
+      font: inherit;
+      font-family: "Nunito", sans-serif;
       // align-self: flex-start;
       // justify-self: center;
     }
@@ -201,18 +197,18 @@
       width: 20%;
       border: #48484b56 1px solid;
       border-radius: 5px;
-      font-family: 'Nunito', sans-serif;
+      font-family: "Nunito", sans-serif;
       font-size: 16px;
       font-weight: 500;
       padding-left: 10px;
 
-      &::placeholder{
-        font-family: 'Nunito', sans-serif;
+      &::placeholder {
+        font-family: "Nunito", sans-serif;
         display: flex;
         justify-content: center;
       }
 
-      &:focus{
+      &:focus {
         box-shadow: none;
         border: 1px solid #1a1a1b;
         outline: none;
@@ -221,13 +217,10 @@
 
     p {
       font-style: italic;
-      font-family: 'Nunito', sans-serif;
+      font-family: "Nunito", sans-serif;
       font-size: 12px;
       font-weight: 200;
       margin-left: 30px;
     }
-
   }
-
-  
 }

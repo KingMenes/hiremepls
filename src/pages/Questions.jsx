@@ -10,8 +10,8 @@ function Questions() {
   return (
     <>
       <Trending />
-      <AskQuestion/>
-      <PopularBar/>
+      <AskQuestion />
+      <PopularBar />
       <TestFetch />
     </>
   );

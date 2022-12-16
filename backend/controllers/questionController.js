@@ -14,7 +14,7 @@ export const createQuestion = asyncHandler(async (req, res) => {
     throw new Error("Please add a question");
   }
 
-  console.log(req.body.user)
+  console.log(req.body.user);
   const question = await Question.create({
     question: req.body.question,
     author: req.body.user,
@@ -62,7 +62,6 @@ export const deleteQuestion = asyncHandler(async (req, res) => {
     res.status(400);
     throw new Error("Question not found");
   }
-
 
   const user = await User.findOne({ email: req.session.user.email });
 
