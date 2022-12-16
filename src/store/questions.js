@@ -45,6 +45,7 @@ const sessionSlice = createSlice({
     extraReducers: {
         [createQuestion.fulfilled]: (state, action) => {
             state[action.payload._id] = action.payload;
+
             return state
         },
         [deleteQuestion.fulfilled]: (state, action) => {

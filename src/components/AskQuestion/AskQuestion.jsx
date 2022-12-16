@@ -1,5 +1,6 @@
 import './AskQuestion.css'
-import {HiOutlineChatBubbleLeftEllipsis} from 'react-icons/hi2'
+import { HiOutlineChatBubbleLeftEllipsis } from 'react-icons/hi2'
+import { NavLink } from 'react-router-dom'
 
 function AskQuestion({ sessionUser, setSessionUser }) {
 
@@ -11,8 +12,11 @@ function AskQuestion({ sessionUser, setSessionUser }) {
             <div>
                 <img src="https://thispersondoesnotexist.com/image" alt="" />
                 <div className='question-input'>
-                    <HiOutlineChatBubbleLeftEllipsis className='icon' />
-                    <input type="text" placeholder='Ask a Question' />
+            <HiOutlineChatBubbleLeftEllipsis className='icon' />
+            <NavLink to='/askquestion'>
+            <input type="text" placeholder='Ask a Question' />
+            </NavLink>
+                    
                 </div>
           
             </div>
