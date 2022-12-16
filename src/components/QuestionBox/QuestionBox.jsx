@@ -54,7 +54,7 @@ function QuestionBox({
           <BiComment className="icn" /> <span>{numComments}</span> Answers
         </div>
       </div>
-      {author === user?._id && (
+      {user && author === user?._id && (
         <motion.button
           className="btn-signup"
           whileHover={{ scale: 1.1 }}
