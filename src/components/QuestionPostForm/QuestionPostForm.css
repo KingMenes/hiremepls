@@ -57,7 +57,7 @@
   pointer-events: none;
   position: absolute;
   top: 16px;
-  right: -420px;
+  right: -45%;
   font-family: "Nunito", sans-serif;
 }
 .question-post form .post-title #question-title {
@@ -199,15 +199,30 @@
   font: inherit;
   font-family: "Nunito", sans-serif;
 }
-.question-post .add-tag input {
-  height: 40px;
-  width: 20%;
+.question-post .add-tag div {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
   border: rgba(72, 72, 75, 0.337254902) 1px solid;
   border-radius: 5px;
+  width: 20%;
+  padding-left: 10px;
+  height: 45px;
+}
+.question-post .add-tag div .icn {
+  font-size: 24px;
+  color: #929292;
+}
+.question-post .add-tag input {
+  height: 35px;
+  width: 90%;
   font-family: "Nunito", sans-serif;
   font-size: 16px;
   font-weight: 500;
   padding-left: 10px;
+  border: none;
+  margin: auto;
 }
 .question-post .add-tag input::-moz-placeholder {
   font-family: "Nunito", sans-serif;
@@ -226,7 +241,6 @@
 }
 .question-post .add-tag input:focus {
   box-shadow: none;
-  border: 1px solid #1a1a1b;
   outline: none;
 }
 .question-post .add-tag p {
@@ -235,4 +249,33 @@
   font-size: 12px;
   font-weight: 200;
   margin-left: 30px;
-} /*# sourceMappingURL=QuestionPostForm.css.map */
+}
+.question-post .tags {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  align-self: flex-start;
+  margin-left: 40px;
+}
+.question-post .tags .tag {
+  margin-right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #0030b6;
+  width: 100px;
+  height: 40px;
+  border-radius: 999px;
+}
+.question-post .tags .tag .icn {
+  color: white;
+}
+.question-post .tags .tag span {
+  text-transform: lowercase;
+  font-family: "Nunito", sans-serif;
+  color: white;
+}/*# sourceMappingURL=QuestionPostForm.css.map */
