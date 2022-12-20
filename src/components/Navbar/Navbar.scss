@@ -26,6 +26,7 @@
     justify-content: space-between;
     align-items: center;
     width: 10%;
+
     .menu-icon {
       font-size: 32px;
       // margin-left: 100px;
@@ -34,6 +35,7 @@
 
     .logo {
       width: 100%;
+
       img {
         width: 100%;
         display: flex;
@@ -68,10 +70,12 @@
           padding: 5px;
           text-decoration: none;
           color: inherit;
+          height: 100%;
           width: 100%;
           display: flex;
           justify-content: center;
           align-items: center;
+
           &:hover {
             background-color: hsl(210, 8%, 90%);
             color: hsl(210, 8%, 15%);
@@ -83,6 +87,7 @@
       }
     }
   }
+
   button {
     height: 75%;
     margin-top: auto;
