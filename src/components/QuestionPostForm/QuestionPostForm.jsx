@@ -3,22 +3,28 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { createQuestion } from "../../store/questions";
 import { motion } from "framer-motion";
-import { AiOutlinePlus , AiOutlineClose} from 'react-icons/ai'
+import { AiOutlinePlus, AiOutlineClose } from 'react-icons/ai'
 
 function QuestionPostForm() {
 
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const [question, setQuestion] = useState("");
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    await dispatch(createQuestion({ question, user: sessionUser })); //Object to POST
-  };
-
+  const [errors, setErrors] = useState("")
   const [formData, setFormData] = useState({
-    title: "",
+    "question-title": "",
     body: "",
   });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!sessionUser) {
+      setErrors("Must be logged in!")
+      return
+    }
+    const data = await dispatch(createQuestion({ question: formData["question-title"], user: sessionUser })); //Object to POST
+  };
+
 
   const tags = ['tag1', 'tag2', 'tag3', 'tag4', 'tag5']
 
@@ -45,6 +51,7 @@ function QuestionPostForm() {
         <h2>Ask a Question</h2>
         <form onSubmit={handleSubmit}>
           <div className="post-title flex-center">
+            {errors ? <div>{errors}</div> : null}
             <input
               type="text"
               placeholder="Question"
@@ -70,7 +77,7 @@ function QuestionPostForm() {
               type="text"
               placeholder="How would you answer? (optional)"
               onChange={onChange}
-              // value={formData.body}
+            // value={formData.body}
             ></textarea>
           </div>
           <div className="add-tag flex-center">
@@ -78,7 +85,7 @@ function QuestionPostForm() {
             <div>
               <AiOutlinePlus className="icn" />
               <input type="text" placeholder="Add a tag here (max 5)"
-                // onSubmit={updateTags}
+              // onSubmit={updateTags}
               />
             </div>
             <p>ex: general, human resources, software, technical</p>
@@ -87,7 +94,7 @@ function QuestionPostForm() {
             {tags.map((tag) => (
               <div className="tag" key={tag}>
                 <span>{tag}</span>
-                <AiOutlineClose className="icn"/>
+                <AiOutlineClose className="icn" />
               </div>
             ))}
           </div>

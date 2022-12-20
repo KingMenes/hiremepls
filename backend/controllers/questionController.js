@@ -1,3 +1,4 @@
+import { json } from "express";
 import asyncHandler from "express-async-handler";
 import Question from "../models/questionModel.js";
 import User from "../models/userModel.js";
@@ -9,12 +10,14 @@ export const getQuestions = asyncHandler(async (req, res) => {
 });
 
 export const createQuestion = asyncHandler(async (req, res) => {
+
+  if (!req.body.user) return res.json({ error: 'Must be logged in' })
   if (!req.body.question) {
     res.status(400);
     throw new Error("Please add a question");
   }
 
-  console.log(req.body.user);
+
   const question = await Question.create({
     question: req.body.question,
     author: req.body.user,
