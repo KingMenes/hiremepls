@@ -17,6 +17,8 @@ function QuestionPostForm({ handleClose }) {
     "question-title": "",
     body: "",
   });
+  const [tags, setTags] = useState([])
+  const [tag, setTag] = useState('')
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -28,7 +30,7 @@ function QuestionPostForm({ handleClose }) {
   };
 
 
-  const tags = ['tag1', 'tag2', 'tag3', 'tag4', 'tag5']
+  // const tags = ['tag1', 'tag2', 'tag3', 'tag4', 'tag5']
 
   const [charCount, setCharCount] = useState("0");
   // const [tags, setTags] = useState([])
@@ -89,8 +91,13 @@ function QuestionPostForm({ handleClose }) {
             <div className="add-tag flex-center">
               <h3>Include tags to help others find your question!</h3>
               <div>
-                <AiOutlinePlus className="icn" />
-                <input type="text" placeholder="Add a tag here (max 5)"
+                <AiOutlinePlus className="icn" onClick={(e) => {
+                  const currentTags = tags
+                  currentTags.push(tag)
+                  setTags(currentTags)
+                  setTag('')
+                }} />
+                <input type="text" placeholder="Add a tag here (max 5)" value={tag} onChange={(e) => setTag(e.target.value)}
                 // onSubmit={updateTags}
                 />
               </div>
