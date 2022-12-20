@@ -50,7 +50,7 @@ function QuestionPostForm({ handleClose }) {
   return (
     <Backdrop onClick={handleClose}>
 
-      <div className="question-post">
+      <div onClick={(e) => e.stopPropagation()} className="question-post">
         <div className="post-box">
           <h2>Ask a Question</h2>
           <form onSubmit={handleSubmit}>
