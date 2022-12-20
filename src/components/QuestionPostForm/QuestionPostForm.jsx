@@ -40,10 +40,12 @@ function QuestionPostForm({ handleClose }) {
   // }
 
   const onChange = (e) => {
+    setCharCount(e.target.value.length)
     setFormData((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
-    }));
+    }
+    ));
   };
 
 
@@ -66,7 +68,7 @@ function QuestionPostForm({ handleClose }) {
                 // value={formData.title}
                 maxLength="300"
               />
-              <div id="charcount">0/300</div>
+              <div id="charcount">{charCount}/300</div>
             </div>
             <div className="company-info flex-center">
               <input type="text" placeholder="For Position (optional)" />
