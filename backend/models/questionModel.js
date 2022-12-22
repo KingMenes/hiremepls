@@ -46,5 +46,8 @@ const questionSchema = mongoose.Schema({
     type: Number,
     default: 0,
   },
+  authorName: {
+    type: String
+  }
 });
 export default mongoose.model("Question", questionSchema);

@@ -19,6 +19,7 @@ function QuestionBox({
   tags,
   views,
   numComments,
+  authorName
 }) {
   const user = useSelector((state) => state.session.user);
   const [questionId, setQuestionId] = useState();
@@ -33,7 +34,7 @@ function QuestionBox({
       </div>
       <div className="box-section1">
         <div className="user-info">
-          Asked by <span>{author}</span> {date}
+          Asked by <span>{authorName}</span> {date}
         </div>
         <div className="question">
           <span>{question}</span>

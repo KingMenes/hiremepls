@@ -15,9 +15,9 @@ function TestFetch() {
   function timeSince(date) {
 
     var seconds = Math.floor((new Date() - date) / 1000);
-  
+
     var interval = seconds / 31536000;
-  
+
     if (interval > 1) {
       return Math.floor(interval) + " years";
     }
@@ -44,19 +44,20 @@ function TestFetch() {
     <div id="questionsContainer">
       {questions
         ? Object.values(questions).map((question) => {
-            return (
-              <QuestionBox
-                id={question._id}
-                question={question.question}
-                author={question.author}
-                date={timeSince(question.date)}
-                rep={question.reputation[0] - question.reputation[1]}
-                tags={question.tags}
-                views={question.views}
-                key={question._id}
-              />
-            );
-          })
+          return (
+            <QuestionBox
+              id={question._id}
+              question={question.question}
+              author={question.author}
+              date={timeSince(question.date)}
+              rep={question.reputation[0] - question.reputation[1]}
+              tags={question.tags}
+              views={question.views}
+              key={question._id}
+              authorName={question.authorName}
+            />
+          );
+        })
         : null}
     </div>
   );
