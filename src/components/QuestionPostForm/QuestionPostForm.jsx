@@ -96,7 +96,7 @@ function QuestionPostForm({ handleClose }) {
               type="text"
               placeholder="How would you answer? (optional)"
               onChange={onChange}
-              // value={formData.body}
+            // value={formData.body}
             ></textarea>
           </div>
           <div className="add-tag flex-center">
@@ -128,10 +128,16 @@ function QuestionPostForm({ handleClose }) {
                   className="icn close-icn"
                   onClick={() => {
                     const index = tags.indexOf(tag);
+
+                    //make a deep copy rather -- because I'm assuming making a shallow copy of 
+                    //the array or using the same array would not change the state because they 
+                    //are the same place in memory
+                    const newTags = tags.map(currentTag => currentTag)
+
                     if (index > -1) {
-                      tags.splice(index, 1);
+                      newTags.splice(index, 1);
                     }
-                    setTags(tags);
+                    setTags(newTags);
                   }}
                 />
               </div>
