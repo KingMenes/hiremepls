@@ -1,6 +1,6 @@
 import { combineReducers, applyMiddleware, compose } from "redux";
 import { configureStore } from "@reduxjs/toolkit";
-import thunk from "redux-thunk";
+// import thunk from "redux-thunk";
 import session from "./session";
 import questions from "./questions";
 

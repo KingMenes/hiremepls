@@ -16,8 +16,11 @@ export const createQuestion = asyncHandler(async (req, res) => {
     throw new Error("Please add a question");
   }
 
+  const user = req.body.user
+
   const question = await Question.create({
     question: req.body.question,
+    authorName: user.username,
     author: req.body.user,
     date: new Date(),
     comments: [],

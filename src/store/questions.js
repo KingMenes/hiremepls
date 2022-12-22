@@ -20,7 +20,6 @@ export const createQuestion = createAsyncThunk(
       question,
       user,
     });
-
     return res.data;
   }
 );
