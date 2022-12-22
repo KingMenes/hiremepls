@@ -214,9 +214,15 @@
   font-size: 24px;
   color: #929292;
 }
+.question-post .add-tag div .icn:hover {
+  cursor: pointer;
+}
+.question-post .add-tag .tag-input {
+  width: 30%;
+}
 .question-post .add-tag input {
   height: 35px;
-  width: 90%;
+  width: 100%;
   font-family: "Nunito", sans-serif;
   font-size: 16px;
   font-weight: 500;
@@ -264,18 +270,24 @@
 .question-post .tags .tag {
   margin-right: 10px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   background-color: #0030b6;
-  width: 100px;
   height: 40px;
   border-radius: 999px;
 }
 .question-post .tags .tag .icn {
   color: white;
+  margin-top: 2px;
+  margin-left: 5px;
+  margin-right: 10px;
 }
 .question-post .tags .tag span {
   text-transform: lowercase;
   font-family: "Nunito", sans-serif;
   color: white;
-}/*# sourceMappingURL=QuestionPostForm.css.map */
+  margin: auto 0px auto 20px;
+}
+.question-post .close-icn:hover {
+  cursor: pointer;
+} /*# sourceMappingURL=QuestionPostForm.css.map */

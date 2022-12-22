@@ -10,13 +10,11 @@ export const getQuestions = asyncHandler(async (req, res) => {
 });
 
 export const createQuestion = asyncHandler(async (req, res) => {
-
-  if (!req.body.user) return res.json({ error: 'Must be logged in' })
+  if (!req.body.user) return res.json({ error: "Must be logged in" });
   if (!req.body.question) {
     res.status(400);
     throw new Error("Please add a question");
   }
-
 
   const question = await Question.create({
     question: req.body.question,

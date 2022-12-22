@@ -7,6 +7,18 @@ const questionSchema = mongoose.Schema({
     type: String,
     required: [true, "Please add a question"],
   },
+  body: {
+    type: String,
+    default: "",
+  },
+  position: {
+    type: String,
+    default: "",
+  },
+  company: {
+    type: String,
+    default: "",
+  },
   author: {
     type: mongoose.Schema.Types.ObjectId,
     required: [true, "Please add an author"],

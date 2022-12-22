@@ -6,11 +6,12 @@ import AskQuestion from "../components/AskQuestion/AskQuestion";
 
 function Questions() {
   const dispatch = useDispatch();
+  const sessionUser = useSelector((state) => state.session.user);
 
   return (
     <>
       <Trending />
-      <AskQuestion />
+      {sessionUser && <AskQuestion />}
       <PopularBar />
       <TestFetch />
     </>

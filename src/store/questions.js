@@ -21,7 +21,6 @@ export const createQuestion = createAsyncThunk(
       user,
     });
 
-
     return res.data;
   }
 );

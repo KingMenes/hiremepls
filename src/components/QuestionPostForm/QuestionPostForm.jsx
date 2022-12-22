@@ -3,127 +3,152 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { createQuestion } from "../../store/questions";
 import { motion } from "framer-motion";
-import { AiOutlinePlus, AiOutlineClose } from 'react-icons/ai'
+import { AiOutlinePlus, AiOutlineClose } from "react-icons/ai";
 import Backdrop from "../Backdrop/Backdrop";
-
+import { useNavigate } from "react-router-dom";
 
 function QuestionPostForm({ handleClose }) {
-
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
-  const [question, setQuestion] = useState("");
-  const [errors, setErrors] = useState("")
+  const navigate = useNavigate();
+
+  // STATES
+  const [errors, setErrors] = useState("");
+  const [tags, setTags] = useState([]);
+  const [tag, setTag] = useState("");
+  const [charCount, setCharCount] = useState("0");
   const [formData, setFormData] = useState({
-    "question-title": "",
+    question: "",
     body: "",
+    position: "",
+    company: "",
+    tags: [],
+    date: "",
+    user: "",
   });
-  const [tags, setTags] = useState([])
-  const [tag, setTag] = useState('')
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!sessionUser) {
-      setErrors("Must be logged in!")
-      return
+      setErrors("Must be logged in!");
+      return;
     }
-    const data = await dispatch(createQuestion({ question: formData["question-title"], user: sessionUser })); //Object to POST
+    const data = await dispatch(
+      createQuestion({
+        question: formData.question,
+        user: sessionUser,
+        body: formData.body,
+        position: formData.position,
+        company: formData.company,
+        tags: tags,
+        date: new Date(),
+      })
+    ); //Object to POST
+
+    navigate("/questions");
   };
 
-
-  // const tags = ['tag1', 'tag2', 'tag3', 'tag4', 'tag5']
-
-  const [charCount, setCharCount] = useState("0");
-  // const [tags, setTags] = useState([])
-
-  // function updateTags(e) {
-  //   setTags(tags => [...tags, e.target.value])
-  //   e.target.value = ''
-  //   console.log(tags)
-  // }
-
   const onChange = (e) => {
-    setCharCount(e.target.value.length)
+    setCharCount(e.target.value.length);
     setFormData((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
-    }
-    ));
+    }));
   };
 
-
   return (
-    <Backdrop onClick={handleClose}>
-
-      <div className="question-post">
-        <div onClick={(e) => e.stopPropagation()} className="post-box">
-          <h2>Ask a Question</h2>
-          <form onSubmit={handleSubmit}>
-            <div className="post-title flex-center">
-              {errors ? <div>{errors}</div> : null}
+    <div className="question-post">
+      <div onClick={(e) => e.stopPropagation()} className="post-box">
+        <h2>Ask a Question</h2>
+        <form onSubmit={handleSubmit}>
+          <div className="post-title flex-center">
+            {errors ? <div>{errors}</div> : null}
+            <input
+              type="text"
+              placeholder="Question"
+              required
+              name="question"
+              onChange={onChange}
+              id="question-title"
+              // value={formData.title}
+              maxLength="300"
+            />
+            <div id="charcount">{charCount}/300</div>
+          </div>
+          <div className="company-info flex-center">
+            <input
+              type="text"
+              placeholder="For Position (optional)"
+              name="position"
+            />
+            <input
+              type="text"
+              placeholder="At Company Name (optional)"
+              name="company"
+            />
+          </div>
+          <div className="post-body flex-center">
+            <textarea
+              name="body"
+              id="question-body"
+              cols="30"
+              rows="3"
+              type="text"
+              placeholder="How would you answer? (optional)"
+              onChange={onChange}
+              // value={formData.body}
+            ></textarea>
+          </div>
+          <div className="add-tag flex-center">
+            <h3>Include tags to help others find your question!</h3>
+            <div className="tag-input">
+              <AiOutlinePlus
+                className="icn"
+                onClick={(e) => {
+                  tags.push(tag.trim());
+                  setTags(tags);
+                  setTag("");
+                }}
+              />
               <input
                 type="text"
-                placeholder="Question"
-                required
-                name="question-title"
-                onChange={onChange}
-                id="question-title"
-                // value={formData.title}
-                maxLength="300"
+                placeholder="Add a tag here (max 5)"
+                value={tag}
+                onChange={(e) => setTag(e.target.value)}
+                maxLength="35"
               />
-              <div id="charcount">{charCount}/300</div>
             </div>
-            <div className="company-info flex-center">
-              <input type="text" placeholder="For Position (optional)" />
-              <input type="text" placeholder="At Company Name (optional)" />
-            </div>
-            <div className="post-body flex-center">
-              <textarea
-                name="question-body"
-                id="question-body"
-                cols="30"
-                rows="10"
-                type="text"
-                placeholder="How would you answer? (optional)"
-                onChange={onChange}
-              // value={formData.body}
-              ></textarea>
-            </div>
-            <div className="add-tag flex-center">
-              <h3>Include tags to help others find your question!</h3>
-              <div>
-                <AiOutlinePlus className="icn" onClick={(e) => {
-                  const currentTags = tags
-                  currentTags.push(tag)
-                  setTags(currentTags)
-                  setTag('')
-                }} />
-                <input type="text" placeholder="Add a tag here (max 5)" value={tag} onChange={(e) => setTag(e.target.value)}
-                // onSubmit={updateTags}
+            <p>ex: general, human resources, software, technical</p>
+          </div>
+          <div className="tags">
+            {tags.map((tag) => (
+              <div className="tag" key={tag}>
+                <span>{tag}</span>
+                <AiOutlineClose
+                  className="icn close-icn"
+                  onClick={() => {
+                    const index = tags.indexOf(tag);
+                    if (index > -1) {
+                      tags.splice(index, 1);
+                    }
+                    setTags(tags);
+                  }}
                 />
               </div>
-              <p>ex: general, human resources, software, technical</p>
-            </div>
-            <div className="tags">
-              {tags.map((tag) => (
-                <div className="tag" key={tag}>
-                  <span>{tag}</span>
-                  <AiOutlineClose className="icn" />
-                </div>
-              ))}
-            </div>
-            <div className="btn-div">
-              <motion.button
-                type="submit"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-              >
-                Submit
-              </motion.button>
-            </div>
-          </form>
-        </div>
+            ))}
+          </div>
+          <div className="btn-div">
+            <motion.button
+              type="submit"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+            >
+              Submit
+            </motion.button>
+          </div>
+        </form>
       </div>
-    </Backdrop>
+    </div>
   );
 }
 
