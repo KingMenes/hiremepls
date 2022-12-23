@@ -34,7 +34,7 @@ function QuestionBox({
       </div>
       <div className="box-section1">
         <div className="user-info">
-          Asked by <span>{authorName}</span> {date}
+          Asked by <span>{authorName}</span> {date} ago
         </div>
         <div className="question">
           <span>{question}</span>

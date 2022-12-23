@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { createQuestion } from "../../store/questions";
 import { motion } from "framer-motion";
 import { AiOutlinePlus, AiOutlineClose } from "react-icons/ai";
-import Backdrop from "../Backdrop/Backdrop";
 import { useNavigate } from "react-router-dom";
 
 function QuestionPostForm({ handleClose }) {
@@ -22,7 +21,7 @@ function QuestionPostForm({ handleClose }) {
     body: "",
     position: "",
     company: "",
-    tags: [],
+    tags: tags,
     date: "",
     user: "",
   });
@@ -42,8 +41,20 @@ function QuestionPostForm({ handleClose }) {
         company: formData.company,
         tags: tags,
         date: new Date(),
+        reputation:[0,0]
       })
     ); //Object to POST
+
+    console.log({
+      question: formData.question,
+      user: sessionUser,
+      body: formData.body,
+      position: formData.position,
+      company: formData.company,
+      tags: formData.tags,
+      date: formData.date,
+      reputation:formData.reputation
+    })
 
     navigate("/questions");
   };

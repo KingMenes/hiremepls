@@ -20,9 +20,15 @@
     position: absolute;
     right: 20px;
   }
+
   &:hover {
     cursor: pointer;
-    background-color: rgba(255, 255, 255, 0.575);
+    background-color: rgb(240, 240, 240);
+
+    &::after{
+      border-left: 40px solid transparent;
+      border-top: 40px solid rgb(240, 240, 240);
+    }
   }
 
   .box-section1 {
