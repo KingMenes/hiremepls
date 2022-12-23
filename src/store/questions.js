@@ -5,7 +5,15 @@ import http from "../http-common";
 const GET_QUESTIONS = "questions/get";
 const CREATE_QUESTION = "questions/create";
 const REMOVE_QUESTION = "questions/REMOVE_QUESTION";
+const VIEW_QUESTION = "questions/incrementView"
 // const CHECK_USER = "sesesefgsefsegfsda";
+export const incrementQuestion = createAsyncThunk(VIEW_QUESTION, async ({ id }) => {
+  const res = await http.put(`/questions/${id}`, {
+    view: id
+  })
+  console.log(res.data)
+  return res.data
+})
 
 export const getQuestions = createAsyncThunk(GET_QUESTIONS, async () => {
   const res = await http.get("/questions", {});
@@ -53,6 +61,10 @@ const sessionSlice = createSlice({
       });
       return state;
     },
+    [incrementQuestion.fulfilled]: (state, action) => {
+      state[action.payload._id] = action.payload
+      return state
+    }
     // [logout.fulfilled]: (state, action) => {
     //     state.user = undefined;
     // },

@@ -8,7 +8,8 @@ import useDeleteQuestionModal from "../../hooks/useDeleteQuestionModal";
 import DeleteQuestion from "./deleteQuestion";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { incrementQuestion } from "../../store/questions"
 
 function QuestionBox({
   id,
@@ -21,12 +22,13 @@ function QuestionBox({
   numComments,
   authorName
 }) {
+  const dispatch = useDispatch()
   const user = useSelector((state) => state.session.user);
   const [questionId, setQuestionId] = useState();
   const { deleteQuestionModalOpen, deleteQuestionClose, deleteQuestionOpen } =
     useDeleteQuestionModal();
   return (
-    <div className="questionBox">
+    <div className="questionBox" onClick={async (e) => { await dispatch(incrementQuestion({ id })) }}>
       <div className="repCount">
         <BsHandThumbsUp className="icn i-u" />
         <span>{rep}</span>
