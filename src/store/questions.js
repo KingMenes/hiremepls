@@ -11,7 +11,7 @@ export const incrementQuestion = createAsyncThunk(VIEW_QUESTION, async ({ id }) 
   const res = await http.put(`/questions/${id}`, {
     view: id
   })
-  console.log(res.data)
+
   return res.data
 })
 
