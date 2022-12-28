@@ -42,17 +42,7 @@ export const setUserThunk = createAsyncThunk(SET_USER, async (data) => {
   return data.data;
 });
 
-// export const logout = () => async (dispatch) => {
-//   const response = await fetch("/api/auth/logout", {
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//   });
 
-//   if (response.ok) {
-//     dispatch(removeUser());
-//   }
-// };
 const sessionSlice = createSlice({
   name: "session",
   initialState: {},
@@ -62,7 +52,7 @@ const sessionSlice = createSlice({
       return state;
     },
     [logout.fulfilled]: (state, action) => {
-      state.user = undefined;
+      state.user = null;
       return state;
     },
     [registerUser.fulfilled]: (state, action) => {
@@ -156,3 +146,4 @@ export const signUp = (username, email, password) => async (dispatch) => {
 //             return state;
 //     }
 // }
+

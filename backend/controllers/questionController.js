@@ -3,6 +3,7 @@ import asyncHandler from "express-async-handler";
 import Question from "../models/questionModel.js";
 import User from "../models/userModel.js";
 
+
 export const getQuestions = asyncHandler(async (req, res) => {
   // const { questionsList } = await DBDAO.getQuestions({})
   const questionsList = await Question.find();
@@ -30,6 +31,16 @@ export const createQuestion = asyncHandler(async (req, res) => {
 });
 
 export const updateQuestion = asyncHandler(async (req, res) => {
+  const { view } = req.body
+  if (view) {
+    const question = await Question.findById(view)
+    let views = question.views
+
+    question.views = views + 1
+    await question.save()
+    res.json(question)
+    return
+  }
   const question = await Question.findById(req.params.id);
   if (!question) {
     res.status(400);
