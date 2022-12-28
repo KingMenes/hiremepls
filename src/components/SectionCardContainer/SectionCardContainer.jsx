@@ -6,12 +6,12 @@ import { motion } from "framer-motion";
 
 function SectionCardContainer() {
   const jobSubs = [
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem unde rerum aut tenetur, commodi, voluptas pariatur totam ut fugiat, suscipit dolores exercitationem molestias?",
+    "Find your dream job, faster",
+    "Whether you're looking for your first job or seeking a new career challenge, our job board has thousands of opportunities waiting for you. With a wide range of industries and positions available, you'll be able to find the perfect fit in no time.",
   ];
   const salarySubs = [
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem unde rerum aut tenetur, commodi, voluptas pariatur totam ut fugiat, suscipit dolores exercitationem molestias?",
+    "Take control of your salary negotiations.",
+    "Wondering if you're being paid what you're worth? Our community of salary experts can help. Post and compare job salaries, ask questions, and get the information you need to negotiate the best possible salary for your skills and experience.",
   ];
 
   return (

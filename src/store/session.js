@@ -75,6 +75,8 @@ const sessionSlice = createSlice({
 const { reducer } = sessionSlice;
 export default reducer;
 
+// ACTIONS 👇
+
 const setUser = (user) => ({
   type: SET_USER,
   payload: user,

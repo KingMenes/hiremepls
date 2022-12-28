@@ -16,14 +16,10 @@ function Header() {
         <img className="logo" src={logo} alt="" />
         <hr />
         <h2>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique
-          quas minima maxime nobis velit dignissimos quibusdam.
+        Your ultimate interview resource
         </h2>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem unde
-          rerum aut tenetur, commodi, voluptas pariatur totam ut fugiat,
-          suscipit dolores exercitationem molestias? Vel sapiente quas labore
-          delectus maxime distinctio.
+        Whether you're preparing for your first job interview or looking to land your dream career, we have the resources you need. Ask and answer questions, connect with experts, and get the tips and advice you need to succeed in your job search.
         </p>
         <motion.button
           className="cursorAdd"
