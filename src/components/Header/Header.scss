@@ -54,6 +54,7 @@
       font-size: 14px;
       background-color: #0269a9;
       color: white;
+      cursor: pointer;
     }
   }
 
@@ -79,6 +80,7 @@
       height: 64px;
       width: 64px;
     }
+
     .sz-96 {
       height: 96px;
       width: 96px;
@@ -91,6 +93,9 @@
       z-index: 10;
     }
   }
+
+
+
 }
 
 .mirror {
