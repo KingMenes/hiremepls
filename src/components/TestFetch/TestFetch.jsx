@@ -146,7 +146,7 @@ function TestFetch() {
               question={question.question}
               author={question.author}
               date={timeSince(new Date(question.date))}
-              rep={question.reputation}
+              rep={question.reputation[0] - question.reputation[1]}
               tags={question.tags}
               views={question.views}
               key={question._id}

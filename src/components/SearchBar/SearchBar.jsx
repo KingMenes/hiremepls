@@ -53,7 +53,7 @@ function SearchBar() {
           onChange={debouncedHandleChange}
         />
       </div>
-      <div className={`${searchTerm==''? 'hidden' : ''} search_dropdown`}>
+      <div className={`${searchTerm === '' ? 'hidden' : ''} search_dropdown`}>
         <ul>
           {filteredItems.map((item) => (
             <li key={item._id}>{item.question}</li>

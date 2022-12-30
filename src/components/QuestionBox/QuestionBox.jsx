@@ -22,16 +22,31 @@ function QuestionBox({
   numComments,
   authorName
 }) {
+
+  console.log(rep);
+
   const dispatch = useDispatch()
   const user = useSelector((state) => state.session.user);
   const [questionId, setQuestionId] = useState();
-  const { deleteQuestionModalOpen, deleteQuestionClose, deleteQuestionOpen } =
-    useDeleteQuestionModal();
+  const { deleteQuestionModalOpen, deleteQuestionClose, deleteQuestionOpen } = useDeleteQuestionModal();
+  
+  // Error handling for rep prop. 
+  // Returns NaN and idk why
+  let reputation = 0
+  if (Array.isArray(rep) && rep.length === 2) {
+    // check if reputation is an array of two elements
+    const [upvotes, downvotes] = rep;
+    if (typeof upvotes === 'number' && typeof downvotes === 'number') {
+      // check if both elements are numbers
+      reputation = upvotes - downvotes;
+    }
+  }
+  
   return (
     <div className="questionBox" onClick={async (e) => { await dispatch(incrementQuestion({ id })) }}>
       <div className="repCount">
         <BsHandThumbsUp className="icn i-u" />
-        <span>{rep}</span>
+        <span>{reputation}</span>
         <BsHandThumbsDown className="icn i-d" />
       </div>
       <div className="box-section1">
