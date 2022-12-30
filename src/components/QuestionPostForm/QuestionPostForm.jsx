@@ -21,7 +21,7 @@ function QuestionPostForm({ handleClose }) {
     body: "",
     position: "",
     company: "",
-    tags: tags,
+    tags: [],
     date: "",
     user: "",
   });
@@ -39,11 +39,12 @@ function QuestionPostForm({ handleClose }) {
         body: formData.body,
         position: formData.position,
         company: formData.company,
-        tags: tags,
+        tags: tags,  // pass tags state as an argument
         date: new Date(),
-        reputation:[0,0]
+        reputation:[0,0],
       })
     ); //Object to POST
+  
 
     console.log({
       question: formData.question,
@@ -64,8 +65,18 @@ function QuestionPostForm({ handleClose }) {
     setFormData((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
+      tags: tags, // update the tags field in formData
     }));
   };
+
+  function handleKeyDown(event) {
+    if (event.keyCode === 13) { // 13 is the keyCode for the "Enter" key
+      event.preventDefault();
+      tags.push(tag.trim());
+      setTags(tags);
+      setTag("");
+    }
+  }
 
   return (
     <div className="question-post">
@@ -126,6 +137,7 @@ function QuestionPostForm({ handleClose }) {
                 placeholder="Add a tag here (max 5)"
                 value={tag}
                 onChange={(e) => setTag(e.target.value)}
+                onKeyDown={handleKeyDown}
                 maxLength="35"
               />
             </div>

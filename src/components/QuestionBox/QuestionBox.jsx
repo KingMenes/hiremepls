@@ -23,6 +23,18 @@ function QuestionBox({
   authorName
 }) {
 
+  console.log({
+    id,
+    question,
+    author,
+    date,
+    rep,
+    tags,
+    views,
+    numComments,
+    authorName
+  })
+
   const dispatch = useDispatch()
   const user = useSelector((state) => state.session.user);
   const [questionId, setQuestionId] = useState();
@@ -39,6 +51,12 @@ function QuestionBox({
       reputation = upvotes - downvotes;
     }
   }
+
+  const tagsList = tags.map((tag) => (
+    <div className="tag" key={tag}>
+      <span>{tag}</span>
+    </div>
+  ));
   
   return (
     <div className="questionBox" onClick={async (e) => { await dispatch(incrementQuestion({ id })) }}>
@@ -55,11 +73,7 @@ function QuestionBox({
           <span>{question}</span>
         </div>
         <div className="tags">
-          {tags.map((tag) => (
-            <div className="tag" key={tag}>
-              <span>{tag}</span>
-            </div>
-          ))}
+        {tagsList}
         </div>
       </div>
       <div className="engagement">
