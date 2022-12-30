@@ -2,9 +2,11 @@ import "./PopularBar.css";
 import { AiOutlineFire } from "react-icons/ai";
 import { TiStarburstOutline } from "react-icons/ti";
 import { BsBarChart } from "react-icons/bs";
+import { useSelector } from "react-redux";
 
 function PopularBar() {
 
+  const questions = useSelector((state) => state.questions);
   function calculateHotness(question) {
     const votes = question.reputation[0] - question.reputation[1];
     const date = question.date;
