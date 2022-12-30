@@ -23,7 +23,7 @@ export const createQuestion = asyncHandler(async (req, res) => {
     author: req.body.user,
     date: new Date(),
     comments: [],
-    reputation: [],
+    // reputation: [],
     tags: req.body.tags,
     authorName: req.body.user.username,
   });
