@@ -130,11 +130,11 @@
   top: 0px;
   right: 0px;
 }
-.questionBox .icn {
+.questionBox .icn-delete {
   font-size: 32px;
   color: rgb(165, 165, 165);
 }
-.questionBox .icn:hover {
+.questionBox .icn-delete:hover {
   color: #000;
   cursor: pointer;
 }/*# sourceMappingURL=QuestionBox.css.map */

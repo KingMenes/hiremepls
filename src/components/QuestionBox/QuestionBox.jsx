@@ -95,7 +95,7 @@ function QuestionBox({
             setQuestionId(id);
           }}
         >
-          <TiDelete className="icn" />
+          <TiDelete className="icn-delete" />
         </motion.div>
       )}
       <ModalContainer>
