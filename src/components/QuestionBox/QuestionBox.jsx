@@ -3,6 +3,7 @@ import "./QuestionBox.css";
 import { BsHandThumbsUp, BsHandThumbsDown } from "react-icons/bs";
 import { AiOutlineEye } from "react-icons/ai";
 import { BiComment } from "react-icons/bi";
+import {TiDelete} from 'react-icons/ti'
 import Backdrop from "../Backdrop/Backdrop";
 import useDeleteQuestionModal from "../../hooks/useDeleteQuestionModal";
 import DeleteQuestion from "./deleteQuestion";
@@ -85,8 +86,8 @@ function QuestionBox({
         </div>
       </div>
       {user && author === user?._id && (
-        <motion.button
-          className="btn-signup"
+        <motion.div
+          className="btn-delete"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           onClick={() => {
@@ -94,8 +95,8 @@ function QuestionBox({
             setQuestionId(id);
           }}
         >
-          <span>Delete</span>
-        </motion.button>
+          <TiDelete className="icn" />
+        </motion.div>
       )}
       <ModalContainer>
         {deleteQuestionModalOpen && (

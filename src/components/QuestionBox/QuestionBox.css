@@ -124,4 +124,17 @@
 }
 .questionBox .engagement div span {
   margin: auto 3px;
+}
+.questionBox .btn-delete {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+.questionBox .icn {
+  font-size: 32px;
+  color: rgb(165, 165, 165);
+}
+.questionBox .icn:hover {
+  color: #000;
+  cursor: pointer;
 }/*# sourceMappingURL=QuestionBox.css.map */

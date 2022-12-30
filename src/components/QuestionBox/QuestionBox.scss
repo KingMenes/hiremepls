@@ -141,4 +141,21 @@
       }
     }
   }
+
+  .btn-delete{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+  }
+
+  .icn{
+    font-size: 32px;
+      color: rgb(165, 165, 165);
+
+      &:hover {
+        color: #000;
+        cursor: pointer;
+      }
+  }
+
 }
