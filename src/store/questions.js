@@ -23,10 +23,11 @@ export const getQuestions = createAsyncThunk(GET_QUESTIONS, async () => {
 
 export const createQuestion = createAsyncThunk(
   CREATE_QUESTION,
-  async ({ question, user }) => {
+  async ({ question, user, tags }) => {
     const res = await http.post("/questions", {
       question,
       user,
+      tags
     });
 
     return res.data;

@@ -16,6 +16,7 @@ export const createQuestion = asyncHandler(async (req, res) => {
     res.status(400);
     throw new Error("Please add a question");
   }
+  console.log(req.body.tags)
 
   const question = await Question.create({
     question: req.body.question,
