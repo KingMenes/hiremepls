@@ -48,4 +48,29 @@
     width: 100%;
     color: hsl(0, 0%, 30%);
   }
+
+  .search_dropdown {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 50px;
+    left: 410px;
+    width: 57%;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    z-index: 10;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
+
+    li {
+      margin-top: 5px;
+      margin-bottom: 5px;
+      font-family: 'Nunito', sans-serif;
+
+    }
+  }
+}
+
+.hidden{
+  visibility: hidden;
 }

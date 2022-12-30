@@ -10,6 +10,8 @@ import SignupForm from "../SignupForm/SignupForm";
 import { useDispatch, useSelector } from "react-redux";
 import { logout, login } from "../../store/session";
 import { NavLink } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { getQuestions } from "../../store/questions";
 
 function Navbar({ sessionUser, setSessionUser }) {
   const dispatch = useDispatch();
