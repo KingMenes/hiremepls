@@ -6,6 +6,7 @@ const GET_QUESTIONS = "questions/get";
 const CREATE_QUESTION = "questions/create";
 const REMOVE_QUESTION = "questions/REMOVE_QUESTION";
 const VIEW_QUESTION = "questions/incrementView"
+const UPDATE_QUESTION = "questions/updatequestion"
 
 export const incrementQuestion = createAsyncThunk(VIEW_QUESTION, async ({ id }) => {
   const res = await http.put(`/questions/${id}`, {
@@ -20,6 +21,13 @@ export const getQuestions = createAsyncThunk(GET_QUESTIONS, async () => {
 
   return res.data;
 });
+
+export const updateQuestion = createAsyncThunk(UPDATE_QUESTION, async ({ id, question, tags, body, position, company, user }) => {
+  const res = await http.put(`/questions/${id}`, {
+    id, question, tags, body, position, company, user
+  })
+  return res.data
+})
 
 export const createQuestion = createAsyncThunk(
   CREATE_QUESTION,
@@ -66,6 +74,10 @@ const sessionSlice = createSlice({
       state[action.payload._id] = action.payload
       return state
     },
+    [updateQuestion.fulfilled]: (state, action) => {
+      state[action.payload._id] = action.payload
+      return state
+    }
 
   },
 });

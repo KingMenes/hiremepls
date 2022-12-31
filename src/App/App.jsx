@@ -15,6 +15,7 @@ import { setUserThunk } from "../store/session";
 import { useDispatch } from "react-redux";
 import Questions from "../pages/Questions";
 import QuestionPostForm from "../components/QuestionPostForm/QuestionPostForm";
+import QuestionUpdateForm from "../components/UpdateQuestion/UpdateQuestion";
 
 function App() {
   const dispatch = useDispatch();
@@ -52,6 +53,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/questions" element={<Questions />} />
             <Route path="/askquestion" element={<QuestionPostForm />} />
+            <Route path="/updatequestion/:id" element={<QuestionUpdateForm />} />
 
             {/* 👇Navigates all other paths back to home👇 */}
             <Route path="*" element={<Navigate to="/" />} />

@@ -16,7 +16,6 @@ export const createQuestion = asyncHandler(async (req, res) => {
     res.status(400);
     throw new Error("Please add a question");
   }
-  console.log(req.body.tags)
 
   const question = await Question.create({
     question: req.body.question,
@@ -32,7 +31,7 @@ export const createQuestion = asyncHandler(async (req, res) => {
 });
 
 export const updateQuestion = asyncHandler(async (req, res) => {
-  const { view } = req.body
+  const { view, id, question: quest, tags, body, position, company, user: currentUser } = req.body
   if (view) {
     const question = await Question.findById(view)
     let views = question.views
@@ -47,26 +46,28 @@ export const updateQuestion = asyncHandler(async (req, res) => {
     res.status(400);
     throw new Error("Question not found");
   }
-
-  const user = await User.findById(req.user.id);
+  const user = await User.findOne({ email: req?.session?.user?.email });
   //check for user
   if (!user) {
     res.status(401);
     throw new Error("User not found");
   }
   //checking if author is same as user
-  if (question.author.toString() !== user.id) {
+
+  if (question.author.toString() !== user._id.toString()) {
     res.status(401);
     throw new Error("User not authorized");
   }
 
-  const updatedQuestion = await Question.findByIdAndUpdate(
-    req.params.id,
-    req.body,
-    {
-      new: true,
-    }
-  );
+  const updatedQuestion = await Question.findById(id);
+  updatedQuestion.question = quest
+  updatedQuestion.tags = tags
+  updatedQuestion.body = body
+  updatedQuestion.position = position
+  updatedQuestion.company = company
+
+  await updatedQuestion.save()
+
   res.json(updatedQuestion);
 });
 

@@ -3,7 +3,7 @@ import "./QuestionBox.css";
 import { BsHandThumbsUp, BsHandThumbsDown } from "react-icons/bs";
 import { AiOutlineEye } from "react-icons/ai";
 import { BiComment } from "react-icons/bi";
-import {TiDelete} from 'react-icons/ti'
+import { TiDelete } from 'react-icons/ti'
 import Backdrop from "../Backdrop/Backdrop";
 import useDeleteQuestionModal from "../../hooks/useDeleteQuestionModal";
 import DeleteQuestion from "./deleteQuestion";
@@ -11,6 +11,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { incrementQuestion } from "../../store/questions"
+import { NavLink } from "react-router-dom";
 
 function QuestionBox({
   id,
@@ -40,7 +41,7 @@ function QuestionBox({
   const user = useSelector((state) => state.session.user);
   const [questionId, setQuestionId] = useState();
   const { deleteQuestionModalOpen, deleteQuestionClose, deleteQuestionOpen } = useDeleteQuestionModal();
-  
+
   // Error handling for rep prop. 
   // Returns NaN and idk why
   let reputation = 0
@@ -58,7 +59,7 @@ function QuestionBox({
       <span>{tag}</span>
     </div>
   ));
-  
+
   return (
     <div className="questionBox" onClick={async (e) => { await dispatch(incrementQuestion({ id })) }}>
       <div className="repCount">
@@ -74,7 +75,7 @@ function QuestionBox({
           <span>{question}</span>
         </div>
         <div className="tags">
-        {tagsList}
+          {tagsList}
         </div>
       </div>
       <div className="engagement">
@@ -85,6 +86,9 @@ function QuestionBox({
           <BiComment className="icn" /> <span>{numComments}</span> Answers
         </div>
       </div>
+
+      <NavLink to={`/updatequestion/${id}`}>Update</NavLink>
+
       {user && author === user?._id && (
         <motion.div
           className="btn-delete"
