@@ -143,8 +143,9 @@ function QuestionUpdateForm({ handleClose }) {
                             <AiOutlinePlus
                                 className="icn"
                                 onClick={(e) => {
-                                    tags.push(tag.trim());
-                                    setTags(tags);
+                                    const newTags = [...tags]
+                                    newTags.push(tag.trim());
+                                    setTags(newTags);
                                     setTag("");
                                 }}
                             />
