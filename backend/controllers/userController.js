@@ -61,9 +61,11 @@ export const createUser = asyncHandler(async (req, res) => {
   }
   if (!userExist) {
     userExist = await User.findOne({ nameLower: username.toLowerCase() });
-    console.log(userExist);
     if (userExist) {
       throw new Error("Username already used");
+    }
+    if (userExist === count) {
+      throw new Error("Username cannot be used")
     }
   }
   //password hashing

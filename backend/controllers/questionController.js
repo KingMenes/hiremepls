@@ -23,6 +23,7 @@ export const createQuestion = asyncHandler(async (req, res) => {
     date: new Date(),
     comments: [],
     // reputation: [],
+    reputation: { likes: { count: 0 }, dislikes: { count: 0 } },
     tags: req.body.tags,
     authorName: req.body.user.username,
   });
@@ -30,12 +31,40 @@ export const createQuestion = asyncHandler(async (req, res) => {
   res.json(question);
 });
 
+export const repQuestion = asyncHandler(async (req, res) => {
+  const { id } = req.params
+  const { rep, username } = req.body
+
+  const question = await Question.findOne({ _id: id })
+  let discount = question.reputation.dislikes.count
+  let licount = question.reputation.likes.count
+
+  if (rep === "like") {
+    if (question.reputation.dislikes[username]) {
+      delete question.reputation.dislikes[username]
+      question.reputation.dislikes.count = discount - 1
+    }
+    question.reputation.likes[username] = rep
+    question.reputation.likes.count = licount + 1
+  }
+  if (rep === 'dislike') {
+    if (question.reputation.likes[username]) {
+      delete question.reputation.likes[username]
+      question.reputation.likes.count = licount - 1
+    }
+    question.reputation.dislikes[username] = rep
+    question.reputation.dislikes.count = discount + 1
+  }
+  question.markModified('reputation')
+  await question.save()
+  res.json(question)
+})
+
 export const updateQuestion = asyncHandler(async (req, res) => {
   const { view, id, question: quest, tags, body, position, company, user: currentUser } = req.body
   if (view) {
     const question = await Question.findById(view)
     let views = question.views
-
     question.views = views + 1
     await question.save()
     res.json(question)

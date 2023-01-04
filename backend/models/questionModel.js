@@ -30,8 +30,8 @@ const questionSchema = mongoose.Schema({
   },
   reputation: {
     //likes/dislikes
-    type: mongoose.Schema.Types.Array,
-    default: [0, 0],
+    // type: mongoose.Schema.Types.Array,
+    // default: [0, 0],
   },
   comments: {
     // might change

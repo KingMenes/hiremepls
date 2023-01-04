@@ -7,10 +7,12 @@ import {
   deleteQuestion,
   getQuestions,
   updateQuestion,
+  repQuestion
 } from "../controllers/questionController.js";
 
 router.get("/", getQuestions);
 router.post("/", createQuestion);
+router.put("/rep/:id", repQuestion)
 router.put("/:id", updateQuestion);
 router.delete("/:id", deleteQuestion);
 

@@ -83,7 +83,7 @@ function TestFetch() {
   //   "What is your favorite language?",
   // ]
   // const sessionUser = useSelector((state) => state.session.user);
-  
+
 
   // const submitQuestion = async (q) => {
   //   const data = await dispatch(
@@ -146,7 +146,7 @@ function TestFetch() {
               question={question.question}
               author={question.author}
               date={timeSince(new Date(question.date))}
-              rep={question.reputation[0] - question.reputation[1]}
+              rep={question.reputation}
               tags={question.tags}
               views={question.views}
               key={question._id}
