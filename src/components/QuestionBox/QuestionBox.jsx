@@ -4,7 +4,7 @@ import { BsHandThumbsUp, BsHandThumbsDown } from "react-icons/bs";
 import { AiOutlineEye } from "react-icons/ai";
 import { BiComment } from "react-icons/bi";
 import { TiDelete } from 'react-icons/ti'
-import {FiEdit} from 'react-icons/fi'
+import { FiEdit } from 'react-icons/fi'
 import Backdrop from "../Backdrop/Backdrop";
 import useDeleteQuestionModal from "../../hooks/useDeleteQuestionModal";
 import DeleteQuestion from "./deleteQuestion";
@@ -102,7 +102,10 @@ function QuestionBox({
         </div>
       </div>
 
-      {user && author === user?._id && <NavLink id='update-btn' data-tooltip-content="Update Question" to={`/updatequestion/${id}`}><FiEdit className="icn icn-update" /></NavLink>}
+      {user && author === user?._id && <NavLink id='update-btn' data-tooltip-content="Update Question" to={`/updatequestion/${id}`} onClick={(e) => {
+        e.stopPropagation()
+
+      }}><FiEdit className="icn icn-update" /></NavLink>}
 
       {user && author === user?._id && (
         <motion.div
@@ -111,7 +114,8 @@ function QuestionBox({
           id="button-delete"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
-          onClick={() => {
+          onClick={(e) => {
+            e.stopPropagation()
             deleteQuestionOpen();
             setQuestionId(id);
           }}
@@ -134,7 +138,7 @@ function QuestionBox({
       {/* <Tooltip anchorId="update-btn" />
       <Tooltip anchorId="button-delete" /> */}
     </div>
-    
+
   );
 }
 
