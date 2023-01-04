@@ -158,4 +158,23 @@
       }
   }
 
+  #update-btn{
+    position: absolute;
+    outline: none;
+    position: absolute;
+    top: 3px;
+    right: 40px;
+    color: rgb(165, 165, 165);
+
+    .icn-update{
+      font-size: 28px;
+      color: rgb(165, 165, 165);
+
+      &:hover {
+        color: rgb(0, 165, 27);
+        cursor: pointer;
+      }
+    }
+  }
+
 }

@@ -4,6 +4,7 @@ import { BsHandThumbsUp, BsHandThumbsDown } from "react-icons/bs";
 import { AiOutlineEye } from "react-icons/ai";
 import { BiComment } from "react-icons/bi";
 import { TiDelete } from 'react-icons/ti'
+import {FiEdit} from 'react-icons/fi'
 import Backdrop from "../Backdrop/Backdrop";
 import useDeleteQuestionModal from "../../hooks/useDeleteQuestionModal";
 import DeleteQuestion from "./deleteQuestion";
@@ -12,6 +13,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { incrementQuestion } from "../../store/questions"
 import { NavLink } from "react-router-dom";
+import { Tooltip } from 'react-tooltip'
 
 function QuestionBox({
   id,
@@ -87,11 +89,13 @@ function QuestionBox({
         </div>
       </div>
 
-      {user && author === user?._id && <NavLink to={`/updatequestion/${id}`}>Update</NavLink>}
+      {user && author === user?._id && <NavLink id='update-btn' data-tooltip-content="Update Question" to={`/updatequestion/${id}`}><FiEdit className="icn icn-update" /></NavLink>}
 
       {user && author === user?._id && (
         <motion.div
+          data-tooltip-content="Delete Question"
           className="btn-delete"
+          id="button-delete"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           onClick={() => {
@@ -114,7 +118,10 @@ function QuestionBox({
       {/* <NavLink to={`/questions/${id}`} className="question">
           {question}
         </NavLink> */}
+      {/* <Tooltip anchorId="update-btn" />
+      <Tooltip anchorId="button-delete" /> */}
     </div>
+    
   );
 }
 

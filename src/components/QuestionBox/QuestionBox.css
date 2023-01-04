@@ -137,4 +137,20 @@
 .questionBox .icn-delete:hover {
   color: #000;
   cursor: pointer;
+}
+.questionBox #update-btn {
+  position: absolute;
+  outline: none;
+  position: absolute;
+  top: 3px;
+  right: 40px;
+  color: rgb(165, 165, 165);
+}
+.questionBox #update-btn .icn-update {
+  font-size: 28px;
+  color: rgb(165, 165, 165);
+}
+.questionBox #update-btn .icn-update:hover {
+  color: rgb(0, 165, 27);
+  cursor: pointer;
 }/*# sourceMappingURL=QuestionBox.css.map */
