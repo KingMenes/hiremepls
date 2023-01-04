@@ -87,7 +87,7 @@ function QuestionBox({
         </div>
       </div>
 
-      <NavLink to={`/updatequestion/${id}`}>Update</NavLink>
+      {user && author === user?._id && <NavLink to={`/updatequestion/${id}`}>Update</NavLink>}
 
       {user && author === user?._id && (
         <motion.div
