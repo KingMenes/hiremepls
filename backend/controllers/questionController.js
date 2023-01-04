@@ -44,16 +44,26 @@ export const repQuestion = asyncHandler(async (req, res) => {
       delete question.reputation.dislikes[username]
       question.reputation.dislikes.count = discount - 1
     }
-    question.reputation.likes[username] = rep
-    question.reputation.likes.count = licount + 1
+    if (question.reputation.likes[username]) {
+      delete question.reputation.likes[username]
+      question.reputation.likes.count = licount - 1
+    } else {
+      question.reputation.likes[username] = rep
+      question.reputation.likes.count = licount + 1
+    }
   }
   if (rep === 'dislike') {
     if (question.reputation.likes[username]) {
       delete question.reputation.likes[username]
       question.reputation.likes.count = licount - 1
     }
-    question.reputation.dislikes[username] = rep
-    question.reputation.dislikes.count = discount + 1
+    if (question.reputation.dislikes[username]) {
+      delete question.reputation.dislikes[username]
+      question.reputation.dislikes.count = discount - 1
+    } else {
+      question.reputation.dislikes[username] = rep
+      question.reputation.dislikes.count = discount + 1
+    }
   }
   question.markModified('reputation')
   await question.save()
