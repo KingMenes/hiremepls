@@ -2,7 +2,6 @@ import User from "../models/userModel.js";
 import asyncHandler from "express-async-handler";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
-import { ErrorResponse } from "@remix-run/router";
 
 export const logoutUser = asyncHandler(async (req, res) => {
   req.session.user = null;
