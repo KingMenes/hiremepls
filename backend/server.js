@@ -12,6 +12,8 @@ import MongoDBStores from "connect-mongodb-session";
 import path from 'path'
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
+import morgan from "morgan";
+
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -24,6 +26,7 @@ const MAX_AGE = 1000 * 60 * 60 * 3; // 3hrs
 // Connect to DB
 const port = process.env.PORT || 8000;
 const app = express();
+app.use(morgan('dev'));
 const mongoDbstore = new MongoDBStore({
   uri: process.env.HIREMEPLS_DB_URI,
   collection: "mySessions",
@@ -36,9 +39,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 app.use(express.json());
 app.use(errorHandler);
-
-// Serve static html
-app.use(express.static(path.join(__dirname, '../client/build')));
 
 app.use(
   session({
@@ -57,6 +57,9 @@ app.use(
 
 // Confirmation on successful connect
 app.listen(port, () => console.log(`Server started on port ${port}`));
+
+// Serve static html
+app.use(['/questions', '/askquestion', 'updatequestions', '/'], express.static(path.join(__dirname, '../client/build'))); 
 
 // api routes
 
