@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/static/css/main.d37c489d.css",
+    "main.js": "/static/js/main.458b0679.js",
+    "static/media/undraw_job_hunt_re_q203.svg": "/static/media/undraw_job_hunt_re_q203.39f5cde0a5b773889243c9918f4fc455.svg",
+    "static/media/hiremepls_logo.svg": "/static/media/hiremepls_logo.1898a21c53d396e4407f61785d93fb84.svg",
+    "static/media/hiremepls_logo_white.svg": "/static/media/hiremepls_logo_white.28722ba59f0c9b818f29bec15c0eabef.svg",
+    "static/media/undraw_investing_re_bov7.svg": "/static/media/undraw_investing_re_bov7.009cadda144c395737efd2a990eb5f7c.svg",
+    "static/media/squares.svg": "/static/media/squares.0fb325ff4eb9f6840b7170b09ebb934e.svg",
+    "index.html": "/index.html",
+    "main.d37c489d.css.map": "/static/css/main.d37c489d.css.map",
+    "main.458b0679.js.map": "/static/js/main.458b0679.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d37c489d.css",
+    "static/js/main.458b0679.js"
+  ]
+}

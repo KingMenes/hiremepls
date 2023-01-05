@@ -1,0 +1,49 @@
+.popularbar {
+  height: 60px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: auto;
+  width: 50%;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 1px 2px hsla(0, 0%, 0%, 0.05), 0 1px 4px hsla(0, 0%, 0%, 0.05),
+    0 2px 8px hsla(0, 0%, 0%, 0.05);
+  margin-top: 10px;
+  font-family: "Nunito", sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  color: rgb(50, 63, 177);
+
+  ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    li {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      margin-right: 40px;
+      padding: 3px;
+      width: 90px;
+
+      &:hover {
+        background-color: #254b5e1f;
+        border-radius: 999px;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+      }
+    }
+  }
+
+  .icon {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-right: 5px;
+  }
+}

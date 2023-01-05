@@ -1,0 +1,54 @@
+.trending {
+  width: 50%;
+  height: 80px;
+  margin: auto;
+  font-family: "Nunito", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  h2 {
+    display: flex;
+    justify-content: flex-start;
+    color: rgb(88, 85, 85);
+    margin: 10px 0;
+    font-size: 14px;
+  }
+
+  .tags-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100%;
+    .tag {
+      background-color: rgb(57, 67, 94);
+      color: rgb(228, 228, 228);
+      border-radius: 999px;
+      width: fit-content;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-right: 5px;
+      height: 30px;
+
+      span {
+        margin: 5px 10px;
+        font-size: 12px;
+        font-weight: 800;
+
+        .icon {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin: auto 10px;
+        }
+      }
+
+      &:hover {
+        cursor: pointer;
+        background-color: rgb(1, 30, 110);
+        transition: all 0.5s ease-in-out;
+      }
+    }
+  }
+}

@@ -9,13 +9,24 @@ import comments from "./routes/commentRoutes.js";
 import errorHandler from "./middleware/errorMiddleware.js";
 import session from "express-session";
 import MongoDBStores from "connect-mongodb-session";
-const MongoDBStore = MongoDBStores(session);
+import path from 'path'
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+import morgan from "morgan";
 
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+
+const MongoDBStore = MongoDBStores(session);
 const MAX_AGE = 1000 * 60 * 60 * 3; // 3hrs
+
 
 // Connect to DB
 const port = process.env.PORT || 8000;
 const app = express();
+app.use(morgan('dev'));
 const mongoDbstore = new MongoDBStore({
   uri: process.env.HIREMEPLS_DB_URI,
   collection: "mySessions",
@@ -47,10 +58,15 @@ app.use(
 // Confirmation on successful connect
 app.listen(port, () => console.log(`Server started on port ${port}`));
 
+// Serve static html
+app.use(['/questions', '/askquestion', 'updatequestions', '/'], express.static(path.join(__dirname, '../client/build'))); 
+
 // api routes
+
 app.use("/api/questions", questions);
 app.use("/api/users", users);
 app.use("/api/comments", comments);
 app.use("*", (req, res) => res.status(404).json({ error: "not found" }));
+
 
 export default app;
