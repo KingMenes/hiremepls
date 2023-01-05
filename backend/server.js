@@ -9,9 +9,17 @@ import comments from "./routes/commentRoutes.js";
 import errorHandler from "./middleware/errorMiddleware.js";
 import session from "express-session";
 import MongoDBStores from "connect-mongodb-session";
-const MongoDBStore = MongoDBStores(session);
+import path from 'path'
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+
+const MongoDBStore = MongoDBStores(session);
 const MAX_AGE = 1000 * 60 * 60 * 3; // 3hrs
+
 
 // Connect to DB
 const port = process.env.PORT || 8000;
@@ -28,6 +36,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 app.use(express.json());
 app.use(errorHandler);
+
+// Serve static html
+app.use(express.static(path.join(__dirname, '../client/build')));
 
 app.use(
   session({
@@ -48,9 +59,11 @@ app.use(
 app.listen(port, () => console.log(`Server started on port ${port}`));
 
 // api routes
+
 app.use("/api/questions", questions);
 app.use("/api/users", users);
 app.use("/api/comments", comments);
 app.use("*", (req, res) => res.status(404).json({ error: "not found" }));
+
 
 export default app;
