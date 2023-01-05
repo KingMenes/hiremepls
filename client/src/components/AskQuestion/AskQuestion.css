@@ -56,4 +56,8 @@
 .askquestion div textarea:focus,
 .askquestion div input:focus {
   outline: none;
+}
+.askquestion #navlink {
+  width: 100%;
+  height: 100%;
 }/*# sourceMappingURL=AskQuestion.css.map */
