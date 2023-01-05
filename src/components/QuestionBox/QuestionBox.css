@@ -12,6 +12,7 @@
   box-shadow: 0 1px 2px hsla(0deg, 0%, 0%, 0.05), 0 1px 4px hsla(0deg, 0%, 0%, 0.05), 0 2px 8px hsla(0deg, 0%, 0%, 0.05);
   font-family: "Nunito", sans-serif;
 }
+
 .questionBox::after {
   border-left: 40px solid transparent;
   border-top: 40px solid #fff;
@@ -20,14 +21,17 @@
   position: absolute;
   right: 20px;
 }
+
 .questionBox:hover {
   cursor: pointer;
   background-color: rgb(240, 240, 240);
 }
+
 .questionBox:hover::after {
   border-left: 40px solid transparent;
   border-top: 40px solid rgb(240, 240, 240);
 }
+
 .questionBox .box-section1 {
   display: flex;
   flex-direction: column;
@@ -37,12 +41,14 @@
   height: 80%;
   margin-left: 20px;
 }
+
 .questionBox .box-section1 .question {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   width: 100%;
 }
+
 .questionBox .box-section1 .question span {
   display: inline-block;
   text-decoration: none;
@@ -50,22 +56,26 @@
   font-family: inherit;
   font-size: 32px;
 }
+
 .questionBox .box-section1 .user-info {
   color: rgb(117, 117, 117);
   display: flex;
   margin-top: 10px;
 }
+
 .questionBox .box-section1 .user-info span {
   color: rgb(47, 0, 255);
   display: inline-block;
   margin: 0 5px;
 }
+
 .questionBox .box-section1 .tags {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   width: 100%;
 }
+
 .questionBox .box-section1 .tags .tag {
   background-color: rgb(1, 30, 110);
   color: rgb(228, 228, 228);
@@ -78,11 +88,13 @@
   align-items: center;
   margin-right: 5px;
 }
+
 .questionBox .box-section1 .tags .tag span {
   margin: 5px 10px;
   font-size: 12px;
   font-weight: 800;
 }
+
 .questionBox .repCount {
   display: flex;
   flex-direction: column;
@@ -95,17 +107,21 @@
   font-weight: 600;
   margin-left: 10px;
 }
+
 .questionBox .repCount span {
   color: #000;
 }
+
 .questionBox .repCount .icn {
   font-size: 32px;
   color: rgb(165, 165, 165);
 }
+
 .questionBox .repCount .icn:hover {
   color: #000;
   cursor: pointer;
 }
+
 .questionBox .engagement {
   display: flex;
   flex-direction: column;
@@ -117,27 +133,33 @@
   margin-bottom: 50px;
   color: rgb(109, 109, 109);
 }
+
 .questionBox .engagement div {
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
+
 .questionBox .engagement div span {
   margin: auto 3px;
 }
+
 .questionBox .btn-delete {
   position: absolute;
   top: 0px;
   right: 0px;
 }
+
 .questionBox .icn-delete {
   font-size: 32px;
   color: rgb(165, 165, 165);
 }
+
 .questionBox .icn-delete:hover {
   color: #000;
   cursor: pointer;
 }
+
 .questionBox #update-btn {
   position: absolute;
   outline: none;
@@ -146,11 +168,17 @@
   right: 40px;
   color: rgb(165, 165, 165);
 }
+
 .questionBox #update-btn .icn-update {
   font-size: 28px;
   color: rgb(165, 165, 165);
 }
+
 .questionBox #update-btn .icn-update:hover {
   color: rgb(0, 165, 27);
   cursor: pointer;
-}/*# sourceMappingURL=QuestionBox.css.map */
+}
+
+
+
+/*# sourceMappingURL=QuestionBox.css.map */

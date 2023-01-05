@@ -1,6 +1,6 @@
 import "./QuestionBox.css";
 // import { NavLink } from "react-router-dom";
-import { BsHandThumbsUp, BsHandThumbsDown } from "react-icons/bs";
+import { BsHandThumbsUp, BsHandThumbsDown, BsFillHandThumbsUpFill, BsFillHandThumbsDownFill } from "react-icons/bs";
 import { AiOutlineEye } from "react-icons/ai";
 import { BiComment } from "react-icons/bi";
 import { TiDelete } from 'react-icons/ti'
@@ -65,22 +65,34 @@ function QuestionBox({
   return (
     <div className="questionBox" onClick={async (e) => { await dispatch(incrementQuestion({ id })) }}>
       <div className="repCount">
-        <BsHandThumbsUp className="icn i-u" id={rep.likes && rep.likes[user?.username] ? 'like' : null} onClick={async (e) => {
+        {rep.likes && rep.likes[user?.username] ? <BsFillHandThumbsUpFill className="icn i-u" onClick={async (e) => {
           e.preventDefault()
           e.stopPropagation()
           if (user) {
             await dispatch(repQuestion({ id, username: user.username, rep: "like" }))
           }
-        }} />
-        <span>{rep?.likes?.count - rep?.dislikes?.count}</span>
-        <BsHandThumbsDown className="icn i-d" id={rep.dislikes && rep.dislikes[user?.username] ? 'like' : null} onClick={async (e) => {
+        }} /> : <BsHandThumbsUp className="icn i-u" onClick={async (e) => {
           e.preventDefault()
           e.stopPropagation()
+          if (user) {
+            await dispatch(repQuestion({ id, username: user.username, rep: "like" }))
+          }
+        }} />}
 
+        <span>{rep?.likes?.count - rep?.dislikes?.count}</span>
+        {rep.dislikes && rep.dislikes[user?.username] ? <BsFillHandThumbsDownFill className="icn i-u" onClick={async (e) => {
+          e.preventDefault()
+          e.stopPropagation()
           if (user) {
             await dispatch(repQuestion({ id, username: user.username, rep: "dislike" }))
           }
-        }} />
+        }} /> : <BsHandThumbsDown className="icn i-u" onClick={async (e) => {
+          e.preventDefault()
+          e.stopPropagation()
+          if (user) {
+            await dispatch(repQuestion({ id, username: user.username, rep: "dislike" }))
+          }
+        }} />}
       </div>
       <div className="box-section1">
         <div className="user-info">
