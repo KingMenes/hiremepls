@@ -1,0 +1,26 @@
+{
+  "name": "hiremepls",
+  "version": "1.0.0",
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "render-postbuild": "npm run build --prefix client",
+    "install": "npm --prefix backend install backend && npm --prefix client install client",
+    "dev:backend": "npm install --prefix backend start",
+    "dev:frontend": "npm install --prefix client start",
+    "start": "npm start --prefix backend",
+    "build": "npm run build --prefix backend"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KingMenes/hiremepls.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KingMenes/hiremepls/issues"
+  },
+  "homepage": "https://github.com/KingMenes/hiremepls#readme"
+}
