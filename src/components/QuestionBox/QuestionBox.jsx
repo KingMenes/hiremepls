@@ -65,7 +65,7 @@ function QuestionBox({
   return (
     <div className="questionBox" onClick={async (e) => { await dispatch(incrementQuestion({ id })) }}>
       <div className="repCount">
-        <BsHandThumbsUp className="icn i-u" onClick={async (e) => {
+        <BsHandThumbsUp className="icn i-u" id={rep.likes && rep.likes[user?.username] ? 'like' : null} onClick={async (e) => {
           e.preventDefault()
           e.stopPropagation()
           if (user) {
@@ -73,7 +73,7 @@ function QuestionBox({
           }
         }} />
         <span>{rep?.likes?.count - rep?.dislikes?.count}</span>
-        <BsHandThumbsDown className="icn i-d" onClick={async (e) => {
+        <BsHandThumbsDown className="icn i-d" id={rep.dislikes && rep.dislikes[user?.username] ? 'like' : null} onClick={async (e) => {
           e.preventDefault()
           e.stopPropagation()
 
