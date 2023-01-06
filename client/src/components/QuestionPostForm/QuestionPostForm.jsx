@@ -18,10 +18,6 @@ function QuestionPostForm({ handleClose }) {
   const [charCount, setCharCount] = useState("0");
   const [formData, setFormData] = useState({
     question: "",
-    body: "",
-    position: "",
-    company: "",
-    tags: [],
     date: "",
     user: "",
   });
