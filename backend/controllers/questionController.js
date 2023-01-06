@@ -7,6 +7,7 @@ import User from "../models/userModel.js";
 export const getQuestions = asyncHandler(async (req, res) => {
   // const { questionsList } = await DBDAO.getQuestions({})
   const questionsList = await Question.find();
+
   res.json(questionsList);
 });
 
@@ -74,7 +75,7 @@ export const updateQuestion = asyncHandler(async (req, res) => {
   const { view, id, question: quest, tags, body, position, company, user: currentUser } = req.body
   if (view) {
     const question = await Question.findById(view)
-    let views = question.views
+    let views = question?.views
     question.views = views + 1
     await question.save()
     res.json(question)
@@ -85,7 +86,7 @@ export const updateQuestion = asyncHandler(async (req, res) => {
     res.status(400);
     throw new Error("Question not found");
   }
-  const user = await User.findOne({ email: req?.session?.user?.email });
+  const user = await User.findOne({ email: currentUser.email });
   //check for user
   if (!user) {
     res.status(401);
@@ -117,7 +118,7 @@ export const deleteQuestion = asyncHandler(async (req, res) => {
     throw new Error("Question not found");
   }
 
-  const user = await User.findOne({ email: req.session.user.email });
+  const user = await User.findOne({ email: req?.headers?.user });
 
   //check for user
   if (!user) {

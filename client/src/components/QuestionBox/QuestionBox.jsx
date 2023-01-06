@@ -68,13 +68,13 @@ function QuestionBox({
           e.preventDefault()
           e.stopPropagation()
           if (user) {
-            await dispatch(repQuestion({ id, username: user.username, rep: "like" }))
+            await dispatch(repQuestion({ id, username: user.username, user, rep: "like" }))
           }
         }} /> : <BsHandThumbsUp className="icn i-u" onClick={async (e) => {
           e.preventDefault()
           e.stopPropagation()
           if (user) {
-            await dispatch(repQuestion({ id, username: user.username, rep: "like" }))
+            await dispatch(repQuestion({ id, username: user.username, user, rep: "like" }))
           }
         }} />}
 
@@ -83,13 +83,13 @@ function QuestionBox({
           e.preventDefault()
           e.stopPropagation()
           if (user) {
-            await dispatch(repQuestion({ id, username: user.username, rep: "dislike" }))
+            await dispatch(repQuestion({ id, username: user.username, user, rep: "dislike" }))
           }
         }} /> : <BsHandThumbsDown className="icn i-u" onClick={async (e) => {
           e.preventDefault()
           e.stopPropagation()
           if (user) {
-            await dispatch(repQuestion({ id, username: user.username, rep: "dislike" }))
+            await dispatch(repQuestion({ id, username: user.username, user, rep: "dislike" }))
           }
         }} />}
       </div>
@@ -140,6 +140,7 @@ function QuestionBox({
             modalOpen={deleteQuestionModalOpen}
             handleClose={deleteQuestionClose}
             id={id}
+            user={user}
           />
         )}
       </ModalContainer>

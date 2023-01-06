@@ -10,6 +10,7 @@ const UPDATE_QUESTION = "questions/updatequestion"
 const REPUTATION = "questions/reputation"
 
 export const incrementQuestion = createAsyncThunk(VIEW_QUESTION, async ({ id }) => {
+
   const res = await http.put(`/questions/${id}`, {
     view: id
   })
@@ -23,12 +24,21 @@ export const getQuestions = createAsyncThunk(GET_QUESTIONS, async () => {
   return res.data;
 });
 
-export const updateQuestion = createAsyncThunk(UPDATE_QUESTION, async ({ id, question, tags, body, position, company, user }) => {
-  const res = await http.put(`/questions/${id}`, {
-    id, question, tags, body, position, company, user
+export const updateQuestion = createAsyncThunk(
+  UPDATE_QUESTION,
+  async ({ id, question, tags, body, position, company, user }) => {
+    let token;
+
+    if (user.token) {
+      token = user.token
+    }
+    http.defaults.headers.common['Authorization'] = `Bearer ${token}`
+
+    const res = await http.put(`/questions/${id}`, {
+      id, question, tags, body, position, company, user
+    })
+    return res.data
   })
-  return res.data
-})
 
 export const createQuestion = createAsyncThunk(
   CREATE_QUESTION,
@@ -51,7 +61,13 @@ export const createQuestion = createAsyncThunk(
 
 export const deleteQuestion = createAsyncThunk(
   REMOVE_QUESTION,
-  async ({ id }) => {
+  async ({ id, user }) => {
+    let token;
+    if (user.token) {
+      token = user.token
+    }
+    http.defaults.headers.common['Authorization'] = `Bearer ${token}`
+    http.defaults.headers.user = user.email
     const res = await http.delete(`/questions/${id}`);
 
     return res.data;
@@ -60,7 +76,12 @@ export const deleteQuestion = createAsyncThunk(
 
 export const repQuestion = createAsyncThunk(
   REPUTATION,
-  async ({ id, username, rep }) => {
+  async ({ id, username, rep, user }) => {
+    let token;
+    if (user.token) {
+      token = user.token
+    }
+    http.defaults.headers.common['Authorization'] = `Bearer ${token}`
     const res = await http.put(`/questions/rep/${id}`, {
       id,
       username,
