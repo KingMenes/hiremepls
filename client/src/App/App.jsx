@@ -17,6 +17,8 @@ import Questions from "../pages/Questions";
 import QuestionPostForm from "../components/QuestionPostForm/QuestionPostForm";
 import QuestionUpdateForm from "../components/UpdateQuestion/UpdateQuestion";
 
+export const URL = process.env.REACT_APP_SERVER_URL
+
 function App() {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
