@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export default axios.create({
-  baseURL: "/api",
+  baseURL: "https://hiremepls-api.onrender.com/api",
   headers: {
     "Content-type": "application/json",
   },
