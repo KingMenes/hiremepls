@@ -33,6 +33,12 @@ export const updateQuestion = createAsyncThunk(UPDATE_QUESTION, async ({ id, que
 export const createQuestion = createAsyncThunk(
   CREATE_QUESTION,
   async ({ question, user, tags }) => {
+    let token;
+    if (user.token) {
+      token = user.token
+    }
+    http.defaults.headers.common['Authorization'] = `Bearer ${token}`
+
     const res = await http.post("/questions", {
       question,
       user,
