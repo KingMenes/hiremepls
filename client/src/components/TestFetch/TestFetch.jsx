@@ -9,9 +9,9 @@ function TestFetch() {
   const dispatch = useDispatch();
   const questions = useSelector((state) => state.questions);
 
-  // useEffect(() => {
-  //   dispatch(getQuestions());
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(getQuestions());
+  }, [dispatch]);
 
 
   // 👇 USED THIS TO GET QUESTIONS AS ARRAY 👇
@@ -151,7 +151,6 @@ function TestFetch() {
               key={question._id}
               authorName={question.authorName}
             />
-            // console.log(typeOf)
           );
         })
         : null}
