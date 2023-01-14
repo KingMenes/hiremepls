@@ -37,19 +37,17 @@ const SignUpForm = () => {
           </label>
         </div>
       )}
-      {username.length > 4 &&
-        email.match(emailRegex) &&
-        password.length > 4 && (
-          <div>
-            <label>
-              Confirm Password*
-              <input
-                type="password"
-                onChange={(e) => setConfirm(e.target.value)}
-              ></input>
-            </label>
-          </div>
-        )}
+      {username.length > 4 && email.match(emailRegex) && password.length > 4 && (
+        <div>
+          <label>
+            Confirm Password*
+            <input
+              type="password"
+              onChange={(e) => setConfirm(e.target.value)}
+            ></input>
+          </label>
+        </div>
+      )}
       {username.length > 4 &&
         email.match(emailRegex) &&
         password.length > 4 &&

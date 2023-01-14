@@ -64,7 +64,7 @@ export const createUser = asyncHandler(async (req, res) => {
       throw new Error("Username already used");
     }
     if (userExist === count) {
-      throw new Error("Username cannot be used")
+      throw new Error("Username cannot be used");
     }
   }
   //password hashing

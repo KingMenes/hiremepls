@@ -1,3 +1,29 @@
+.questionmodal {
+  width: 100%;
+  margin: auto;
+}
+
 .questionpostopen {
   background-color: white;
-}/*# sourceMappingURL=QuestionPostOpen.css.map */
+  width: 75%;
+  margin: auto;
+}
+.questionpostopen img {
+  border-radius: 999px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 1px 2px hsla(0deg, 0%, 0%, 0.397),
+    0 1px 4px hsla(0deg, 0%, 0%, 0.274), 0 2px 8px hsla(0deg, 0%, 0%, 0.05);
+  width: 48px;
+  height: 48px;
+  text-align: center;
+  font-family: inherit;
+  font-size: 32px;
+  font-weight: 700;
+  margin-right: 10px;
+}
+.questionpostopen .addComment {
+  background-color: #f1f2f2;
+  width: 100%;
+} /*# sourceMappingURL=QuestionPostOpen.css.map */

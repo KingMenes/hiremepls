@@ -1,18 +1,24 @@
 import "./QuestionBox.css";
 // import { NavLink } from "react-router-dom";
-import { BsHandThumbsUp, BsHandThumbsDown, BsFillHandThumbsUpFill, BsFillHandThumbsDownFill } from "react-icons/bs";
+import {
+  BsHandThumbsUp,
+  BsHandThumbsDown,
+  BsFillHandThumbsUpFill,
+  BsFillHandThumbsDownFill,
+} from "react-icons/bs";
 import { AiOutlineEye } from "react-icons/ai";
 import { BiComment } from "react-icons/bi";
-import { TiDelete } from 'react-icons/ti'
-import { FiEdit } from 'react-icons/fi'
-import Backdrop from "../Backdrop/Backdrop";
+import { TiDelete } from "react-icons/ti";
+import { FiEdit } from "react-icons/fi";
 import useDeleteQuestionModal from "../../hooks/useDeleteQuestionModal";
+import useQuestionModal from "../../hooks/useQuestionModal";
 import DeleteQuestion from "./deleteQuestion";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { incrementQuestion, repQuestion } from "../../store/questions"
+import { incrementQuestion, repQuestion } from "../../store/questions";
 import { NavLink } from "react-router-dom";
+import QuestionPostOpen from "../QuestionPostOpen/QuestionPostOpen";
 
 function QuestionBox({
   id,
@@ -23,37 +29,14 @@ function QuestionBox({
   tags,
   views,
   numComments,
-  authorName
+  authorName,
 }) {
-
-  // console.log({
-  //   id,
-  //   question,
-  //   author,
-  //   date,
-  //   rep,
-  //   tags,
-  //   views,
-  //   numComments,
-  //   authorName
-  // })
-
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
   const [questionId, setQuestionId] = useState();
-  const { deleteQuestionModalOpen, deleteQuestionClose, deleteQuestionOpen } = useDeleteQuestionModal();
-
-  // Error handling for rep prop. 
-  // Returns NaN and idk why
-  // let reputation = 0
-  // if (Array.isArray(rep) && rep.length === 2) {
-  //   // check if reputation is an array of two elements
-  //   const [upvotes, downvotes] = rep;
-  //   if (typeof upvotes === 'number' && typeof downvotes === 'number') {
-  //     // check if both elements are numbers
-  //     reputation = upvotes - downvotes;
-  //   }
-  // }
+  const { questionModalOpen, questionClose, questionOpen } = useQuestionModal();
+  const { deleteQuestionModalOpen, deleteQuestionClose, deleteQuestionOpen } =
+    useDeleteQuestionModal();
 
   const tagsList = tags.map((tag) => (
     <div className="tag" key={tag}>
@@ -62,36 +45,91 @@ function QuestionBox({
   ));
 
   return (
-    <div className="questionBox" onClick={async (e) => { await dispatch(incrementQuestion({ id })) }}>
+    <div
+      className="questionBox"
+      onClick={async (e) => {
+        await dispatch(incrementQuestion({ id }));
+        e.stopPropagation();
+        questionOpen();
+      }}
+    >
       <div className="repCount">
-        {rep.likes && rep.likes[user?.username] ? <BsFillHandThumbsUpFill className="icn i-u" onClick={async (e) => {
-          e.preventDefault()
-          e.stopPropagation()
-          if (user) {
-            await dispatch(repQuestion({ id, username: user.username, user, rep: "like" }))
-          }
-        }} /> : <BsHandThumbsUp className="icn i-u" onClick={async (e) => {
-          e.preventDefault()
-          e.stopPropagation()
-          if (user) {
-            await dispatch(repQuestion({ id, username: user.username, user, rep: "like" }))
-          }
-        }} />}
+        {rep.likes && rep.likes[user?.username] ? (
+          <BsFillHandThumbsUpFill
+            className="icn i-u"
+            onClick={async (e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              if (user) {
+                await dispatch(
+                  repQuestion({
+                    id,
+                    username: user.username,
+                    user,
+                    rep: "like",
+                  })
+                );
+              }
+            }}
+          />
+        ) : (
+          <BsHandThumbsUp
+            className="icn i-u"
+            onClick={async (e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              if (user) {
+                await dispatch(
+                  repQuestion({
+                    id,
+                    username: user.username,
+                    user,
+                    rep: "like",
+                  })
+                );
+              }
+            }}
+          />
+        )}
 
         <span>{rep?.likes?.count - rep?.dislikes?.count}</span>
-        {rep.dislikes && rep.dislikes[user?.username] ? <BsFillHandThumbsDownFill className="icn i-u" onClick={async (e) => {
-          e.preventDefault()
-          e.stopPropagation()
-          if (user) {
-            await dispatch(repQuestion({ id, username: user.username, user, rep: "dislike" }))
-          }
-        }} /> : <BsHandThumbsDown className="icn i-u" onClick={async (e) => {
-          e.preventDefault()
-          e.stopPropagation()
-          if (user) {
-            await dispatch(repQuestion({ id, username: user.username, user, rep: "dislike" }))
-          }
-        }} />}
+        {rep.dislikes && rep.dislikes[user?.username] ? (
+          <BsFillHandThumbsDownFill
+            className="icn i-u"
+            onClick={async (e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              if (user) {
+                await dispatch(
+                  repQuestion({
+                    id,
+                    username: user.username,
+                    user,
+                    rep: "dislike",
+                  })
+                );
+              }
+            }}
+          />
+        ) : (
+          <BsHandThumbsDown
+            className="icn i-u"
+            onClick={async (e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              if (user) {
+                await dispatch(
+                  repQuestion({
+                    id,
+                    username: user.username,
+                    user,
+                    rep: "dislike",
+                  })
+                );
+              }
+            }}
+          />
+        )}
       </div>
       <div className="box-section1">
         <div className="user-info">
@@ -100,9 +138,7 @@ function QuestionBox({
         <div className="question">
           <span>{question}</span>
         </div>
-        <div className="tags">
-          {tagsList}
-        </div>
+        <div className="tags">{tagsList}</div>
       </div>
       <div className="engagement">
         <div>
@@ -113,10 +149,18 @@ function QuestionBox({
         </div>
       </div>
 
-      {user && author === user?._id && <NavLink id='update-btn' data-tooltip-content="Update Question" to={`/updatequestion/${id}`} onClick={(e) => {
-        e.stopPropagation()
-
-      }}><FiEdit className="icn icn-update" /></NavLink>}
+      {user && author === user?._id && (
+        <NavLink
+          id="update-btn"
+          data-tooltip-content="Update Question"
+          to={`/updatequestion/${id}`}
+          onClick={(e) => {
+            e.stopPropagation();
+          }}
+        >
+          <FiEdit className="icn icn-update" />
+        </NavLink>
+      )}
 
       {user && author === user?._id && (
         <motion.div
@@ -126,7 +170,7 @@ function QuestionBox({
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           onClick={(e) => {
-            e.stopPropagation()
+            e.stopPropagation();
             deleteQuestionOpen();
             setQuestionId(id);
           }}
@@ -143,14 +187,18 @@ function QuestionBox({
             user={user}
           />
         )}
-      </ModalContainer>
-      {/* <NavLink to={`/questions/${id}`} className="question">
-          {question}
-        </NavLink> */}
-      {/* <Tooltip anchorId="update-btn" />
-      <Tooltip anchorId="button-delete" /> */}
-    </div>
 
+        {questionModalOpen && (
+          <QuestionPostOpen
+            modalOpen={questionModalOpen}
+            handleClose={questionClose}
+            question={question}
+            author={authorName}
+            date={date}
+          />
+        )}
+      </ModalContainer>
+    </div>
   );
 }
 

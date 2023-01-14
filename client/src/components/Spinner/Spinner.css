@@ -18,7 +18,7 @@
   border-color: #000 transparent #555 transparent;
   border-radius: 50%;
   -webkit-animation: spin 1.2s linear infinite;
-          animation: spin 1.2s linear infinite;
+  animation: spin 1.2s linear infinite;
 }
 
 @-webkit-keyframes spin {
@@ -37,4 +37,4 @@
   100% {
     transform: rotate(360deg);
   }
-}/*# sourceMappingURL=Spinner.css.map */
+} /*# sourceMappingURL=Spinner.css.map */

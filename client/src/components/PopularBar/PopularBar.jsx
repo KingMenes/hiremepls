@@ -5,18 +5,17 @@ import { BsBarChart } from "react-icons/bs";
 import { useSelector } from "react-redux";
 
 function PopularBar() {
-
   // const questions = useSelector((state) => state.questions);
   // function calculateHotness(question) {
   //   const votes = question.reputation[0] - question.reputation[1];
   //   const date = question.date;
-  
+
   //   // calculate the difference in seconds between now and the post date
   //   const secondsSincePost = (new Date() - date) / 1000;
-  
+
   //   // use the Reddit hotness formula to calculate the hotness score
   //   const hotness = votes / Math.pow(secondsSincePost + 2, 1.5);
-  
+
   //   return hotness;
   // }
 

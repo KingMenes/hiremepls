@@ -28,6 +28,14 @@ ul {
   align-items: center;
 }
 
+.row {
+  flex-direction: row;
+}
+
+.col {
+  flex-direction: column;
+}
+
 .hidden {
   display: none;
 }

@@ -15,11 +15,12 @@ function Header() {
       <div className="header-main">
         <img className="logo" src={logo} alt="" />
         <hr />
-        <h2>
-        Your ultimate interview resource
-        </h2>
+        <h2>Your ultimate interview resource</h2>
         <p>
-        Whether you're preparing for your first job interview or looking to land your dream career, we have the resources you need. Ask and answer questions, connect with experts, and get the tips and advice you need to succeed in your job search.
+          Whether you're preparing for your first job interview or looking to
+          land your dream career, we have the resources you need. Ask and answer
+          questions, connect with experts, and get the tips and advice you need
+          to succeed in your job search.
         </p>
         <motion.button
           className="cursorAdd"

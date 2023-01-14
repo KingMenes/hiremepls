@@ -35,12 +35,11 @@ function QuestionPostForm({ handleClose }) {
         body: formData.body,
         position: formData.position,
         company: formData.company,
-        tags: tags,  // pass tags state as an argument
+        tags: tags, // pass tags state as an argument
         date: new Date(),
-        reputation:[0,0],
+        reputation: [0, 0],
       })
     ); //Object to POST
-  
 
     console.log({
       question: formData.question,
@@ -50,8 +49,8 @@ function QuestionPostForm({ handleClose }) {
       company: formData.company,
       tags: formData.tags,
       date: formData.date,
-      reputation:formData.reputation
-    })
+      reputation: formData.reputation,
+    });
 
     navigate("/questions");
   };
@@ -66,7 +65,8 @@ function QuestionPostForm({ handleClose }) {
   };
 
   function handleKeyDown(event) {
-    if (event.keyCode === 13) { // 13 is the keyCode for the "Enter" key
+    if (event.keyCode === 13) {
+      // 13 is the keyCode for the "Enter" key
       event.preventDefault();
       tags.push(tag.trim());
       setTags(tags);
@@ -114,7 +114,7 @@ function QuestionPostForm({ handleClose }) {
               type="text"
               placeholder="How would you answer? (optional)"
               onChange={onChange}
-            // value={formData.body}
+              // value={formData.body}
             ></textarea>
           </div>
           <div className="add-tag flex-center">
@@ -148,10 +148,10 @@ function QuestionPostForm({ handleClose }) {
                   onClick={() => {
                     const index = tags.indexOf(tag);
 
-                    //make a deep copy rather -- because I'm assuming making a shallow copy of 
-                    //the array or using the same array would not change the state because they 
+                    //make a deep copy rather -- because I'm assuming making a shallow copy of
+                    //the array or using the same array would not change the state because they
                     //are the same place in memory
-                    const newTags = tags.map(currentTag => currentTag)
+                    const newTags = tags.map((currentTag) => currentTag);
 
                     if (index > -1) {
                       newTags.splice(index, 1);

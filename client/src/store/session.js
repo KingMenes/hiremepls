@@ -42,7 +42,6 @@ export const setUserThunk = createAsyncThunk(SET_USER, async (data) => {
   return data.data;
 });
 
-
 const sessionSlice = createSlice({
   name: "session",
   initialState: {},
@@ -146,4 +145,3 @@ export const signUp = (username, email, password) => async (dispatch) => {
 //             return state;
 //     }
 // }
-
