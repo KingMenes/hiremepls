@@ -20,7 +20,7 @@ const port = process.env.PORT || 8000;
 const MongoDBStore = MongoDBStores(session);
 const MAX_AGE = 1000 * 60 * 60 * 3; // 3hrs
 const env = process.env.NODE_ENV || 'development'
-const serverURL = env === 'production' ? 'https://hiremepls-api.onrender.com/api' : `http://localhost:${port}/api`
+const serverURL = env === 'production' ? 'https://hiremepls-api.onrender.com/' : `http://localhost:${port}/`
 
 
 // Connect to DB
