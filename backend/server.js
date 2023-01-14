@@ -33,7 +33,10 @@ connectDB();
 // Use middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cors());
+app.use(cors({
+  origin: 'https://hiremepls-api.onrender.com',
+  optionsSuccessStatus: 200
+}));
 app.use(express.json());
 app.use(errorHandler);
 
