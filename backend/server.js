@@ -16,13 +16,14 @@ import { dirname } from 'path';
 // const __filename = fileURLToPath(import.meta.url);
 // const __dirname = dirname(__filename);
 
-
+const port = process.env.PORT || 8000;
 const MongoDBStore = MongoDBStores(session);
 const MAX_AGE = 1000 * 60 * 60 * 3; // 3hrs
+const env = process.env.NODE_ENV || 'development'
+const serverURL = env === 'production' ? 'https://hiremepls-api.onrender.com/api' : `http://localhost:${port}/api`
 
 
 // Connect to DB
-const port = process.env.PORT || 8000;
 const app = express();
 const mongoDbstore = new MongoDBStore({
   uri: process.env.HIREMEPLS_DB_URI,
@@ -33,10 +34,12 @@ connectDB();
 // Use middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cors({
-  origin: 'https://hiremepls-api.onrender.com',
-  optionsSuccessStatus: 200
-}));
+app.use(cors(
+  // {
+  // origin: `${serverURL}/*`,
+  // optionsSuccessStatus: 200
+  // }
+));
 app.use(express.json());
 app.use(errorHandler);
 
