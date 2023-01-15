@@ -64,6 +64,9 @@
   height: 100%;
   border: none;
 }
+.questionpostopen .addComment .commentInput input:focus {
+  outline: none;
+}
 .questionpostopen .comments {
   min-height: 30vh;
 }

@@ -72,6 +72,9 @@
         height: 100%;
         border: none;
       }
+      input:focus {
+        outline: none;
+      }
     }
      
 

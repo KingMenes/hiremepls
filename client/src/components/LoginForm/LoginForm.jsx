@@ -95,10 +95,6 @@ function LoginForm({ handleClose, user, setSessionUser }) {
               <label>Password</label>
             </div>
             <button>
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
               Submit
             </button>
           </form>

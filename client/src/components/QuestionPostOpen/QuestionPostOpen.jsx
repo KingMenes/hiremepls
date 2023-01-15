@@ -13,6 +13,7 @@ const fadeIn = {
     },
   },
   exit: {
+    y: "100vh",
     opacity: 0,
   },
 };
@@ -28,12 +29,12 @@ function QuestionPostOpen({
   return (
     <Backdrop onClick={handleClose}>
       <motion.div
-        className="questionmodal"
-        onClick={(e) => e.stopPropagation()} // Prevent click from closing modal
-        variants={fadeIn}
-        initial="hidden"
-        animate="visible"
-        exit="exit"
+       className="questionmodal"
+       onClick={(e) => e.stopPropagation()} // Prevent click from closing modal
+       variants={fadeIn}
+       initial="hidden"
+       animate="visible"
+       exit="exit"
       >
         <div className="questionpostopen flex-start col">
           <div className="questionContainer">

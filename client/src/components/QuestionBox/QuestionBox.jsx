@@ -44,6 +44,7 @@ function QuestionBox({
     </div>
   ));
 
+  
   return (
     <div
       className="questionBox"
@@ -148,7 +149,6 @@ function QuestionBox({
           <BiComment className="icn" /> <span>{numComments}</span> Answers
         </div>
       </div>
-
       {user && author === user?._id && (
         <NavLink
           id="update-btn"
@@ -161,7 +161,6 @@ function QuestionBox({
           <FiEdit className="icn icn-update" />
         </NavLink>
       )}
-
       {user && author === user?._id && (
         <motion.div
           data-tooltip-content="Delete Question"
@@ -187,8 +186,9 @@ function QuestionBox({
             user={user}
           />
         )}
-
-        {questionModalOpen && (
+      </ModalContainer>
+      <ModalContainer>
+      {questionModalOpen && (
           <QuestionPostOpen
             modalOpen={questionModalOpen}
             handleClose={questionClose}
