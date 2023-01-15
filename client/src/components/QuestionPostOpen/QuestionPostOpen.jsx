@@ -45,12 +45,15 @@ function QuestionPostOpen({
           </div>
           <div className="addComment row flex-center">
             <img src="https://thispersondoesnotexist.com/image" alt="" />
-            <form>
-              <input type="text" name="comment" id="comment" />
-              <button>Add Comment</button>
+            <form className="row flex-center">
+              <div className="commentInput">
+                <input type="text" name="comment" id="comment" placeholder="Add an answer or comment ..." />
+              </div>
+              <button>Add Answer</button>
             </form>
           </div>
           <div className="comments">
+            <p>No answers, yet!<br/> Be the first to add one!</p>
             {/* {comments.map((comment) => {
               return (
                 <div className="commentContainer">
