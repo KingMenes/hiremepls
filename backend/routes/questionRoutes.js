@@ -15,7 +15,7 @@ router.get("/", getQuestions);
 router.post("/", protect, createQuestion);
 router.put("/rep/:id", protect, repQuestion);
 router.put("/view/:id", viewQuestion)
-router.put("/:id", updateQuestion);
+router.put("/:id", protect, updateQuestion);
 router.delete("/:id", protect, deleteQuestion);
 
 export default router;
