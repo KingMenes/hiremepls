@@ -13,6 +13,7 @@ function TestFetch() {
     dispatch(getQuestions());
   }, [dispatch]);
 
+
   // 👇 USED THIS TO GET QUESTIONS AS ARRAY 👇
   // useEffect(() => {
   //   let arr = [];
@@ -136,6 +137,7 @@ function TestFetch() {
     <div id="questionsContainer">
       {questions
         ? Object.values(questions).map((question) => {
+            console.log(question.comments)
             return (
               <QuestionBox
                 id={question._id}
@@ -147,6 +149,7 @@ function TestFetch() {
                 views={question.views}
                 key={question._id}
                 authorName={question.authorName}
+                comments = {question.comments}
               />
             );
           })
