@@ -5,7 +5,6 @@ import http from "../http-common";
 // constants
 const SET_USER = "session/SET_USER";
 const REMOVE_USER = "session/REMOVE_USER";
-const CHECK_USER = "sesesefgsefsegfsda";
 
 export const login = createAsyncThunk(
   SET_USER,
@@ -63,6 +62,7 @@ const sessionSlice = createSlice({
 
 const { reducer } = sessionSlice;
 export default reducer;
+
 
 // ACTIONS 👇
 
@@ -145,3 +145,4 @@ export const signUp = (username, email, password) => async (dispatch) => {
 //             return state;
 //     }
 // }
+
