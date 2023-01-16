@@ -13,7 +13,7 @@ import {
 router.get("/", getQuestions);
 router.post("/", protect, createQuestion);
 router.put("/rep/:id", protect, repQuestion);
-router.put("/:id", protect, updateQuestion);
+router.put("/:id", updateQuestion);
 router.delete("/:id", protect, deleteQuestion);
 
 export default router;
