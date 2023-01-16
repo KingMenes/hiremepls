@@ -114,7 +114,7 @@ function QuestionPostForm({ handleClose }) {
               type="text"
               placeholder="How would you answer? (optional)"
               onChange={onChange}
-              // value={formData.body}
+            // value={formData.body}
             ></textarea>
           </div>
           <div className="add-tag flex-center">

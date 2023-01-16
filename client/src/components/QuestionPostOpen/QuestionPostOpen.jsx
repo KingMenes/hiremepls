@@ -27,14 +27,18 @@ function QuestionPostOpen({
   comments,
 }) {
   return (
-    <Backdrop onClick={handleClose}>
+    <Backdrop onClick={(e) => {
+      e.stopPropagation()
+      handleClose()
+    }
+    }>
       <motion.div
-       className="questionmodal"
-       onClick={(e) => e.stopPropagation()} // Prevent click from closing modal
-       variants={fadeIn}
-       initial="hidden"
-       animate="visible"
-       exit="exit"
+        className="questionmodal"
+        onClick={(e) => e.stopPropagation()} // Prevent click from closing modal
+        variants={fadeIn}
+        initial="hidden"
+        animate="visible"
+        exit="exit"
       >
         <div className="questionpostopen flex-start col">
           <div className="questionContainer">
@@ -54,7 +58,7 @@ function QuestionPostOpen({
             </form>
           </div>
           <div className="comments">
-            <p>No answers, yet!<br/> Be the first to add one!</p>
+            <p>No answers, yet!<br /> Be the first to add one!</p>
             {/* {comments.map((comment) => {
               return (
                 <div className="commentContainer">

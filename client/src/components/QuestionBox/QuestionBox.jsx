@@ -44,7 +44,7 @@ function QuestionBox({
     </div>
   ));
 
-  
+
   return (
     <div
       className="questionBox"
@@ -188,7 +188,7 @@ function QuestionBox({
         )}
       </ModalContainer>
       <ModalContainer>
-      {questionModalOpen && (
+        {questionModalOpen && (
           <QuestionPostOpen
             modalOpen={questionModalOpen}
             handleClose={questionClose}
