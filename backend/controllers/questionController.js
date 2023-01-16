@@ -70,9 +70,18 @@ export const repQuestion = asyncHandler(async (req, res) => {
   res.json(question);
 });
 
+export const viewQuestion = asyncHandler(async (req, res) => {
+  const { view } = req.body
+  const question = await Question.findById(view)
+  let views = question?.views
+  question.views = views + 1
+  await question.save()
+  res.json(question)
+  return
+})
+
 export const updateQuestion = asyncHandler(async (req, res) => {
   const {
-    view,
     id,
     question: quest,
     tags,
@@ -81,14 +90,7 @@ export const updateQuestion = asyncHandler(async (req, res) => {
     company,
     user: currentUser,
   } = req.body;
-  if (view) {
-    const question = await Question.findById(view);
-    let views = question?.views;
-    question.views = views + 1;
-    await question.save();
-    res.json(question);
-    return;
-  }
+
   const question = await Question.findById(req.params.id);
   if (!question) {
     res.status(400);

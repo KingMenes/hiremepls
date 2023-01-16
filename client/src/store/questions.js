@@ -12,7 +12,7 @@ const REPUTATION = "questions/reputation";
 export const incrementQuestion = createAsyncThunk(
   VIEW_QUESTION,
   async ({ id }) => {
-    const res = await http.put(`/api/questions/${id}`, {
+    const res = await http.put(`/api/questions/view/${id}`, {
       view: id,
     });
 
