@@ -32,12 +32,9 @@ function QuestionPostOpen({
 }) {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
-  const navigate = useNavigate();
 
   // STATES
-  const [commentBody, setCommentBody] = useState({
-    body: "",
-  });
+  const [commentBody, setCommentBody] = useState("");
   const [errors, setErrors] = useState("");
 
   const handleSubmit = async (e) => {
@@ -47,12 +44,12 @@ function QuestionPostOpen({
       return;
     }
     const comment = {
-      body: commentBody.body,
+      body: commentBody,
       user: sessionUser,
       date: new Date(),
       reputation: [0, 0],
-      
     }
+    
     const data = await dispatch(
       updateQuestion({
         comments: comments.push(comment),
@@ -91,7 +88,11 @@ function QuestionPostOpen({
               <div className="commentInput">
                 <input type="text" name="comment" id="comment" placeholder="Add an answer or comment ..." onChange={(e)=>setCommentBody(e.target.value)} />
               </div>
-              <button type="submit">Add Answer</button>
+              <motion.button
+                type="submit"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                >Add Answer</motion.button>
             </form>
           </div>
           <div className="comments">

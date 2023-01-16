@@ -6,7 +6,6 @@ import {
   Navigate,
 } from "react-router-dom";
 import Navbar from "../components/Navbar/Navbar";
-import Footer from "../components/Footer/Footer";
 import Home from "../pages/Home";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
