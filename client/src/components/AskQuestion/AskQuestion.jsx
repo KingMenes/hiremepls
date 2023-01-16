@@ -12,7 +12,7 @@ function AskQuestion({ sessionUser, setSessionUser }) {
         <img src="https://thispersondoesnotexist.com/image" alt="" />
         <div className="question-input">
           <HiOutlineChatBubbleLeftEllipsis className="icon" />
-          <NavLink to="/askquestion" id='navlink'>
+          <NavLink to="/askquestion" id="navlink">
             <input type="text" placeholder="Ask a Question" />
           </NavLink>
         </div>

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import Backdrop from "../Backdrop/Backdrop";
 import { FiLogIn } from "react-icons/fi";
@@ -95,10 +95,6 @@ function LoginForm({ handleClose, user, setSessionUser }) {
               <label>Password</label>
             </div>
             <button>
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
               Submit
             </button>
           </form>

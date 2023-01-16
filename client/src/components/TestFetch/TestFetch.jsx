@@ -13,7 +13,6 @@ function TestFetch() {
     dispatch(getQuestions());
   }, [dispatch]);
 
-
   // 👇 USED THIS TO GET QUESTIONS AS ARRAY 👇
   // useEffect(() => {
   //   let arr = [];
@@ -84,7 +83,6 @@ function TestFetch() {
   // ]
   // const sessionUser = useSelector((state) => state.session.user);
 
-
   // const submitQuestion = async (q) => {
   //   const data = await dispatch(
   //     createQuestion({
@@ -106,9 +104,8 @@ function TestFetch() {
   //   })
   // },[])
 
-
   function timeSince(date) {
-    var date1 = new Date()
+    var date1 = new Date();
     var seconds = Math.floor((date1.getTime() - date.getTime()) / 1000);
 
     var interval = seconds / 31536000;
@@ -139,20 +136,20 @@ function TestFetch() {
     <div id="questionsContainer">
       {questions
         ? Object.values(questions).map((question) => {
-          return (
-            <QuestionBox
-              id={question._id}
-              question={question.question}
-              author={question.author}
-              date={timeSince(new Date(question.date))}
-              rep={question.reputation}
-              tags={question.tags}
-              views={question.views}
-              key={question._id}
-              authorName={question.authorName}
-            />
-          );
-        })
+            return (
+              <QuestionBox
+                id={question._id}
+                question={question.question}
+                author={question.author}
+                date={timeSince(new Date(question.date))}
+                rep={question.reputation}
+                tags={question.tags}
+                views={question.views}
+                key={question._id}
+                authorName={question.authorName}
+              />
+            );
+          })
         : null}
     </div>
   );

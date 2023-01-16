@@ -9,9 +9,9 @@ import comments from "./routes/commentRoutes.js";
 import errorHandler from "./middleware/errorMiddleware.js";
 import session from "express-session";
 import MongoDBStores from "connect-mongodb-session";
-import path from 'path'
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
+import path from "path";
+import { fileURLToPath } from "url";
+import { dirname } from "path";
 
 // const __filename = fileURLToPath(import.meta.url);
 // const __dirname = dirname(__filename);
@@ -19,9 +19,11 @@ import { dirname } from 'path';
 const port = process.env.PORT || 8000;
 const MongoDBStore = MongoDBStores(session);
 const MAX_AGE = 1000 * 60 * 60 * 3; // 3hrs
-const env = process.env.NODE_ENV || 'development'
-const serverURL = env === 'production' ? 'https://hiremepls-api.onrender.com/' : `http://localhost:${port}/`
-
+const env = process.env.NODE_ENV || "development";
+const serverURL =
+  env === "production"
+    ? "https://hiremepls-api.onrender.com/"
+    : `http://localhost:${port}/`;
 
 // Connect to DB
 const app = express();
@@ -34,12 +36,13 @@ connectDB();
 // Use middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cors(
+app.use(
+  cors()
   // {
   // origin: `${serverURL}/*`,
   // optionsSuccessStatus: 200
   // }
-));
+);
 app.use(express.json());
 app.use(errorHandler);
 
@@ -62,7 +65,7 @@ app.use(
 app.listen(port, () => console.log(`Server started on port ${port}`));
 
 // // Serve static html
-// app.use(['/questions', '/askquestion', 'updatequestions', '/'], express.static(path.join(__dirname, '../client/build'))); 
+// app.use(['/questions', '/askquestion', 'updatequestions', '/'], express.static(path.join(__dirname, '../client/build')));
 
 // api routes
 
@@ -70,6 +73,5 @@ app.use("/api/questions", questions);
 app.use("/api/users", users);
 app.use("/api/comments", comments);
 app.use("*", (req, res) => res.status(404).json({ error: "not found" }));
-
 
 export default app;

@@ -3,7 +3,6 @@ import asyncHandler from "express-async-handler";
 import Question from "../models/questionModel.js";
 import User from "../models/userModel.js";
 
-
 export const getQuestions = asyncHandler(async (req, res) => {
   // const { questionsList } = await DBDAO.getQuestions({})
   const questionsList = await Question.find();
@@ -33,53 +32,62 @@ export const createQuestion = asyncHandler(async (req, res) => {
 });
 
 export const repQuestion = asyncHandler(async (req, res) => {
-  const { id } = req.params
-  const { rep, username } = req.body
+  const { id } = req.params;
+  const { rep, username } = req.body;
 
-  const question = await Question.findOne({ _id: id })
-  let discount = question.reputation.dislikes.count
-  let licount = question.reputation.likes.count
+  const question = await Question.findOne({ _id: id });
+  let discount = question.reputation.dislikes.count;
+  let licount = question.reputation.likes.count;
 
   if (rep === "like") {
     if (question.reputation.dislikes[username]) {
-      delete question.reputation.dislikes[username]
-      question.reputation.dislikes.count = discount - 1
+      delete question.reputation.dislikes[username];
+      question.reputation.dislikes.count = discount - 1;
     }
     if (question.reputation.likes[username]) {
-      delete question.reputation.likes[username]
-      question.reputation.likes.count = licount - 1
+      delete question.reputation.likes[username];
+      question.reputation.likes.count = licount - 1;
     } else {
-      question.reputation.likes[username] = rep
-      question.reputation.likes.count = licount + 1
+      question.reputation.likes[username] = rep;
+      question.reputation.likes.count = licount + 1;
     }
   }
-  if (rep === 'dislike') {
+  if (rep === "dislike") {
     if (question.reputation.likes[username]) {
-      delete question.reputation.likes[username]
-      question.reputation.likes.count = licount - 1
+      delete question.reputation.likes[username];
+      question.reputation.likes.count = licount - 1;
     }
     if (question.reputation.dislikes[username]) {
-      delete question.reputation.dislikes[username]
-      question.reputation.dislikes.count = discount - 1
+      delete question.reputation.dislikes[username];
+      question.reputation.dislikes.count = discount - 1;
     } else {
-      question.reputation.dislikes[username] = rep
-      question.reputation.dislikes.count = discount + 1
+      question.reputation.dislikes[username] = rep;
+      question.reputation.dislikes.count = discount + 1;
     }
   }
-  question.markModified('reputation')
-  await question.save()
-  res.json(question)
-})
+  question.markModified("reputation");
+  await question.save();
+  res.json(question);
+});
 
 export const updateQuestion = asyncHandler(async (req, res) => {
-  const { view, id, question: quest, tags, body, position, company, user: currentUser } = req.body
+  const {
+    view,
+    id,
+    question: quest,
+    tags,
+    body,
+    position,
+    company,
+    user: currentUser,
+  } = req.body;
   if (view) {
-    const question = await Question.findById(view)
-    let views = question?.views
-    question.views = views + 1
-    await question.save()
-    res.json(question)
-    return
+    const question = await Question.findById(view);
+    let views = question?.views;
+    question.views = views + 1;
+    await question.save();
+    res.json(question);
+    return;
   }
   const question = await Question.findById(req.params.id);
   if (!question) {
@@ -100,13 +108,13 @@ export const updateQuestion = asyncHandler(async (req, res) => {
   }
 
   const updatedQuestion = await Question.findById(id);
-  updatedQuestion.question = quest
-  updatedQuestion.tags = tags
-  updatedQuestion.body = body
-  updatedQuestion.position = position
-  updatedQuestion.company = company
+  updatedQuestion.question = quest;
+  updatedQuestion.tags = tags;
+  updatedQuestion.body = body;
+  updatedQuestion.position = position;
+  updatedQuestion.company = company;
 
-  await updatedQuestion.save()
+  await updatedQuestion.save();
 
   res.json(updatedQuestion);
 });
