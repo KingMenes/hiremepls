@@ -137,7 +137,6 @@ function TestFetch() {
     <div id="questionsContainer">
       {questions
         ? Object.values(questions).map((question) => {
-            console.log(question.comments)
             return (
               <QuestionBox
                 id={question._id}

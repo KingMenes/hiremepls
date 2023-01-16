@@ -37,6 +37,7 @@ const questionSchema = mongoose.Schema({
     // might change
     type: mongoose.Schema.Types.Array,
     default: [],
+    ref: "Comment"
   },
   tags: {
     type: mongoose.Schema.Types.Array,
