@@ -50,6 +50,10 @@
   width: 20%;
   margin-left: 10px;
 }
+.questionpostopen .addComment button:hover {
+  filter: brightness(0.9);
+  cursor: pointer;
+}
 .questionpostopen .addComment .commentInput {
   width: 75%;
   height: 36px;
