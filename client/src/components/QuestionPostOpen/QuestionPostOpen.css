@@ -13,6 +13,14 @@
 .questionpostopen .questionContainer span {
   margin-left: -320px;
 }
+.questionpostopen .questionContainer h1 {
+  margin-left: -300px;
+  font-size: 24px;
+}
+.questionpostopen .questionContainer p {
+  display: inline-block;
+  width: 90%;
+}
 .questionpostopen img {
   border-radius: 999px;
   display: flex;
