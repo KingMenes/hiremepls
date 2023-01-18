@@ -1,7 +1,6 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-// const connectDB = require('./config/db')
 import connectDB from "./config/db.js";
 import questions from "./routes/questionRoutes.js";
 import users from "./routes/userRoutes.js";
@@ -12,9 +11,6 @@ import MongoDBStores from "connect-mongodb-session";
 import path from "path";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
-
-// const __filename = fileURLToPath(import.meta.url);
-// const __dirname = dirname(__filename);
 
 const port = process.env.PORT || 8000;
 const MongoDBStore = MongoDBStores(session);
@@ -43,7 +39,6 @@ app.use(
   // optionsSuccessStatus: 200
   // }
 );
-app.use(express.json());
 app.use(errorHandler);
 
 app.use(
@@ -64,11 +59,8 @@ app.use(
 // Confirmation on successful connect
 app.listen(port, () => console.log(`Server started on port ${port}`));
 
-// // Serve static html
-// app.use(['/questions', '/askquestion', 'updatequestions', '/'], express.static(path.join(__dirname, '../client/build')));
 
 // api routes
-
 app.use("/api/questions", questions);
 app.use("/api/users", users);
 app.use("/api/comments", comments);
