@@ -2,7 +2,7 @@ import "./QuestionPostOpen.css";
 import Backdrop from "../Backdrop/Backdrop";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { updateQuestion } from "../../store/questions";
+import { addComment } from "../../store/questions";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -28,7 +28,6 @@ function QuestionPostOpen({
   author,
   date,
   body,
-  comments,
 }) {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
@@ -38,6 +37,7 @@ function QuestionPostOpen({
   const [errors, setErrors] = useState("");
 
   const handleSubmit = async (e) => {
+    // console.log("Submitted")
     e.preventDefault();
     if (!sessionUser) {
       setErrors("Must be logged in!");
@@ -51,12 +51,12 @@ function QuestionPostOpen({
     };
 
     const data = await dispatch(
-      updateQuestion({
-        comments: comments.push(comment),
+      addComment({
+        comment: comment,
       })
     ); //Object to POST
-
-    console.log("Success!");
+    
+    console.log(data);
   };
 
   return (
@@ -82,7 +82,7 @@ function QuestionPostOpen({
             <h1>{question}</h1>
             <p>{body}</p>
           </div>
-          <div className="addComment row flex-center">
+          {sessionUser && (<div className="addComment row flex-center">
             <img src="https://thispersondoesnotexist.com/image" alt="" />
             <form className="row flex-center" onSubmit={handleSubmit}>
               <div className="commentInput">
@@ -102,7 +102,8 @@ function QuestionPostOpen({
                 Add Answer
               </motion.button>
             </form>
-          </div>
+          </div>)}
+          
           <div className="comments">
             <p>
               No answers, yet!

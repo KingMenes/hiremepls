@@ -112,7 +112,6 @@ export const addComment = createAsyncThunk(
     }
     http.defaults.headers.common["Authorization"] = `Bearer ${token}`;
     const res = await http.put(`/api/questions/comments/${id}`, {
-      id,
       user,
       comment
     });
