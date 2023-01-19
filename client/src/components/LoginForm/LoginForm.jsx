@@ -94,9 +94,7 @@ function LoginForm({ handleClose, user, setSessionUser }) {
               />
               <label>Password</label>
             </div>
-            <button>
-              Submit
-            </button>
+            <button>Submit</button>
           </form>
         </div>
       </motion.div>

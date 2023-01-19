@@ -10,7 +10,7 @@ const commentSchema = mongoose.Schema({
   reputation: {
     //likes/dislikes
     type: mongoose.Schema.Types.Array,
-    default:[0,0]
+    default: [0, 0],
   },
   author: {
     type: mongoose.Schema.Types.ObjectId,

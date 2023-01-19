@@ -8,6 +8,7 @@ const REMOVE_QUESTION = "questions/REMOVE_QUESTION";
 const VIEW_QUESTION = "questions/incrementView";
 const UPDATE_QUESTION = "questions/updatequestion";
 const REPUTATION = "questions/reputation";
+const ADD_COMMENT= "questions/addComment"
 
 export const incrementQuestion = createAsyncThunk(
   VIEW_QUESTION,
@@ -20,7 +21,9 @@ export const incrementQuestion = createAsyncThunk(
   }
 );
 
-export const getQuestions = createAsyncThunk(GET_QUESTIONS, async () => {
+export const getQuestions = createAsyncThunk(
+  GET_QUESTIONS,
+  async () => {
   const res = await http.get("/api/questions", {});
 
   return res.data;
@@ -100,6 +103,23 @@ export const repQuestion = createAsyncThunk(
   }
 );
 
+export const addComment = createAsyncThunk(
+  ADD_COMMENT,
+  async ({id, user, comment}) => {
+    let token;
+    if (user.token) {
+      token = user.token;
+    }
+    http.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    const res = await http.put(`/api/questions/comments/${id}`, {
+      id,
+      user,
+      comment
+    });
+    return res.data;
+  }
+);
+
 const sessionSlice = createSlice({
   name: "questions",
   initialState: {},
@@ -128,6 +148,10 @@ const sessionSlice = createSlice({
       return state;
     },
     [repQuestion.fulfilled]: (state, action) => {
+      state[action.payload._id] = action.payload;
+      return state;
+    },
+    [addComment.fulfilled]: (state, action) => {
       state[action.payload._id] = action.payload;
       return state;
     },

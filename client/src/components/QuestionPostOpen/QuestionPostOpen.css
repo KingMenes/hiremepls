@@ -26,7 +26,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 1px 2px hsla(0deg, 0%, 0%, 0.397), 0 1px 4px hsla(0deg, 0%, 0%, 0.274), 0 2px 8px hsla(0deg, 0%, 0%, 0.05);
+  box-shadow: 0 1px 2px hsla(0deg, 0%, 0%, 0.397),
+    0 1px 4px hsla(0deg, 0%, 0%, 0.274), 0 2px 8px hsla(0deg, 0%, 0%, 0.05);
   width: 36px;
   height: 36px;
   text-align: center;
@@ -48,7 +49,7 @@
   display: flex;
   background-color: #2e69ff;
   outline: none;
-  color: #FFF;
+  color: #fff;
   border: none;
   border-radius: 999px;
   text-align: center;
@@ -68,7 +69,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #FFF;
+  background-color: #fff;
   border-radius: 999px;
 }
 .questionpostopen .addComment .commentInput input {
@@ -85,4 +86,4 @@
 .questionpostopen .comments p {
   color: #545656;
   margin-top: 30px;
-}/*# sourceMappingURL=QuestionPostOpen.css.map */
+} /*# sourceMappingURL=QuestionPostOpen.css.map */

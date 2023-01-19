@@ -13,7 +13,6 @@ function TestFetch() {
     dispatch(getQuestions());
   }, [dispatch]);
 
-
   // 👇 USED THIS TO GET QUESTIONS AS ARRAY 👇
   // useEffect(() => {
   //   let arr = [];
@@ -148,7 +147,7 @@ function TestFetch() {
                 views={question.views}
                 key={question._id}
                 authorName={question.authorName}
-                comments = {question.comments}
+                comments={question.comments}
               />
             );
           })

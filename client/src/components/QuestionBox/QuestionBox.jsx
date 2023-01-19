@@ -29,7 +29,7 @@ function QuestionBox({
   tags,
   views,
   authorName,
-  comments
+  comments,
 }) {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
@@ -43,7 +43,6 @@ function QuestionBox({
       <span>{tag}</span>
     </div>
   ));
-
 
   return (
     <div

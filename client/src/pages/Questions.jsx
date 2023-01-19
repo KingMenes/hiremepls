@@ -5,7 +5,6 @@ import PopularBar from "../components/PopularBar/PopularBar";
 import AskQuestion from "../components/AskQuestion/AskQuestion";
 
 function Questions() {
-
   const sessionUser = useSelector((state) => state.session.user);
 
   return (

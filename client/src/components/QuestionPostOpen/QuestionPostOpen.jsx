@@ -48,24 +48,24 @@ function QuestionPostOpen({
       user: sessionUser,
       date: new Date(),
       reputation: [0, 0],
-    }
-    
+    };
+
     const data = await dispatch(
       updateQuestion({
         comments: comments.push(comment),
       })
     ); //Object to POST
 
-    console.log('Success!')
+    console.log("Success!");
   };
 
-    
   return (
-    <Backdrop onClick={(e) => {
-      e.stopPropagation()
-      handleClose()
-    }
-    }>
+    <Backdrop
+      onClick={(e) => {
+        e.stopPropagation();
+        handleClose();
+      }}
+    >
       <motion.div
         className="questionmodal"
         onClick={(e) => e.stopPropagation()} // Prevent click from closing modal
@@ -86,18 +86,29 @@ function QuestionPostOpen({
             <img src="https://thispersondoesnotexist.com/image" alt="" />
             <form className="row flex-center" onSubmit={handleSubmit}>
               <div className="commentInput">
-                <input type="text" name="comment" id="comment" placeholder="Add an answer or comment ..." onChange={(e)=>setCommentBody(e.target.value)} />
+                <input
+                  type="text"
+                  name="comment"
+                  id="comment"
+                  placeholder="Add an answer or comment ..."
+                  onChange={(e) => setCommentBody(e.target.value)}
+                />
               </div>
               <motion.button
                 type="submit"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
-                >Add Answer</motion.button>
+              >
+                Add Answer
+              </motion.button>
             </form>
           </div>
           <div className="comments">
-          <p>No answers, yet!<br /> Be the first to add one!</p>
-          {/* { comments.length === 0 ?
+            <p>
+              No answers, yet!
+              <br /> Be the first to add one!
+            </p>
+            {/* { comments.length === 0 ?
             <p>No answers, yet!<br /> Be the first to add one!</p>
               :
               comments.map((comment) => {
