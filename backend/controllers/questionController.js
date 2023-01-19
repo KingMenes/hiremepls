@@ -1,4 +1,3 @@
-import { json } from "express";
 import asyncHandler from "express-async-handler";
 import Question from "../models/questionModel.js";
 import User from "../models/userModel.js";
