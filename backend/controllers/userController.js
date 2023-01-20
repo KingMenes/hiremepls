@@ -3,6 +3,7 @@ import asyncHandler from "express-async-handler";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 
+
 export const logoutUser = asyncHandler(async (req, res) => {
   req.session.user = null;
   res.json({ message: "Logged out" });
@@ -24,6 +25,7 @@ const generateToken = (id) => {
 };
 
 export const isAuth = asyncHandler(async (req, res) => {
+  console.log('hello')
   if (req.session.user) {
     const user = await User.findOne({ email: req.session.user.email });
     return res.json({

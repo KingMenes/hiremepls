@@ -15,7 +15,11 @@ import { useDispatch } from "react-redux";
 import Questions from "../pages/Questions";
 import QuestionPostForm from "../components/QuestionPostForm/QuestionPostForm";
 import QuestionUpdateForm from "../components/UpdateQuestion/UpdateQuestion";
-
+const env = process.env.NODE_ENV || 'development'
+const API_ENDPOINT =
+  env === "production"
+    ? "https://hiremepls-api.onrender.com/"
+    : "http://localhost:5000/";
 export const URL = process.env.REACT_APP_SERVER_URL;
 
 function App() {
@@ -27,7 +31,8 @@ function App() {
     const fetchUserAuth = async () => {
       try {
         setLoading(true);
-        const res = await fetch("/api/users/isAuth");
+        const res = await fetch(`${API_ENDPOINT}api/isAuth`);
+        console.log(res)
         if (!res.ok) return setLoading(false);
         const data = await res.json();
         await setUserSession(data);
