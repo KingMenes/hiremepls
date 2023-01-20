@@ -28,8 +28,10 @@ function QuestionPostOpen({
   author,
   date,
   body,
+  comments,
   id
 }) {
+  console.log(comments)
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
 
@@ -52,8 +54,8 @@ function QuestionPostOpen({
 
     const data = await dispatch(
       addComment({
-        id:id,
-        user:sessionUser,
+        id: id,
+        user: sessionUser,
         comment: comment,
       })
     ); //Object to POST
@@ -103,12 +105,19 @@ function QuestionPostOpen({
               </motion.button>
             </form>
           </div>)}
-          
+
           <div className="comments">
-            <p>
+            {comments.length ? <ul>
+              {comments.map(comment => {
+                return <li>
+                  <div>{comment?.body}</div>
+                  <div>{comment?.user?.username}</div>
+                </li>
+              })}
+            </ul> : <p>
               No answers, yet!
               <br /> Be the first to add one!
-            </p>
+            </p>}
             {/* { comments.length === 0 ?
             <p>No answers, yet!<br /> Be the first to add one!</p>
               :

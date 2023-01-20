@@ -165,5 +165,6 @@ export const addComment = asyncHandler(async (req, res) => {
   }
 
   question.comments.push(comment);
+  question.save()
   res.json(question);
 });
