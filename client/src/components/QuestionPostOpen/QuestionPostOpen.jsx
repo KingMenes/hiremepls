@@ -57,8 +57,6 @@ function QuestionPostOpen({
         comment: comment,
       })
     ); //Object to POST
-    
-    console.log(data);
   };
 
   return (
