@@ -28,8 +28,8 @@ function QuestionBox({
   rep,
   tags,
   views,
-  numComments,
   authorName,
+  comments,
 }) {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
@@ -43,7 +43,6 @@ function QuestionBox({
       <span>{tag}</span>
     </div>
   ));
-
 
   return (
     <div
@@ -146,7 +145,7 @@ function QuestionBox({
           <AiOutlineEye className="icn" /> <span>{views}</span> Views
         </div>
         <div>
-          <BiComment className="icn" /> <span>{numComments}</span> Answers
+          <BiComment className="icn" /> <span>{comments.length}</span> Answers
         </div>
       </div>
       {user && author === user?._id && (
@@ -195,6 +194,7 @@ function QuestionBox({
             question={question}
             author={authorName}
             date={date}
+            id={id}
           />
         )}
       </ModalContainer>

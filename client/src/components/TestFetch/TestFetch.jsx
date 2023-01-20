@@ -136,6 +136,7 @@ function TestFetch() {
     <div id="questionsContainer">
       {questions
         ? Object.values(questions).map((question) => {
+          console.log(question)
             return (
               <QuestionBox
                 id={question._id}
@@ -147,6 +148,7 @@ function TestFetch() {
                 views={question.views}
                 key={question._id}
                 authorName={question.authorName}
+                comments={question.comments}
               />
             );
           })

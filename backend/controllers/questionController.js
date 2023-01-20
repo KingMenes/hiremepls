@@ -1,13 +1,16 @@
-import { json } from "express";
 import asyncHandler from "express-async-handler";
 import Question from "../models/questionModel.js";
 import User from "../models/userModel.js";
 
 export const getQuestions = asyncHandler(async (req, res) => {
-  // const { questionsList } = await DBDAO.getQuestions({})
   const questionsList = await Question.find();
-
   res.json(questionsList);
+});
+
+export const getQuestion = asyncHandler(async (req, res) => {
+  const { id } = req.body;
+  const question = await Question.findById(req.params.id);
+  res.json(question);
 });
 
 export const createQuestion = asyncHandler(async (req, res) => {
@@ -70,15 +73,17 @@ export const repQuestion = asyncHandler(async (req, res) => {
   res.json(question);
 });
 
+// This is used to increment the views. Not be be confused with getQuestion().
+// Should be renamed to avoid confusion.
 export const viewQuestion = asyncHandler(async (req, res) => {
-  const { view } = req.body
-  const question = await Question.findById(view)
-  let views = question?.views
-  question.views = views + 1
-  await question.save()
-  res.json(question)
-  return
-})
+  const { view } = req.body;
+  const question = await Question.findById(view);
+  let views = question?.views;
+  question.views = views + 1;
+  await question.save();
+  res.json(question);
+  return;
+});
 
 export const updateQuestion = asyncHandler(async (req, res) => {
   const {
@@ -143,4 +148,22 @@ export const deleteQuestion = asyncHandler(async (req, res) => {
   await question.remove();
 
   res.json({ question });
+});
+
+export const addComment = asyncHandler(async (req, res) => {
+  const { id, user: currentUser, comment } = req.body;
+  const question = await Question.findById(req.params.id);
+  if (!question) {
+    res.status(400);
+    throw new Error("Question not found");
+  }
+  const user = await User.findOne({ email: currentUser.email });
+  //check for user
+  if (!user) {
+    res.status(401);
+    throw new Error("Not logged in!");
+  }
+
+  question.comments.push(comment);
+  res.json(question);
 });

@@ -41,16 +41,16 @@ function QuestionPostForm({ handleClose }) {
       })
     ); //Object to POST
 
-    console.log({
-      question: formData.question,
-      user: sessionUser,
-      body: formData.body,
-      position: formData.position,
-      company: formData.company,
-      tags: formData.tags,
-      date: formData.date,
-      reputation: formData.reputation,
-    });
+    // console.log({
+    //   question: formData.question,
+    //   user: sessionUser,
+    //   body: formData.body,
+    //   position: formData.position,
+    //   company: formData.company,
+    //   tags: formData.tags,
+    //   date: formData.date,
+    //   reputation: formData.reputation,
+    // });
 
     navigate("/questions");
   };
@@ -114,7 +114,7 @@ function QuestionPostForm({ handleClose }) {
               type="text"
               placeholder="How would you answer? (optional)"
               onChange={onChange}
-            // value={formData.body}
+              // value={formData.body}
             ></textarea>
           </div>
           <div className="add-tag flex-center">

@@ -62,6 +62,3 @@ const sessionSlice = createSlice({
 
 const { reducer } = sessionSlice;
 export default reducer;
-
-
-// ACTIONS 👇

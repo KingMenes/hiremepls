@@ -126,6 +126,9 @@
 .questionBox .engagement div span {
   margin: auto 3px;
 }
+.questionBox .engagement .icn {
+  margin-top: 3px;
+}
 .questionBox .btn-delete {
   position: absolute;
   top: 0px;

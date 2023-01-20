@@ -1,4 +1,6 @@
 import mongoose from "mongoose";
+import User from "./userModel.js";
+import Comment from "./commentModel.js";
 
 const commentSchema = mongoose.Schema({
   body: {
@@ -7,8 +9,8 @@ const commentSchema = mongoose.Schema({
   },
   reputation: {
     //likes/dislikes
-    type: Array,
-    required: [true, "Please add reps"],
+    type: mongoose.Schema.Types.Array,
+    default: [0, 0],
   },
   author: {
     type: mongoose.Schema.Types.ObjectId,
@@ -16,7 +18,7 @@ const commentSchema = mongoose.Schema({
     ref: "User",
   },
   replies: {
-    type: Array,
+    type: mongoose.Schema.Types.Array,
     default: [],
   },
   date: {
