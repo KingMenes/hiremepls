@@ -52,17 +52,6 @@ function QuestionUpdateForm({ handleClose }) {
       })
     ); //Object to UPDATE
 
-    // console.log({
-    //     question: formData.question,
-    //     user: sessionUser,
-    //     body: formData.body,
-    //     position: formData.position,
-    //     company: formData.company,
-    //     tags: formData.tags,
-    //     date: formData.date,
-    //     reputation: formData.reputation
-    // })
-
     navigate("/questions");
   };
 

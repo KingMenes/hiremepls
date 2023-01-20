@@ -37,7 +37,6 @@ function QuestionPostOpen({
   const [errors, setErrors] = useState("");
 
   const handleSubmit = async (e) => {
-    // console.log("Submitted")
     e.preventDefault();
     if (!sessionUser) {
       setErrors("Must be logged in!");
