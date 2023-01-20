@@ -28,6 +28,7 @@ function QuestionPostOpen({
   author,
   date,
   body,
+  id
 }) {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
@@ -51,6 +52,8 @@ function QuestionPostOpen({
 
     const data = await dispatch(
       addComment({
+        id:id,
+        user:sessionUser,
         comment: comment,
       })
     ); //Object to POST

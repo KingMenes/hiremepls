@@ -194,6 +194,7 @@ function QuestionBox({
             question={question}
             author={authorName}
             date={date}
+            id={id}
           />
         )}
       </ModalContainer>
