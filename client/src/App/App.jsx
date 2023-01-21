@@ -12,14 +12,10 @@ import "react-toastify/dist/ReactToastify.css";
 import { useEffect, useState } from "react";
 import { setUserThunk } from "../store/session";
 import { useDispatch } from "react-redux";
+import http from '../http-common'
 import Questions from "../pages/Questions";
 import QuestionPostForm from "../components/QuestionPostForm/QuestionPostForm";
 import QuestionUpdateForm from "../components/UpdateQuestion/UpdateQuestion";
-const env = process.env.NODE_ENV || 'development'
-const API_ENDPOINT =
-  env === "production"
-    ? "https://hiremepls-api.onrender.com/"
-    : "http://localhost:5000/";
 export const URL = process.env.REACT_APP_SERVER_URL;
 
 function App() {
@@ -27,26 +23,28 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [userSession, setUserSession] = useState(true);
   const [sessionUser, setSessionUser] = useState();
-  useEffect(() => {
-    const fetchUserAuth = async () => {
-      try {
-        setLoading(true);
-        const res = await fetch(`${API_ENDPOINT}api/isAuth`);
-        console.log(res)
-        if (!res.ok) return setLoading(false);
-        const data = await res.json();
-        await setUserSession(data);
-        if (data.email) {
-          dispatch(setUserThunk({ data }));
-          setSessionUser(data);
-        }
-        setLoading(false);
-      } catch (error) {
-        setLoading(false);
-        console.error("There was an error fetch auth", error);
-        return;
+
+  const fetchUserAuth = async () => {
+    try {
+      setLoading(true);
+      const res = await http.get(`/api/users/isAuth`)
+      if (!res.ok) return setLoading(false);
+      const data = await res.json();
+      console.log(data)
+      await setUserSession(data);
+      if (data.email) {
+        dispatch(setUserThunk({ data }));
+        setSessionUser(data);
       }
-    };
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+      console.error("There was an error fetch auth", error);
+      return;
+    }
+  };
+
+  useEffect(() => {
     fetchUserAuth();
   }, [dispatch]);
 

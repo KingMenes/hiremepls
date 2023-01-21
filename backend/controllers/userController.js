@@ -25,8 +25,9 @@ const generateToken = (id) => {
 };
 
 export const isAuth = asyncHandler(async (req, res) => {
-  console.log('hello')
-  if (req.session.user) {
+  const session = req.session.user
+  console.log(session)
+  if (session) {
     const user = await User.findOne({ email: req.session.user.email });
     return res.json({
       _id: user.id,
@@ -65,7 +66,7 @@ export const createUser = asyncHandler(async (req, res) => {
     if (userExist) {
       throw new Error("Username already used");
     }
-    if (userExist === count) {
+    if (userExist.username === 'count') {
       throw new Error("Username cannot be used");
     }
   }

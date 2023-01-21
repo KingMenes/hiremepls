@@ -8,13 +8,14 @@ function SearchBar() {
 
   // Gets questions to search on render
   useEffect(() => {
-    async function fetchData() {
-      const response = await fetch("/api/questions");
-      const data = await response.json();
-      setItems(data);
-      // console.log(data)
-    }
-    fetchData();
+    //temporarily commented out----------------------------------
+    // async function fetchData() {
+    //   const response = await fetch("/api/questions");
+    //   const data = await response.json();
+    //   setItems(data);
+    //   // console.log(data)
+    // }
+    // fetchData();
   }, []);
 
   // Runs for every input change

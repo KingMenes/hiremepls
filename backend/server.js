@@ -13,6 +13,7 @@ import { fileURLToPath } from "url";
 import { dirname } from "path";
 
 const port = process.env.PORT || 8000;
+connectDB();
 const MongoDBStore = MongoDBStores(session);
 const MAX_AGE = 1000 * 60 * 60 * 3; // 3hrs
 const env = process.env.NODE_ENV || "development";
@@ -27,9 +28,22 @@ const mongoDbstore = new MongoDBStore({
   uri: process.env.HIREMEPLS_DB_URI,
   collection: "mySessions",
 });
-connectDB();
 
 // Use middleware
+app.use(
+  session({
+    secret: process.env.JWT_SECRET,
+    name: "session",
+    store: mongoDbstore,
+    cookie: {
+      maxAge: MAX_AGE,
+      sameSite: false,
+      secure: true,
+    },
+    resave: true,
+    saveUninitialized: false,
+  })
+);
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(
@@ -41,20 +55,6 @@ app.use(
 );
 app.use(errorHandler);
 
-app.use(
-  session({
-    secret: process.env.JWT_SECRET,
-    name: "session-id",
-    store: mongoDbstore,
-    cookie: {
-      maxAge: MAX_AGE,
-      sameSite: false,
-      secure: false,
-    },
-    resave: true,
-    saveUninitialized: false,
-  })
-);
 
 // Confirmation on successful connect
 app.listen(port, () => console.log(`Server started on port ${port}`));
