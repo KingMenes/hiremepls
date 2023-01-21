@@ -1,6 +1,7 @@
 import asyncHandler from "express-async-handler";
 import Question from "../models/questionModel.js";
 import User from "../models/userModel.js";
+import Comment from "../models/commentModel.js";
 
 export const getQuestions = asyncHandler(async (req, res) => {
   const questionsList = await Question.find();
