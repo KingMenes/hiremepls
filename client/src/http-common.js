@@ -3,8 +3,8 @@ import axios from "axios";
 const env = process.env.NODE_ENV || "development";
 const API_ENDPOINT =
   env === "production"
-    ? "https://hiremepls-api.onrender.com/"
-    : "http://localhost:5000/";
+    ? "http://localhost:5000/"
+    : "https://hiremepls-api.onrender.com/";
 
 export default axios.create({
   baseURL: API_ENDPOINT,
