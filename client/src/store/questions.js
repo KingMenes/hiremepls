@@ -8,12 +8,12 @@ const REMOVE_QUESTION = "questions/REMOVE_QUESTION";
 const VIEW_QUESTION = "questions/incrementView";
 const UPDATE_QUESTION = "questions/updatequestion";
 const REPUTATION = "questions/reputation";
-const ADD_COMMENT= "questions/addComment"
+const ADD_COMMENT = "questions/addComment"
 
 export const incrementQuestion = createAsyncThunk(
   VIEW_QUESTION,
   async ({ id }) => {
-    const res = await http.put(`/api/questions/view/${id}`, {
+    const res = await http.put(`/questions/view/${id}`, {
       view: id,
     });
 
@@ -24,10 +24,10 @@ export const incrementQuestion = createAsyncThunk(
 export const getQuestions = createAsyncThunk(
   GET_QUESTIONS,
   async () => {
-  const res = await http.get("/api/questions", {});
+    const res = await http.get("/questions", {});
 
-  return res.data;
-});
+    return res.data;
+  });
 
 export const updateQuestion = createAsyncThunk(
   UPDATE_QUESTION,
@@ -39,7 +39,7 @@ export const updateQuestion = createAsyncThunk(
     }
     http.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
-    const res = await http.put(`/api/questions/${id}`, {
+    const res = await http.put(`/questions/${id}`, {
       id,
       question,
       tags,
@@ -61,7 +61,7 @@ export const createQuestion = createAsyncThunk(
     }
     http.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
-    const res = await http.post("/api/questions", {
+    const res = await http.post("/questions", {
       question,
       user,
       tags,
@@ -80,7 +80,7 @@ export const deleteQuestion = createAsyncThunk(
     }
     http.defaults.headers.common["Authorization"] = `Bearer ${token}`;
     http.defaults.headers.user = user.email;
-    const res = await http.delete(`/api/questions/${id}`);
+    const res = await http.delete(`/questions/${id}`);
 
     return res.data;
   }
@@ -94,7 +94,7 @@ export const repQuestion = createAsyncThunk(
       token = user.token;
     }
     http.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-    const res = await http.put(`/api/questions/rep/${id}`, {
+    const res = await http.put(`/questions/rep/${id}`, {
       id,
       username,
       rep,
@@ -105,13 +105,13 @@ export const repQuestion = createAsyncThunk(
 
 export const addComment = createAsyncThunk(
   ADD_COMMENT,
-  async ({id, user, comment}) => {
+  async ({ id, user, comment }) => {
     let token;
     if (user.token) {
       token = user.token;
     }
     http.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-    const res = await http.put(`/api/questions/comments/${id}`, {
+    const res = await http.put(`/questions/comments/${id}`, {
       user,
       comment
     });

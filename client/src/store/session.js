@@ -9,7 +9,7 @@ const REMOVE_USER = "session/REMOVE_USER";
 export const login = createAsyncThunk(
   SET_USER,
   async ({ username, password }) => {
-    const res = await http.post("/api/users/login", {
+    const res = await http.post("/users/login", {
       username,
       email: username,
       password,
@@ -21,7 +21,7 @@ export const login = createAsyncThunk(
 export const registerUser = createAsyncThunk(
   SET_USER,
   async ({ username, email, password, password2 }) => {
-    const res = await http.post("/api/users", {
+    const res = await http.post("/users", {
       username,
       email,
       password,
@@ -33,7 +33,7 @@ export const registerUser = createAsyncThunk(
 );
 
 export const logout = createAsyncThunk(REMOVE_USER, async () => {
-  const res = await http.delete("/api/users");
+  const res = await http.delete("/users");
   return;
 });
 
