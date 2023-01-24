@@ -26,7 +26,6 @@ const generateToken = (id) => {
 
 export const isAuth = asyncHandler(async (req, res) => {
   const session = req.session.user
-  console.log(session)
   if (session) {
     const user = await User.findOne({ email: req.session.user.email });
     return res.json({

@@ -30,7 +30,7 @@ function App() {
       const res = await http.get(`/users/isAuth`)
       console.log(res.data)
       if (res.data.email) {
-        dispatch(setUserThunk({ data: res.data.email }));
+        dispatch(setUserThunk({ data: res.data }));
         setSessionUser(res.data);
       }
       setLoading(false);
