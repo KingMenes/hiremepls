@@ -1,5 +1,7 @@
 import axios from "axios";
 
+const API_ENDPOINT = process.env.REACT_APP_SERVER_URL || '/api';
+
 const env = process.env.NODE_ENV || "development";
 const API_ENDPOINT =
   env === "production"
