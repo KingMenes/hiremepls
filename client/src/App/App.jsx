@@ -27,14 +27,11 @@ function App() {
   const fetchUserAuth = async () => {
     try {
       setLoading(true);
-      const res = await http.get(`/api/users/isAuth`)
-      if (!res.ok) return setLoading(false);
-      const data = await res.json();
-      console.log(data)
-      await setUserSession(data);
-      if (data.email) {
-        dispatch(setUserThunk({ data }));
-        setSessionUser(data);
+      const res = await http.get(`/users/isAuth`)
+      console.log(res.data)
+      if (res.data.email) {
+        dispatch(setUserThunk({ data: res.data.email }));
+        setSessionUser(res.data);
       }
       setLoading(false);
     } catch (error) {
