@@ -3,7 +3,6 @@ import asyncHandler from "express-async-handler";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 
-
 export const logoutUser = asyncHandler(async (req, res) => {
   req.session.user = null;
   res.json({ message: "Logged out" });
@@ -25,8 +24,8 @@ const generateToken = (id) => {
 };
 
 export const isAuth = asyncHandler(async (req, res) => {
-  const session = req.session.user
-  console.log(session)
+  const session = req.session.user;
+  console.log(session);
   if (session) {
     const user = await User.findOne({ email: req.session.user.email });
     return res.json({
@@ -66,7 +65,7 @@ export const createUser = asyncHandler(async (req, res) => {
     if (userExist) {
       throw new Error("Username already used");
     }
-    if (userExist.username === 'count') {
+    if (userExist.username === "count") {
       throw new Error("Username cannot be used");
     }
   }

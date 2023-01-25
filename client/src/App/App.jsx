@@ -12,7 +12,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useEffect, useState } from "react";
 import { setUserThunk } from "../store/session";
 import { useDispatch } from "react-redux";
-import http from '../http-common'
+import http from "../http-common";
 import Questions from "../pages/Questions";
 import QuestionPostForm from "../components/QuestionPostForm/QuestionPostForm";
 import QuestionUpdateForm from "../components/UpdateQuestion/UpdateQuestion";
@@ -27,8 +27,8 @@ function App() {
   const fetchUserAuth = async () => {
     try {
       setLoading(true);
-      const res = await http.get(`/users/isAuth`)
-      console.log(res.data)
+      const res = await http.get(`/users/isAuth`);
+      console.log(res.data);
       if (res.data.email) {
         dispatch(setUserThunk({ data: res.data }));
         setSessionUser(res.data);

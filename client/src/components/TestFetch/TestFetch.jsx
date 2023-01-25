@@ -136,21 +136,21 @@ function TestFetch() {
     <div id="questionsContainer">
       {questions
         ? Object.values(questions).map((question) => {
-          return (
-            <QuestionBox
-              id={question._id}
-              question={question.question}
-              author={question.author}
-              date={timeSince(new Date(question.date))}
-              rep={question.reputation}
-              tags={question.tags}
-              views={question.views}
-              key={question._id}
-              authorName={question.authorName}
-              comments={question.comments}
-            />
-          );
-        })
+            return (
+              <QuestionBox
+                id={question._id}
+                question={question.question}
+                author={question.author}
+                date={timeSince(new Date(question.date))}
+                rep={question.reputation}
+                tags={question.tags}
+                views={question.views}
+                key={question._id}
+                authorName={question.authorName}
+                comments={question.comments}
+              />
+            );
+          })
         : null}
     </div>
   );

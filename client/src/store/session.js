@@ -38,7 +38,7 @@ export const logout = createAsyncThunk(REMOVE_USER, async () => {
 });
 
 export const setUserThunk = createAsyncThunk(SET_USER, async (data) => {
-  console.log('data')
+  console.log("data");
   return data.data;
 });
 

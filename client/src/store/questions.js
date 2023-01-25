@@ -8,7 +8,7 @@ const REMOVE_QUESTION = "questions/REMOVE_QUESTION";
 const VIEW_QUESTION = "questions/incrementView";
 const UPDATE_QUESTION = "questions/updatequestion";
 const REPUTATION = "questions/reputation";
-const ADD_COMMENT = "questions/addComment"
+const ADD_COMMENT = "questions/addComment";
 
 export const incrementQuestion = createAsyncThunk(
   VIEW_QUESTION,
@@ -21,13 +21,11 @@ export const incrementQuestion = createAsyncThunk(
   }
 );
 
-export const getQuestions = createAsyncThunk(
-  GET_QUESTIONS,
-  async () => {
-    const res = await http.get("/questions", {});
+export const getQuestions = createAsyncThunk(GET_QUESTIONS, async () => {
+  const res = await http.get("/questions", {});
 
-    return res.data;
-  });
+  return res.data;
+});
 
 export const updateQuestion = createAsyncThunk(
   UPDATE_QUESTION,
@@ -113,7 +111,7 @@ export const addComment = createAsyncThunk(
     http.defaults.headers.common["Authorization"] = `Bearer ${token}`;
     const res = await http.put(`/questions/comments/${id}`, {
       user,
-      comment
+      comment,
     });
     return res.data;
   }

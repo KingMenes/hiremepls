@@ -29,9 +29,9 @@ function QuestionPostOpen({
   date,
   body,
   comments,
-  id
+  id,
 }) {
-  console.log(comments)
+  console.log(comments);
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
 
@@ -84,40 +84,52 @@ function QuestionPostOpen({
             <h1>{question}</h1>
             <p>{body}</p>
           </div>
-          {sessionUser && (<div className="addComment row flex-center">
-            <img src="https://thispersondoesnotexist.com/image" alt="" />
-            <form className="row flex-center" onSubmit={handleSubmit}>
-              <div className="commentInput">
-                <input
-                  type="text"
-                  name="comment"
-                  id="comment"
-                  placeholder="Add an answer or comment ..."
-                  onChange={(e) => setCommentBody(e.target.value)}
-                />
-              </div>
-              <motion.button
-                type="submit"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-              >
-                Add Answer
-              </motion.button>
-            </form>
-          </div>)}
+          <div className="addComment row flex-center">
+            {sessionUser && (
+              <img src="https://thispersondoesnotexist.com/image" alt="" />
+            )}
+            {sessionUser ? (
+              <form className="row flex-center" onSubmit={handleSubmit}>
+                <div className="commentInput">
+                  <input
+                    type="text"
+                    name="comment"
+                    id="comment"
+                    placeholder="Add an answer or comment ..."
+                    onChange={(e) => setCommentBody(e.target.value)}
+                  />
+                </div>
+                <motion.button
+                  type="submit"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  Add Answer
+                </motion.button>
+              </form>
+            ) : (
+              <p>Login to answer this question!</p>
+            )}
+          </div>
 
           <div className="comments">
-            {comments.length ? <ul>
-              {comments.map(comment => {
-                return <li>
-                  <div>{comment?.body}</div>
-                  <div>{comment?.user?.username}</div>
-                </li>
-              })}
-            </ul> : <p>
-              No answers, yet!
-              <br /> Be the first to add one!
-            </p>}
+            {comments.length ? (
+              <ul>
+                {comments.map((comment) => {
+                  return (
+                    <li>
+                      <div>{comment?.body}</div>
+                      <div>{comment?.user?.username}</div>
+                    </li>
+                  );
+                })}
+              </ul>
+            ) : (
+              <p>
+                No answers, yet!
+                <br /> Be the first to add one!
+              </p>
+            )}
             {/* { comments.length === 0 ?
             <p>No answers, yet!<br /> Be the first to add one!</p>
               :
