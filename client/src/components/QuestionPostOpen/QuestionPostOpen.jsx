@@ -31,7 +31,7 @@ function QuestionPostOpen({
   comments,
   id,
 }) {
-  console.log(comments);
+
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
 
