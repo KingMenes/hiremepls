@@ -176,3 +176,20 @@ export const addComment = asyncHandler(async (req, res) => {
   question.save();
   res.json(question);
 });
+
+export const deleteComment = asyncHandler(async (req, res) => {
+  const { commentId, questionId } = req.params
+  const question = await Question.findById(questionId)
+  const comment = await Comment.findById(commentId)
+  for (let i = 0; i < question.comments.length; i++) {
+    let comment = question.comments[i]
+    if (comment._id.toString() === commentId) {
+      question.comments.splice(i, 1)
+      question.save()
+      break;
+    }
+  }
+  await comment.remove()
+
+  res.json(question)
+})

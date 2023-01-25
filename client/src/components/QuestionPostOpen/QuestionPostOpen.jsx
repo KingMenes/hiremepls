@@ -2,7 +2,7 @@ import "./QuestionPostOpen.css";
 import Backdrop from "../Backdrop/Backdrop";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { addComment } from "../../store/questions";
+import { addComment, deleteComment } from "../../store/questions";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -120,6 +120,10 @@ function QuestionPostOpen({
                     <li>
                       <div>{comment?.body}</div>
                       <div>{comment?.author?.username}</div>
+                      <button onClick={async (e) => {
+                        e.preventDefault()
+                        await dispatch(deleteComment({ commentId: comment._id, questionId: id, user: sessionUser }))
+                      }}>X</button>
                     </li>
                   );
                 })}

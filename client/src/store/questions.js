@@ -50,6 +50,21 @@ export const updateQuestion = createAsyncThunk(
   }
 );
 
+export const deleteComment = createAsyncThunk(
+  UPDATE_QUESTION,
+  async ({ commentId, questionId, user }) => {
+    let token;
+    if (user.token) {
+      token = user.token
+    }
+    http.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+
+    const res = await http.delete(`/questions/${questionId}/comment/${commentId}`)
+
+    return res.data
+  }
+)
+
 export const createQuestion = createAsyncThunk(
   CREATE_QUESTION,
   async ({ question, user, tags }) => {

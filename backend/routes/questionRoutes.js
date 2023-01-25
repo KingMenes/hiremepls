@@ -11,6 +11,7 @@ import {
   viewQuestion,
   addComment,
   getQuestion,
+  deleteComment
 } from "../controllers/questionController.js";
 
 router.get("/", getQuestions);
@@ -20,6 +21,7 @@ router.put("/rep/:id", protect, repQuestion);
 router.put("/view/:id", viewQuestion);
 router.put("/comments/:id", protect, addComment);
 router.put("/:id", protect, updateQuestion);
+router.delete("/:questionId/comment/:commentId", deleteComment)
 router.delete("/:id", protect, deleteQuestion);
 
 export default router;
