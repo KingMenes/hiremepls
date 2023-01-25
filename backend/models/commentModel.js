@@ -9,13 +9,13 @@ const commentSchema = mongoose.Schema({
   },
   reputation: {
     //likes/dislikes
-    type: mongoose.Schema.Types.Array,
-    default: [0, 0],
+    // type: mongoose.Schema.Types.Array,
+    // default: [0, 0],
   },
   author: {
-    type: mongoose.Schema.Types.ObjectId,
-    required: [true, "Please add an author"],
-    ref: "User",
+    // type: mongoose.Schema.Types.ObjectId,
+    // required: [true, "Please add an author"],
+    // ref: "User",
   },
   replies: {
     type: mongoose.Schema.Types.Array,

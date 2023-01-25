@@ -119,7 +119,7 @@ function QuestionPostOpen({
                   return (
                     <li>
                       <div>{comment?.body}</div>
-                      <div>{comment?.user?.username}</div>
+                      <div>{comment?.author?.username}</div>
                     </li>
                   );
                 })}

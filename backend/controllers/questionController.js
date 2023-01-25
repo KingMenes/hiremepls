@@ -164,8 +164,15 @@ export const addComment = asyncHandler(async (req, res) => {
     res.status(401);
     throw new Error("Not logged in!");
   }
+  const comm = await Comment.create({
+    body: comment.body,
+    author: { username: comment.user.username, email: comment.user.email, },
+    reputation: { likes: { count: 0 }, dislikes: { count: 0 } },
+    date: new Date(),
+  })
+  console.log(comm)
 
-  question.comments.push(comment);
+  question.comments.push(comm);
   question.save();
   res.json(question);
 });
