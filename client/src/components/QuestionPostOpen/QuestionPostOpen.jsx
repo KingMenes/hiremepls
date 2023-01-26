@@ -144,7 +144,7 @@ function QuestionPostOpen({
                               setEdit('')
                             }}>Submit</button>}
                         </div>}
-                      {edit !== comment._id ? <div>{comment?.body}</div> : <input onChange={(e) => {
+                      {edit !== comment._id ? <div className='commentbodyline'>{comment?.body}</div> : <input className='commentbodyline' onChange={(e) => {
                         e.preventDefault()
                         setCurrentValue(e.target.value)
                       }} value={currentValue}></input>}
