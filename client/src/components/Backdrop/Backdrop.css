@@ -11,4 +11,7 @@
   overflow: hidden;
   z-index: 9;
   position: fixed;
-} /*# sourceMappingURL=Backdrop.css.map */
+  cursor: default;
+}
+
+/*# sourceMappingURL=Backdrop.css.map */
