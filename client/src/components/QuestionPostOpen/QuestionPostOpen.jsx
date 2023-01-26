@@ -116,16 +116,16 @@ function QuestionPostOpen({
 
           <div className="comments">
             {comments.length ? (
-              <ul>
+              <div id="commentscontainer">
                 {comments.map((comment) => {
                   return (
-                    <li>
+                    <div className="commentline">
                       {edit !== comment._id ? <div>{comment?.body}</div> : <input onChange={(e) => {
                         e.preventDefault()
                         setCurrentValue(e.target.value)
                       }} value={currentValue}></input>}
 
-                      <div>{comment?.author?.username}</div>
+                      <div>{`-${comment?.author?.username}`}</div>
 
                       {comment?.author?.username === sessionUser?.username &&
                         <div>
@@ -150,10 +150,10 @@ function QuestionPostOpen({
                             }}>Submit</button>}
                         </div>}
 
-                    </li>
+                    </div>
                   );
                 })}
-              </ul>
+              </div>
             ) : (
               <p>
                 No answers, yet!
