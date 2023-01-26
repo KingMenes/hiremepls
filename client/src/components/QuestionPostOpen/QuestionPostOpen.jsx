@@ -2,7 +2,7 @@ import "./QuestionPostOpen.css";
 import Backdrop from "../Backdrop/Backdrop";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { addComment, deleteComment } from "../../store/questions";
+import { addComment, deleteComment, updateComment } from "../../store/questions";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -38,6 +38,8 @@ function QuestionPostOpen({
   // STATES
   const [commentBody, setCommentBody] = useState("");
   const [errors, setErrors] = useState("");
+  const [edit, setEdit] = useState("")
+  const [currentValue, setCurrentValue] = useState()
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -118,12 +120,37 @@ function QuestionPostOpen({
                 {comments.map((comment) => {
                   return (
                     <li>
-                      <div>{comment?.body}</div>
-                      <div>{comment?.author?.username}</div>
-                      <button onClick={async (e) => {
+                      {edit !== comment._id ? <div>{comment?.body}</div> : <input onChange={(e) => {
                         e.preventDefault()
-                        await dispatch(deleteComment({ commentId: comment._id, questionId: id, user: sessionUser }))
-                      }}>X</button>
+                        setCurrentValue(e.target.value)
+                      }} value={currentValue}></input>}
+
+                      <div>{comment?.author?.username}</div>
+
+                      {comment?.author?.username === sessionUser?.username &&
+                        <div>
+                          {edit !== comment._id ? <button onClick={async (e) => {
+                            e.preventDefault()
+                            await dispatch(deleteComment({ commentId: comment._id, questionId: id, user: sessionUser }))
+                          }}>X</button> :
+                            <button onClick={(e) => {
+                              e.preventDefault()
+                              setEdit('')
+                            }}>Cancel</button>}
+
+                          {edit !== comment._id ?
+                            <button onClick={(e) => {
+                              e.preventDefault()
+                              setCurrentValue(comment?.body)
+                              setEdit(comment._id)
+                            }}>Edit</button> :
+                            <button onClick={async (e) => {
+                              await dispatch(updateComment({ comment: currentValue, commentId: comment._id, questionId: id, user: sessionUser }))
+                              console.log('hello')
+                              setEdit('')
+                            }}>Submit</button>}
+                        </div>}
+
                     </li>
                   );
                 })}

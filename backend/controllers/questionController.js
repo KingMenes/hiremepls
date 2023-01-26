@@ -185,11 +185,31 @@ export const deleteComment = asyncHandler(async (req, res) => {
     let comment = question.comments[i]
     if (comment._id.toString() === commentId) {
       question.comments.splice(i, 1)
-      question.save()
+      await question.save()
       break;
     }
   }
   await comment.remove()
 
+  res.json(question)
+})
+
+export const updateComment = asyncHandler(async (req, res) => {
+  const { comment: body } = req.body
+  const { questionId, commentId } = req.params
+  console.log(body)
+  console.log(questionId, commentId)
+  const question = await Question.findById(questionId)
+  const comment = await Comment.findById(commentId)
+  comment.body = body
+  await comment.save()
+  for (let i = 0; i < question.comments.length; i++) {
+    let comm = question.comments[i]
+    if (comm._id.toString() === commentId) {
+      question.comments[i] = comment
+      await question.save()
+      break;
+    }
+  }
   res.json(question)
 })

@@ -11,12 +11,14 @@ import {
   viewQuestion,
   addComment,
   getQuestion,
-  deleteComment
+  deleteComment,
+  updateComment
 } from "../controllers/questionController.js";
 
 router.get("/", getQuestions);
 router.get("/:id", getQuestion);
 router.post("/", protect, createQuestion);
+router.put("/:questionId/comment/:commentId", updateComment)
 router.put("/rep/:id", protect, repQuestion);
 router.put("/view/:id", viewQuestion);
 router.put("/comments/:id", protect, addComment);
