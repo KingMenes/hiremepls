@@ -139,8 +139,21 @@
   /* Firefox */
   box-shadow: inset 0 0 5px rgba(200, 192, 192, 0.72);
   background-color: white;
+  font-family: 'Didot, serif';
+  position: relative;
 }
+
 
 .commentline::-webkit-scrollbar {
   display: none;
+}
+
+.buttondiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: 0px;
+
 }

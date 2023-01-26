@@ -5,6 +5,8 @@ import { useState } from "react";
 import { addComment, deleteComment, updateComment } from "../../store/questions";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { TiDelete } from "react-icons/ti";
+import { FiEdit } from "react-icons/fi";
 
 const fadeIn = {
   hidden: {
@@ -120,6 +122,28 @@ function QuestionPostOpen({
                 {comments.map((comment) => {
                   return (
                     <div className="commentline">
+                      {comment?.author?.username === sessionUser?.username &&
+
+                        <div className="buttondiv">
+                          {edit !== comment._id ? <TiDelete className="icn-delete" onClick={async (e) => {
+                            await dispatch(deleteComment({ commentId: comment._id, questionId: id, user: sessionUser }))
+                          }}></TiDelete> :
+                            <button onClick={(e) => {
+                              e.preventDefault()
+                              setEdit('')
+                            }}>Cancel</button>}
+
+                          {edit !== comment._id ?
+                            <FiEdit className="icn icn-update" onClick={(e) => {
+                              e.preventDefault()
+                              setCurrentValue(comment?.body)
+                              setEdit(comment._id)
+                            }}></FiEdit> :
+                            <button onClick={async (e) => {
+                              await dispatch(updateComment({ comment: currentValue, commentId: comment._id, questionId: id, user: sessionUser }))
+                              setEdit('')
+                            }}>Submit</button>}
+                        </div>}
                       {edit !== comment._id ? <div>{comment?.body}</div> : <input onChange={(e) => {
                         e.preventDefault()
                         setCurrentValue(e.target.value)
@@ -127,28 +151,7 @@ function QuestionPostOpen({
 
                       <div>{`-${comment?.author?.username}`}</div>
 
-                      {comment?.author?.username === sessionUser?.username &&
-                        <div>
-                          {edit !== comment._id ? <button onClick={async (e) => {
-                            e.preventDefault()
-                            await dispatch(deleteComment({ commentId: comment._id, questionId: id, user: sessionUser }))
-                          }}>X</button> :
-                            <button onClick={(e) => {
-                              e.preventDefault()
-                              setEdit('')
-                            }}>Cancel</button>}
 
-                          {edit !== comment._id ?
-                            <button onClick={(e) => {
-                              e.preventDefault()
-                              setCurrentValue(comment?.body)
-                              setEdit(comment._id)
-                            }}>Edit</button> :
-                            <button onClick={async (e) => {
-                              await dispatch(updateComment({ comment: currentValue, commentId: comment._id, questionId: id, user: sessionUser }))
-                              setEdit('')
-                            }}>Submit</button>}
-                        </div>}
 
                     </div>
                   );
