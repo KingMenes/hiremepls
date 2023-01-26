@@ -170,7 +170,7 @@ export const addComment = asyncHandler(async (req, res) => {
     reputation: { likes: { count: 0 }, dislikes: { count: 0 } },
     date: new Date(),
   })
-  console.log(comm)
+
 
   question.comments.push(comm);
   question.save();
@@ -197,8 +197,8 @@ export const deleteComment = asyncHandler(async (req, res) => {
 export const updateComment = asyncHandler(async (req, res) => {
   const { comment: body } = req.body
   const { questionId, commentId } = req.params
-  console.log(body)
-  console.log(questionId, commentId)
+
+
   const question = await Question.findById(questionId)
   const comment = await Comment.findById(commentId)
   comment.body = body

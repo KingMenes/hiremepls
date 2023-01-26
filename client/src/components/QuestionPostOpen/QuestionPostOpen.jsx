@@ -146,7 +146,6 @@ function QuestionPostOpen({
                             }}>Edit</button> :
                             <button onClick={async (e) => {
                               await dispatch(updateComment({ comment: currentValue, commentId: comment._id, questionId: id, user: sessionUser }))
-                              console.log('hello')
                               setEdit('')
                             }}>Submit</button>}
                         </div>}
