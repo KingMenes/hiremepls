@@ -55,16 +55,17 @@ export const deleteComment = createAsyncThunk(
   async ({ commentId, questionId, user }) => {
     let token;
     if (user.token) {
-      token = user.token
+      token = user.token;
     }
-    http.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    http.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
-    const res = await http.delete(`/questions/${questionId}/comment/${commentId}`)
+    const res = await http.delete(
+      `/questions/${questionId}/comment/${commentId}`
+    );
 
-    return res.data
+    return res.data;
   }
-)
-
+);
 
 export const createQuestion = createAsyncThunk(
   CREATE_QUESTION,
@@ -140,14 +141,18 @@ export const updateComment = createAsyncThunk(
       token = user.token;
     }
     http.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-    console.log(comment, questionId)
+    console.log(comment, questionId);
 
-    const res = await http.put(`/questions/${questionId}/comment/${commentId}`, {
-      comment
-    })
+    const res = await http.put(
+      `/questions/${questionId}/comment/${commentId}`,
+      {
+        comment,
+      }
+    );
 
-    return res.data
-  })
+    return res.data;
+  }
+);
 
 const sessionSlice = createSlice({
   name: "questions",

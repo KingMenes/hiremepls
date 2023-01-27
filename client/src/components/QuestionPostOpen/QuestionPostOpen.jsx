@@ -2,11 +2,22 @@ import "./QuestionPostOpen.css";
 import Backdrop from "../Backdrop/Backdrop";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { addComment, deleteComment, updateComment } from "../../store/questions";
+import {
+  addComment,
+  deleteComment,
+  updateComment,
+} from "../../store/questions";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { TiDelete } from "react-icons/ti";
 import { FiEdit } from "react-icons/fi";
+import {
+  BsHandThumbsUp,
+  BsHandThumbsDown,
+  BsFillHandThumbsUpFill,
+  BsFillHandThumbsDownFill,
+} from "react-icons/bs";
+import { BiComment } from "react-icons/bi";
 
 const fadeIn = {
   hidden: {
@@ -33,15 +44,14 @@ function QuestionPostOpen({
   comments,
   id,
 }) {
-
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
 
   // STATES
   const [commentBody, setCommentBody] = useState("");
   const [errors, setErrors] = useState("");
-  const [edit, setEdit] = useState("")
-  const [currentValue, setCurrentValue] = useState()
+  const [edit, setEdit] = useState("");
+  const [currentValue, setCurrentValue] = useState();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -122,37 +132,87 @@ function QuestionPostOpen({
                 {comments.map((comment) => {
                   return (
                     <div className="commentline">
-                      {comment?.author?.username === sessionUser?.username &&
-
+                      {/* <div className="threadline-div"><i className="threadline"></i></div> */}
+                      {comment?.author?.username === sessionUser?.username && (
                         <div className="buttondiv">
-                          {edit !== comment._id ? <TiDelete className="icn-delete" onClick={async (e) => {
-                            await dispatch(deleteComment({ commentId: comment._id, questionId: id, user: sessionUser }))
-                          }}></TiDelete> :
-                            <button onClick={(e) => {
-                              e.preventDefault()
-                              setEdit('')
-                            }}>Cancel</button>}
+                          {edit !== comment._id ? (
+                            <TiDelete
+                              className="icn-delete"
+                              onClick={async (e) => {
+                                await dispatch(
+                                  deleteComment({
+                                    commentId: comment._id,
+                                    questionId: id,
+                                    user: sessionUser,
+                                  })
+                                );
+                              }}
+                            ></TiDelete>
+                          ) : (
+                            <button
+                              onClick={(e) => {
+                                e.preventDefault();
+                                setEdit("");
+                              }}
+                            >
+                              Cancel
+                            </button>
+                          )}
 
-                          {edit !== comment._id ?
-                            <FiEdit className="icn icn-update" onClick={(e) => {
-                              e.preventDefault()
-                              setCurrentValue(comment?.body)
-                              setEdit(comment._id)
-                            }}></FiEdit> :
-                            <button onClick={async (e) => {
-                              await dispatch(updateComment({ comment: currentValue, commentId: comment._id, questionId: id, user: sessionUser }))
-                              setEdit('')
-                            }}>Submit</button>}
-                        </div>}
-                      {edit !== comment._id ? <div className='commentbodyline'>{comment?.body}</div> : <input className='commentbodyline' onChange={(e) => {
-                        e.preventDefault()
-                        setCurrentValue(e.target.value)
-                      }} value={currentValue}></input>}
-
-                      <div>{`-${comment?.author?.username}`}</div>
-
-
-
+                          {edit !== comment._id ? (
+                            <FiEdit
+                              className="icn icn-update"
+                              onClick={(e) => {
+                                e.preventDefault();
+                                setCurrentValue(comment?.body);
+                                setEdit(comment._id);
+                              }}
+                            ></FiEdit>
+                          ) : (
+                            <button
+                              onClick={async (e) => {
+                                await dispatch(
+                                  updateComment({
+                                    comment: currentValue,
+                                    commentId: comment._id,
+                                    questionId: id,
+                                    user: sessionUser,
+                                  })
+                                );
+                                setEdit("");
+                              }}
+                            >
+                              Submit
+                            </button>
+                          )}
+                        </div>
+                      )}
+                      <div className="commentUser">
+                        {`${comment?.author?.username}`}
+                      </div>
+                      {edit !== comment._id ? (
+                        <div className="commentbodyline">{comment?.body}</div>
+                      ) : (
+                        <input
+                          className="commentbodyline"
+                          onChange={(e) => {
+                            e.preventDefault();
+                            setCurrentValue(e.target.value);
+                          }}
+                          value={currentValue}
+                        ></input>
+                      )}
+                      <div className="comment-bottom-bar">
+                        <div className="votes">
+                          <BsHandThumbsUp />
+                          <span>0</span>
+                          <BsHandThumbsDown />
+                        </div>
+                        <div className="comment-reply">
+                          <BiComment />
+                          <span>Reply</span>
+                        </div>
+                      </div>
                     </div>
                   );
                 })}
@@ -163,16 +223,6 @@ function QuestionPostOpen({
                 <br /> Be the first to add one!
               </p>
             )}
-            {/* { comments.length === 0 ?
-            <p>No answers, yet!<br /> Be the first to add one!</p>
-              :
-              comments.map((comment) => {
-                return (
-                  <div className="commentContainer">
-                    {comment}
-                  </div>)
-              })
-          } */}
           </div>
         </div>
       </motion.div>

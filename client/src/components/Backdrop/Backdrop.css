@@ -8,10 +8,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
+  overflow-y: scroll;
   z-index: 9;
   position: fixed;
   cursor: default;
-}
-
-/*# sourceMappingURL=Backdrop.css.map */
+} /*# sourceMappingURL=Backdrop.css.map */

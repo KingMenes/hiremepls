@@ -1,33 +1,28 @@
 .questionmodal {
-  width: 70%;
+  width: 50%;
   margin-left: auto;
   margin-right: auto;
 }
-
-
 
 .questionpostopen {
   background-color: white;
   width: 100%;
   margin: auto;
   border-radius: 15px;
-  max-height: 70vh;
+  max-height: 90vh;
+  overflow: hidden;
 }
-
 .questionpostopen .questionContainer span {
   margin-left: -320px;
 }
-
 .questionpostopen .questionContainer h1 {
   margin-left: -300px;
   font-size: 24px;
 }
-
 .questionpostopen .questionContainer p {
   display: inline-block;
   width: 90%;
 }
-
 .questionpostopen img {
   border-radius: 999px;
   display: flex;
@@ -43,23 +38,19 @@
   font-weight: 700;
   margin-right: 0px;
 }
-
 .questionpostopen .addComment {
   background-color: #f1f2f2;
   width: 100%;
   height: 50px;
 }
-
 .questionpostopen .addComment form {
   width: 90%;
-  height: 100%;
+  height: 90%;
 }
-
 .questionpostopen .addComment p {
   display: block;
   margin-left: 10px;
 }
-
 .questionpostopen .addComment button {
   display: flex;
   background-color: #2e69ff;
@@ -74,12 +65,10 @@
   width: 20%;
   margin-left: 10px;
 }
-
 .questionpostopen .addComment button:hover {
   filter: brightness(0.9);
   cursor: pointer;
 }
-
 .questionpostopen .addComment .commentInput {
   width: 75%;
   height: 36px;
@@ -89,94 +78,84 @@
   background-color: #fff;
   border-radius: 999px;
 }
-
 .questionpostopen .addComment .commentInput input {
   width: 90%;
   height: 100%;
   border: none;
 }
-
 .questionpostopen .addComment .commentInput input:focus {
   outline: none;
 }
-
 .questionpostopen .comments {
   min-height: 30vh;
+  width: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
-
 .questionpostopen .comments p {
   color: #545656;
   margin-top: 30px;
 }
-
-/*# sourceMappingURL=QuestionPostOpen.css.map */
-.comments {
-  width: 100%;
-  height: 100%;
-  border-radius: 20px;
-}
-
-#commentscontainer {
-  margin-left: 0px;
-  margin-right: 0px;
+.questionpostopen .comments #commentscontainer {
+  margin-left: auto;
+  margin-right: auto;
   border-radius: 10px;
-  width: 100%;
-  height: 10%;
+  width: 95%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  overflow-y: scroll;
-  -ms-overflow-style: none;
-  /* IE and Edge */
-  scrollbar-width: none;
-  /* Firefox */
+  margin-top: 10px;
 }
-
-#commentscontainer::-webkit-scrollbar {
-  display: none;
-}
-
-.commentline {
-  border: 1px solid rgb(0, 0, 0, .3);
-  margin: 6px;
-  width: 90%;
-  /* height: max-content; */
-  min-height: 50px;
-  overflow-x: scroll;
-  overflow-y: hidden;
-  border-radius: 5px;
-  padding: 5px;
-  -ms-overflow-style: none;
-  /* IE and Edge */
-  scrollbar-width: none;
-  /* Firefox */
-  box-shadow: inset 0 0 5px rgba(200, 192, 192, 0.72);
-  background-color: white;
-  font-family: 'Didot, serif';
+.questionpostopen .comments .commentline {
   position: relative;
-}
-
-
-.commentline::-webkit-scrollbar {
-  display: none;
-}
-
-.buttondiv {
+  width: 100%;
+  min-height: 50px;
+  border-radius: 10px;
+  border: 1px solid gray;
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 5px;
+  font-family: "Noto Sans", sans-serif;
+}
+.questionpostopen .comments .commentline .comment-bottom-bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  margin-left: 10px;
+  color: rgb(107, 107, 107);
+  height: 40px;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+}
+.questionpostopen .comments .commentline .comment-bottom-bar .votes {
+  display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
+}
+.questionpostopen .comments .commentline .comment-bottom-bar .comment-reply {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 20px;
+}
+.questionpostopen .comments .commentUser {
   position: absolute;
-  right: 0px;
-  top: 0px;
-
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 16px;
+  top: 5px;
+  left: 20px;
 }
-
-.commentbodyline {
-  width: 90%;
-  margin-right: 20px;
-  padding: 5px;
-  text-align: center;
-  border-radius: 10px;
-}
+.questionpostopen .comments .commentbodyline {
+  margin-left: 50px;
+  margin-top: 20px;
+  font-size: 14px;
+} /*# sourceMappingURL=QuestionPostOpen.css.map */

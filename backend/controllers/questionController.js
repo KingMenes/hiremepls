@@ -166,11 +166,10 @@ export const addComment = asyncHandler(async (req, res) => {
   }
   const comm = await Comment.create({
     body: comment.body,
-    author: { username: comment.user.username, email: comment.user.email, },
+    author: { username: comment.user.username, email: comment.user.email },
     reputation: { likes: { count: 0 }, dislikes: { count: 0 } },
     date: new Date(),
-  })
-
+  });
 
   question.comments.push(comm);
   question.save();
@@ -178,38 +177,37 @@ export const addComment = asyncHandler(async (req, res) => {
 });
 
 export const deleteComment = asyncHandler(async (req, res) => {
-  const { commentId, questionId } = req.params
-  const question = await Question.findById(questionId)
-  const comment = await Comment.findById(commentId)
+  const { commentId, questionId } = req.params;
+  const question = await Question.findById(questionId);
+  const comment = await Comment.findById(commentId);
   for (let i = 0; i < question.comments.length; i++) {
-    let comment = question.comments[i]
+    let comment = question.comments[i];
     if (comment._id.toString() === commentId) {
-      question.comments.splice(i, 1)
-      await question.save()
+      question.comments.splice(i, 1);
+      await question.save();
       break;
     }
   }
-  await comment.remove()
+  await comment.remove();
 
-  res.json(question)
-})
+  res.json(question);
+});
 
 export const updateComment = asyncHandler(async (req, res) => {
-  const { comment: body } = req.body
-  const { questionId, commentId } = req.params
+  const { comment: body } = req.body;
+  const { questionId, commentId } = req.params;
 
-
-  const question = await Question.findById(questionId)
-  const comment = await Comment.findById(commentId)
-  comment.body = body
-  await comment.save()
+  const question = await Question.findById(questionId);
+  const comment = await Comment.findById(commentId);
+  comment.body = body;
+  await comment.save();
   for (let i = 0; i < question.comments.length; i++) {
-    let comm = question.comments[i]
+    let comm = question.comments[i];
     if (comm._id.toString() === commentId) {
-      question.comments[i] = comment
-      await question.save()
+      question.comments[i] = comment;
+      await question.save();
       break;
     }
   }
-  res.json(question)
-})
+  res.json(question);
+});
