@@ -18,12 +18,7 @@ function Navbar({ sessionUser, setSessionUser }) {
   const { loginModalOpen, loginClose, loginOpen } = useLoginModal();
   const { signupModalOpen, signupClose, signupOpen } = useSignupModal();
 
-  const handleLogout = async (e) => {
-    e.preventDefault();
-    await dispatch(logout());
-    setSessionUser(null);
-    return;
-  };
+  
 
   return (
     <div className="navbar">
@@ -80,7 +75,8 @@ function Navbar({ sessionUser, setSessionUser }) {
         {sessionUser && (
           <UserBadge
             img="https://thispersondoesnotexist.com/image"
-            user={sessionUser?.username}
+            setSessionUser={setSessionUser}
+            sessionUser={sessionUser}
           />
         )}
 

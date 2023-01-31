@@ -1,18 +1,24 @@
 import "./UserBadge.css";
 import { AiOutlineCaretDown } from "react-icons/ai";
 import { FaSignOutAlt } from "react-icons/fa";
-import "react-tooltip/dist/react-tooltip.css";
+import { useDispatch, useSelector } from "react-redux";
+import { logout, login } from "../../store/session";
 
-function UserBadge({ img, user }) {
-  console.log({ user });
-
+function UserBadge({ img, sessionUser, setSessionUser }) {
+  const dispatch = useDispatch();
+  const handleLogout = async (e) => {
+    e.preventDefault();
+    await dispatch(logout());
+    setSessionUser(null);
+    return;
+  };
   return (
     <div className="userBadge">
       <img src={img} alt="" />
-      <span>{user}</span>
+      <span>{sessionUser?.username}</span>
       {/* <AiOutlineCaretDown className="caret"/> */}
       <div>
-        <FaSignOutAlt className="caret" id="signout-btn" />
+        <FaSignOutAlt className="caret" id="signout-btn" onClick={handleLogout} />
       </div>
     </div>
   );
