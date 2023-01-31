@@ -18,6 +18,7 @@ import {
   BsFillHandThumbsDownFill,
 } from "react-icons/bs";
 import { BiComment } from "react-icons/bi";
+import { incrementQuestion, repQuestion } from "../../store/questions";
 
 const fadeIn = {
   hidden: {
@@ -39,10 +40,13 @@ function QuestionPostOpen({
   handleClose,
   question,
   author,
+  user,
   date,
   body,
   comments,
   id,
+  rep,
+  tags,
 }) {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
@@ -75,6 +79,12 @@ function QuestionPostOpen({
     ); //Object to POST
   };
 
+  const tagsList = tags.map((tag) => (
+    <div className="tag" key={tag}>
+      <span>{tag}</span>
+    </div>
+  ));
+
   return (
     <Backdrop
       onClick={(e) => {
@@ -92,11 +102,92 @@ function QuestionPostOpen({
       >
         <div className="questionpostopen flex-start col">
           <div className="questionContainer">
-            <span>
-              asked by {author} {date} ago
-            </span>
-            <h1>{question}</h1>
-            <p>{body}</p>
+            <div className="repCount">
+              {rep.likes && rep.likes[user?.username] ? (
+                <BsFillHandThumbsUpFill
+                  className="icn i-u"
+                  onClick={async (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    if (user) {
+                      await dispatch(
+                        repQuestion({
+                          id,
+                          username: user.username,
+                          user,
+                          rep: "like",
+                        })
+                      );
+                    }
+                  }}
+                />
+              ) : (
+                <BsHandThumbsUp
+                  className="icn i-u"
+                  onClick={async (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    if (user) {
+                      await dispatch(
+                        repQuestion({
+                          id,
+                          username: user.username,
+                          user,
+                          rep: "like",
+                        })
+                      );
+                    }
+                  }}
+                />
+              )}
+
+              <span>{rep?.likes?.count - rep?.dislikes?.count}</span>
+              {rep.dislikes && rep.dislikes[user?.username] ? (
+                <BsFillHandThumbsDownFill
+                  className="icn i-u"
+                  onClick={async (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    if (user) {
+                      await dispatch(
+                        repQuestion({
+                          id,
+                          username: user.username,
+                          user,
+                          rep: "dislike",
+                        })
+                      );
+                    }
+                  }}
+                />
+              ) : (
+                <BsHandThumbsDown
+                  className="icn i-u"
+                  onClick={async (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    if (user) {
+                      await dispatch(
+                        repQuestion({
+                          id,
+                          username: user.username,
+                          user,
+                          rep: "dislike",
+                        })
+                      );
+                    }
+                  }}
+                />
+              )}
+            </div>
+            <div className="questioninfo">
+              <span>
+                asked by {author} {date} ago
+              </span>
+              <h1>{question}</h1>
+              <p>{body}</p>
+              <div className="tags">{tagsList}</div>
+            </div>
           </div>
           <div className="addComment row flex-center">
             {sessionUser && (
@@ -125,7 +216,6 @@ function QuestionPostOpen({
               <p>Login to answer this question!</p>
             )}
           </div>
-
           <div className="comments">
             {comments.length ? (
               <div id="commentscontainer">

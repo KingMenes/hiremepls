@@ -10,6 +10,7 @@ import SignupForm from "../SignupForm/SignupForm";
 import { useDispatch, useSelector } from "react-redux";
 import { logout, login } from "../../store/session";
 import { NavLink } from "react-router-dom";
+import UserBadge from "../UserBadge/UserBadge";
 
 function Navbar({ sessionUser, setSessionUser }) {
   const dispatch = useDispatch();
@@ -75,15 +76,12 @@ function Navbar({ sessionUser, setSessionUser }) {
             <span>Sign Up</span>
           </motion.button>
         )}
+
         {sessionUser && (
-          <motion.button
-            className="btn-login"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            onClick={handleLogout}
-          >
-            <span>Log out</span>
-          </motion.button>
+          <UserBadge
+            img="https://thispersondoesnotexist.com/image"
+            user={sessionUser?.username}
+          />
         )}
 
         <ModalContainer>

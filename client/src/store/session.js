@@ -1,5 +1,4 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-// import User from "../../backend/models/userModel"
 import http from "../http-common";
 
 // constants

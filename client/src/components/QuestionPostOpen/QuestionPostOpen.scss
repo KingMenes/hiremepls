@@ -11,20 +11,65 @@
   border-radius: 15px;
   max-height: 90vh;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 
   .questionContainer {
-    span {
-      margin-left: -320px;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+
+    .tags {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      width: 100%;
+
+      .tag {
+        background-color: rgb(1, 30, 110);
+        color: rgb(228, 228, 228);
+        border-radius: 999px;
+        width: fit-content;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 5px;
+
+        span {
+          margin: 5px 10px;
+          font-size: 12px;
+          font-weight: 800;
+        }
+      }
     }
 
-    h1 {
-      margin-left: -300px;
-      font-size: 24px;
+    .repCount {
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    p {
-      display: inline-block;
-      width: 90%;
+    .questioninfo {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+
+      span {
+        align-self: flex-start;
+      }
+
+      h1 {
+        align-self: flex-start;
+      }
+
+      p {
+        width: 90%;
+      }
     }
   }
 
@@ -47,11 +92,12 @@
   .addComment {
     background-color: #f1f2f2;
     width: 100%;
-    height: 50px;
+    height: 120px;
+    margin-top: 10px;
 
     form {
       width: 90%;
-      height: 90%;
+      height: 50px;
     }
 
     p {
@@ -105,6 +151,7 @@
     width: 100%;
     overflow-y: scroll;
     overflow-x: hidden;
+    font-family: "Noto Sans", sans-serif;
 
     p {
       color: #545656;
@@ -128,14 +175,13 @@
       width: 100%;
       min-height: 50px;
       border-radius: 10px;
-      border: 1px solid gray;
+      border: 1px solid rgb(216, 216, 216);
       margin-top: 20px;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
       align-items: flex-start;
       padding: 5px;
-      font-family: "Noto Sans", sans-serif;
 
       .comment-bottom-bar {
         display: flex;
@@ -176,7 +222,7 @@
 
     .commentbodyline {
       margin-left: 50px;
-      margin-top: 20px;
+      margin-top: 40px;
       font-size: 14px;
     }
   }

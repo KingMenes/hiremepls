@@ -193,9 +193,12 @@ function QuestionBox({
             handleClose={questionClose}
             question={question}
             author={authorName}
+            user={author}
             date={date}
             id={id}
             comments={comments}
+            rep={rep}
+            tags={tags}
           />
         )}
       </ModalContainer>

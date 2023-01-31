@@ -13,9 +13,6 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
 
-// const __filename = fileURLToPath(import.meta.url);
-// const __dirname = dirname(__filename);
-
 const MongoDBStore = MongoDBStores(session);
 const MAX_AGE = 1000 * 60 * 60 * 3; // 3hrs
 
@@ -53,11 +50,7 @@ app.use(
 // Confirmation on successful connect
 app.listen(port, () => console.log(`Server started on port ${port}`));
 
-// // Serve static html
-// app.use(['/questions', '/askquestion', 'updatequestions', '/'], express.static(path.join(__dirname, '../client/build')));
-
 // api routes
-
 app.use("/api/questions", questions);
 app.use("/api/users", users);
 app.use("/api/comments", comments);

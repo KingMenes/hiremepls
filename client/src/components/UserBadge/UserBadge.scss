@@ -1,0 +1,62 @@
+:root {
+  --rt-color-white: #fff;
+  --rt-color-dark: #222;
+  --rt-color-success: #8dc572;
+  --rt-color-error: #be6464;
+  --rt-color-warning: #f0ad4e;
+  --rt-color-info: #337ab7;
+  --rt-opacity: 0.9;
+}
+
+.userBadge {
+  width: auto;
+  height: 100%;
+  margin-top: auto;
+  margin-bottom: auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  img {
+    width: 3em;
+    height: 3em;
+    border-radius: 50%;
+    margin-right: 10px;
+    border: white 3px solid;
+  }
+
+  span {
+    margin-right: 20px;
+    font-size: 18px;
+    font-weight: 800;
+    font-family: inherit;
+    color: #003566;
+
+    &:hover {
+      text-decoration: underline;
+      transition: all 0.1s ease-out;
+      cursor: pointer;
+    }
+  }
+
+  div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #e4e6eb;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+
+    .caret {
+      color: #050505;
+      font-size: larger;
+
+      &:hover {
+        color: red;
+        transition: all 0.1s ease-out;
+        cursor: pointer;
+      }
+    }
+  }
+}
