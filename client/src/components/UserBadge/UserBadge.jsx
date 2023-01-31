@@ -3,6 +3,7 @@ import { AiOutlineCaretDown } from "react-icons/ai";
 import { FaSignOutAlt } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { logout, login } from "../../store/session";
+import { NavLink } from "react-router-dom";
 
 function UserBadge({ img, sessionUser, setSessionUser }) {
   const dispatch = useDispatch();
@@ -15,7 +16,11 @@ function UserBadge({ img, sessionUser, setSessionUser }) {
   return (
     <div className="userBadge">
       <img src={img} alt="" />
-      <span>{sessionUser?.username}</span>
+      <span>
+        <NavLink to={`/user/${sessionUser?.username}`} className="navlink">
+          {sessionUser?.username}
+        </NavLink>
+      </span>
       {/* <AiOutlineCaretDown className="caret"/> */}
       <div>
         <FaSignOutAlt className="caret" id="signout-btn" onClick={handleLogout} />

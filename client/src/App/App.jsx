@@ -16,6 +16,7 @@ import http from "../http-common";
 import Questions from "../pages/Questions";
 import QuestionPostForm from "../components/QuestionPostForm/QuestionPostForm";
 import QuestionUpdateForm from "../components/UpdateQuestion/UpdateQuestion";
+import UserPage from "../pages/UserPage"
 export const URL = process.env.REACT_APP_SERVER_URL;
 
 function App() {
@@ -57,7 +58,9 @@ function App() {
               path="/updatequestion/:id"
               element={<QuestionUpdateForm />}
             />
-
+            <Route path="/user/:username"
+              element={UserPage} />
+            
             {/* 👇Navigates all other paths back to home👇 */}
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
