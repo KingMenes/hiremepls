@@ -1,5 +1,5 @@
 import "./PopularBar.css";
-import { AiOutlineFire } from "react-icons/ai";
+import { AiOutlineFire, AiOutlineEye } from "react-icons/ai";
 import { TiStarburstOutline } from "react-icons/ti";
 import { BsBarChart } from "react-icons/bs";
 import { useSelector } from "react-redux";
@@ -49,6 +49,10 @@ function PopularBar() {
         <li>
           <BsBarChart className="icon" />
           top
+        </li>
+        <li>
+          <AiOutlineEye className="icon" />
+          views
         </li>
       </ul>
     </div>
