@@ -6,6 +6,7 @@ import {
   addComment,
   deleteComment,
   updateComment,
+  repComment
 } from "../../store/questions";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -294,9 +295,16 @@ function QuestionPostOpen({
                       )}
                       <div className="comment-bottom-bar">
                         <div className="votes">
-                          <BsHandThumbsUp />
-                          <span>0</span>
-                          <BsHandThumbsDown />
+                          <BsHandThumbsUp onClick={async (e) => {
+                            e.preventDefault()
+                            await dispatch(repComment({ user: sessionUser, questionId: id, commentId: comment?._id, rep: 'like' }))
+                          }} />
+                          <span>{comment?.reputation?.likes?.count - comment?.reputation?.dislikes?.count}</span>
+                          <BsHandThumbsDown onClick={async (e) => {
+                            e.preventDefault()
+                            await dispatch(repComment({ user: sessionUser, questionId: id, commentId: comment?._id, rep: 'dislike' }))
+
+                          }} />
                         </div>
                         <div className="comment-reply">
                           <BiComment />

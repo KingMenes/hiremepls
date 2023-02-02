@@ -211,3 +211,70 @@ export const updateComment = asyncHandler(async (req, res) => {
   }
   res.json(question);
 });
+const reputation = async (question, comment) => {
+  for (let i = 0; i < question.comments.length; i++) {
+    let com = question.comments[i]
+    if (com._id.toString() === comment._id.toString()) {
+      question.comments[i] = comment
+      question.markModified(`comments`)
+      await question.save()
+    }
+  }
+
+  return question
+}
+export const repComment = asyncHandler(async (req, res) => {
+  const { rep, user } = req.body
+  const { questionId, commentId } = req.params
+  const question = await Question.findById(questionId);
+  const comment = await Comment.findById(commentId);
+  let liked = comment.reputation.likes.count
+  let disliked = comment.reputation.dislikes.count
+
+  if (rep === 'like') {
+    if (comment.reputation.dislikes[user.username]) {
+      delete comment.reputation.dislikes[user.username]
+      comment.reputation.dislikes.count = disliked - 1
+      comment.markModified(`reputation`)
+      await comment.save()
+    }
+    if (!comment.reputation.likes[user.username]) {
+      comment.reputation.likes[user.username] = rep
+      comment.reputation.likes.count = liked + 1
+      comment.markModified(`reputation`)
+      comment.save()
+      const resi = await reputation(question, comment)
+      return res.json(resi)
+    } else if (comment.reputation.likes[user.username]) {
+      delete comment.reputation.likes[user.username]
+      comment.reputation.likes.count = liked - 1
+      comment.markModified(`reputation`)
+      await comment.save()
+      const resi = await reputation(question, comment)
+      return res.json(resi)
+    }
+  } else if (rep === 'dislike') {
+    if (comment.reputation.likes[user.username]) {
+      delete comment.reputation.likes[user.username]
+      comment.reputation.likes.count = liked - 1
+      comment.markModified(`reputation`)
+      await comment.save()
+    }
+    if (!comment.reputation.dislikes[user.username]) {
+      comment.reputation.dislikes[user.username] = rep
+      comment.reputation.dislikes.count = disliked + 1
+      comment.markModified(`reputation`)
+      comment.save()
+      const resi = await reputation(question, comment)
+      return res.json(resi)
+    } else if (comment.reputation.dislikes[user.username]) {
+      delete comment.reputation.dislikes[user.username]
+      comment.reputation.dislikes.count = disliked - 1
+      comment.markModified(`reputation`)
+      await comment.save()
+      const resi = await reputation(question, comment)
+      return res.json(resi)
+
+    }
+  }
+})
