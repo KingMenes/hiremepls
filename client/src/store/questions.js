@@ -166,7 +166,6 @@ export const repComment = createAsyncThunk(
       rep,
       user
     })
-    console.log('hello')
     return res.data
   }
 )
