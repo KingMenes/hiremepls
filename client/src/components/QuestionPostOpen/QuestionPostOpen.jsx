@@ -295,16 +295,24 @@ function QuestionPostOpen({
                       )}
                       <div className="comment-bottom-bar">
                         <div className="votes">
-                          <BsHandThumbsUp onClick={async (e) => {
+                          {!comment.reputation.likes[sessionUser.username] ? <BsHandThumbsUp onClick={async (e) => {
                             e.preventDefault()
                             await dispatch(repComment({ user: sessionUser, questionId: id, commentId: comment?._id, rep: 'like' }))
-                          }} />
-                          <span>{comment?.reputation?.likes?.count - comment?.reputation?.dislikes?.count}</span>
-                          <BsHandThumbsDown onClick={async (e) => {
+                          }} /> : <BsFillHandThumbsUpFill onClick={async (e) => {
                             e.preventDefault()
                             await dispatch(repComment({ user: sessionUser, questionId: id, commentId: comment?._id, rep: 'dislike' }))
 
-                          }} />
+                          }} />}
+                          <span>{comment?.reputation?.likes?.count - comment?.reputation?.dislikes?.count}</span>
+                          {!comment.reputation.dislikes[sessionUser.username] ? <BsHandThumbsDown onClick={async (e) => {
+                            e.preventDefault()
+                            await dispatch(repComment({ user: sessionUser, questionId: id, commentId: comment?._id, rep: 'dislike' }))
+
+                          }} /> : <BsFillHandThumbsDownFill onClick={async (e) => {
+                            e.preventDefault()
+                            await dispatch(repComment({ user: sessionUser, questionId: id, commentId: comment?._id, rep: 'dislike' }))
+
+                          }} />}
                         </div>
                         <div className="comment-reply">
                           <BiComment />
