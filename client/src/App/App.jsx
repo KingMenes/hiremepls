@@ -59,7 +59,7 @@ function App() {
               element={<QuestionUpdateForm />}
             />
             <Route path="/user/:username"
-              element={UserPage} />
+              element={<UserPage/>} />
             
             {/* 👇Navigates all other paths back to home👇 */}
             <Route path="*" element={<Navigate to="/" />} />
