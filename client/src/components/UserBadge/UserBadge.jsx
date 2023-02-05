@@ -23,7 +23,11 @@ function UserBadge({ img, sessionUser, setSessionUser }) {
       </span>
       {/* <AiOutlineCaretDown className="caret"/> */}
       <div>
-        <FaSignOutAlt className="caret" id="signout-btn" onClick={handleLogout} />
+        <FaSignOutAlt
+          className="caret"
+          id="signout-btn"
+          onClick={handleLogout}
+        />
       </div>
     </div>
   );

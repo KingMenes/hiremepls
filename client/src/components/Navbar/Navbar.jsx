@@ -18,8 +18,6 @@ function Navbar({ sessionUser, setSessionUser }) {
   const { loginModalOpen, loginClose, loginOpen } = useLoginModal();
   const { signupModalOpen, signupClose, signupOpen } = useSignupModal();
 
-  
-
   return (
     <div className="navbar">
       <div className="nav-main">

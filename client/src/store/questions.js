@@ -162,13 +162,16 @@ export const repComment = createAsyncThunk(
     }
     http.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
-    const res = await http.put(`/questions/${questionId}/repComment/${commentId}`, {
-      rep,
-      user
-    })
-    return res.data
+    const res = await http.put(
+      `/questions/${questionId}/repComment/${commentId}`,
+      {
+        rep,
+        user,
+      }
+    );
+    return res.data;
   }
-)
+);
 
 const sessionSlice = createSlice({
   name: "questions",

@@ -19,7 +19,7 @@ import {
 router.get("/", getQuestions);
 router.get("/:id", getQuestion);
 router.post("/", protect, createQuestion);
-router.put("/:questionId/repComment/:commentId", protect, repComment)
+router.put("/:questionId/repComment/:commentId", protect, repComment);
 router.put("/:questionId/comment/:commentId", protect, updateComment);
 router.put("/rep/:id", protect, repQuestion);
 router.put("/view/:id", viewQuestion);

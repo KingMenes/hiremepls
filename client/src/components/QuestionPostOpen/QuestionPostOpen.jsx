@@ -6,7 +6,7 @@ import {
   addComment,
   deleteComment,
   updateComment,
-  repComment
+  repComment,
 } from "../../store/questions";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -295,24 +295,70 @@ function QuestionPostOpen({
                       )}
                       <div className="comment-bottom-bar">
                         <div className="votes">
-                          {!comment.reputation.likes[sessionUser.username] ? <BsHandThumbsUp onClick={async (e) => {
-                            e.preventDefault()
-                            await dispatch(repComment({ user: sessionUser, questionId: id, commentId: comment?._id, rep: 'like' }))
-                          }} /> : <BsFillHandThumbsUpFill onClick={async (e) => {
-                            e.preventDefault()
-                            await dispatch(repComment({ user: sessionUser, questionId: id, commentId: comment?._id, rep: 'dislike' }))
-
-                          }} />}
-                          <span>{comment?.reputation?.likes?.count - comment?.reputation?.dislikes?.count}</span>
-                          {!comment.reputation.dislikes[sessionUser.username] ? <BsHandThumbsDown onClick={async (e) => {
-                            e.preventDefault()
-                            await dispatch(repComment({ user: sessionUser, questionId: id, commentId: comment?._id, rep: 'dislike' }))
-
-                          }} /> : <BsFillHandThumbsDownFill onClick={async (e) => {
-                            e.preventDefault()
-                            await dispatch(repComment({ user: sessionUser, questionId: id, commentId: comment?._id, rep: 'dislike' }))
-
-                          }} />}
+                          {!comment.reputation.likes[sessionUser.username] ? (
+                            <BsHandThumbsUp
+                              onClick={async (e) => {
+                                e.preventDefault();
+                                await dispatch(
+                                  repComment({
+                                    user: sessionUser,
+                                    questionId: id,
+                                    commentId: comment?._id,
+                                    rep: "like",
+                                  })
+                                );
+                              }}
+                            />
+                          ) : (
+                            <BsFillHandThumbsUpFill
+                              onClick={async (e) => {
+                                e.preventDefault();
+                                await dispatch(
+                                  repComment({
+                                    user: sessionUser,
+                                    questionId: id,
+                                    commentId: comment?._id,
+                                    rep: "dislike",
+                                  })
+                                );
+                              }}
+                            />
+                          )}
+                          <span>
+                            {comment?.reputation?.likes?.count -
+                              comment?.reputation?.dislikes?.count}
+                          </span>
+                          {!comment.reputation.dislikes[
+                            sessionUser.username
+                          ] ? (
+                            <BsHandThumbsDown
+                              onClick={async (e) => {
+                                e.preventDefault();
+                                await dispatch(
+                                  repComment({
+                                    user: sessionUser,
+                                    questionId: id,
+                                    commentId: comment?._id,
+                                    rep: "dislike",
+                                  })
+                                );
+                              }}
+                            />
+                          ) : (
+                            <BsFillHandThumbsDownFill
+                              onClick={async (e) => {
+                                e.preventDefault();
+                                await dispatch(
+                                  repComment({
+                                    user: sessionUser,
+                                    questionId: id,
+                                    commentId: comment?._id,
+                                    rep: "dislike",
+                                  })
+                                );
+                              }}
+                            />
+                          )}
                         </div>
                         <div className="comment-reply">
                           <BiComment />
