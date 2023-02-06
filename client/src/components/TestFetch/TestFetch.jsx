@@ -3,7 +3,6 @@ import QuestionBox from "../QuestionBox/QuestionBox";
 import "./TestFetch.css";
 import { getQuestions } from "../../store/questions";
 import { useDispatch, useSelector } from "react-redux";
-import { createQuestion } from "../../store/questions";
 
 function TestFetch() {
   const dispatch = useDispatch();
