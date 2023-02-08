@@ -57,6 +57,8 @@ function SignupForm({ handleClose, setSessionUser }) {
       email,
       password,
       confirmPassword: password2,
+      registered: new Date(),
+      reputation: { likes: 0, dislikes: 0 },
     };
 
     const res = await dispatch(registerUser(userData));

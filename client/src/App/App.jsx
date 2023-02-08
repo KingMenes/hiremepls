@@ -58,7 +58,10 @@ function App() {
               path="/updatequestion/:id"
               element={<QuestionUpdateForm />}
             />
-            <Route path="/user/:username" element={<UserPage sessionUser={sessionUser} />} />
+            <Route
+              path="/user/:username"
+              element={<UserPage sessionUser={sessionUser} />}
+            />
 
             {/* 👇Navigates all other paths back to home👇 */}
             <Route path="*" element={<Navigate to="/" />} />

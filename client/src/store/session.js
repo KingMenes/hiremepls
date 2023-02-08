@@ -4,6 +4,7 @@ import http from "../http-common";
 // constants
 const SET_USER = "session/SET_USER";
 const REMOVE_USER = "session/REMOVE_USER";
+const GET_USER = "session/GET_USER";
 
 export const login = createAsyncThunk(
   SET_USER,
@@ -40,6 +41,12 @@ export const setUserThunk = createAsyncThunk(SET_USER, async (data) => {
   return data.data;
 });
 
+export const getUser = createAsyncThunk(GET_USER, async ({ id }) => {
+  const res = await http.get(`/${id}`, {});
+
+  return res.data;
+});
+
 const sessionSlice = createSlice({
   name: "session",
   initialState: {},
@@ -53,6 +60,10 @@ const sessionSlice = createSlice({
       return state;
     },
     [registerUser.fulfilled]: (state, action) => {
+      state.user = action.payload;
+      return state;
+    },
+    [getUser.fulfilled]: (state, action) => {
       state.user = action.payload;
       return state;
     },

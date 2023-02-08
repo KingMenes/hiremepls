@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_ENDPOINT =
+export const API_ENDPOINT =
   process.env.NODE_ENV !== "development"
     ? `https://hiremepls-api.onrender.com/api`
     : "/api";

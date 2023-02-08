@@ -1,7 +1,16 @@
 import "./UserProfile.css";
+import { getUser } from "../../store/session";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 
-function UserProfile({ sessionUser, rep, questions, answers, date }) {
-  
+function UserProfile({ username, rep, questions, answers, id }) {
+  const dispatch = useDispatch();
+  const session = useSelector((state) => state.session);
+
+  useEffect(() => {
+    dispatch(getUser({ id }));
+  }, [dispatch]);
+
   function timeSince(date) {
     var date1 = new Date();
     var seconds = Math.floor((date1.getTime() - date.getTime()) / 1000);
@@ -30,16 +39,16 @@ function UserProfile({ sessionUser, rep, questions, answers, date }) {
     return Math.floor(seconds) + " seconds";
   }
 
-  // console.log(questions)
+  console.log(questions);
 
   return (
     <div className="userprofile">
       <div className="userheader">
         <img src="https://thispersondoesnotexist.com/image" alt="" />
         <div className="user-about">
-          <span id="username">{sessionUser?.username}</span>
+          <span id="username">{username}</span>
           <div>
-            <p>Member for X days</p>
+            <p>Member for </p>
           </div>
           <div className="stats">
             <div>
@@ -64,9 +73,13 @@ function UserProfile({ sessionUser, rep, questions, answers, date }) {
             {questions.map((question) => {
               return (
                 <div>
-                  <span>{question?.question}</span>
+                  <span className="questionRep">
+                    {question?.reputation?.likes?.count -
+                      question?.reputation?.dislikes?.count}
+                  </span>
+                  <span className="questionTitle">{question?.question}</span>
                 </div>
-              )
+              );
             })}
           </div>
         </div>
