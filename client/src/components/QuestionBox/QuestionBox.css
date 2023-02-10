@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  height: 200px;
+  min-height: 200px;
   border-radius: 15px;
   background-color: #ffffff;
   line-height: 1.3;
@@ -33,16 +33,20 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: space-between;
+  justify-content: center;
   width: 100%;
-  height: 80%;
+  height: 100%;
   margin-left: 20px;
 }
 .questionBox .box-section1 .question {
   display: flex;
-  justify-content: flex-start;
-  align-items: center;
+  justify-content: center;
+  align-items: flex-start;
   width: 100%;
+  flex-direction: column;
+  margin-top: 20px;
+  margin-bottom: 25px;
+  text-align: left;
 }
 .questionBox .box-section1 .question span {
   display: inline-block;
@@ -51,45 +55,29 @@
   font-family: inherit;
   font-size: 32px;
 }
+.questionBox .box-section1 .question .question-body {
+  margin: 10px;
+  text-align: left;
+}
 .questionBox .box-section1 .user-info {
   color: rgb(117, 117, 117);
   display: flex;
   margin-top: 10px;
+  margin-bottom: 10px;
+  position: absolute;
+  top: 5px;
 }
 .questionBox .box-section1 .user-info span {
   color: rgb(47, 0, 255);
   display: inline-block;
   margin: 0 5px;
 }
-.questionBox .box-section1 .tags {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  width: 100%;
-}
-.questionBox .box-section1 .tags .tag {
-  background-color: rgb(1, 30, 110);
-  color: rgb(228, 228, 228);
-  border-radius: 999px;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-right: 5px;
-}
-.questionBox .box-section1 .tags .tag span {
-  margin: 5px 10px;
-  font-size: 12px;
-  font-weight: 800;
-}
 .questionBox .repCount {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  height: 75%;
+  height: 125px;
   width: 10%;
   font-family: inherit;
   font-size: 20px;
@@ -115,7 +103,7 @@
   font-size: 14px;
   justify-content: flex-end;
   height: 100%;
-  margin-bottom: 50px;
+  margin-bottom: 0px;
   color: rgb(109, 109, 109);
 }
 .questionBox .engagement div {
@@ -157,4 +145,29 @@
 .questionBox #update-btn .icn-update:hover {
   color: rgb(0, 165, 27);
   cursor: pointer;
+}
+.questionBox .tags {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 100%;
+  position: absolute;
+  bottom: 20px;
+  left: 100px;
+}
+.questionBox .tags .tag {
+  background-color: rgb(1, 30, 110);
+  color: rgb(228, 228, 228);
+  border-radius: 999px;
+  width: -moz-fit-content;
+  width: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 5px;
+}
+.questionBox .tags .tag span {
+  margin: 5px 10px;
+  font-size: 12px;
+  font-weight: 800;
 } /*# sourceMappingURL=QuestionBox.css.map */

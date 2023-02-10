@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  height: 200px;
+  min-height: 200px;
   border-radius: 15px;
   background-color: #ffffff;
   line-height: 1.3;
@@ -36,18 +36,22 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    justify-content: space-between;
+    justify-content: center;
     width: 100%;
-    height: 80%;
+    height: 100%;
     margin-left: 20px;
     // border: 1px solid blue;
 
     .question {
       display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      // border: 1px solid black;
+      justify-content: center;
+      align-items: flex-start;
       width: 100%;
+      flex-direction: column;
+      margin-top: 20px;
+      // border: 1px black solid;
+      margin-bottom: 25px;
+      text-align: left;
 
       span {
         display: inline-block;
@@ -56,41 +60,25 @@
         font-family: inherit;
         font-size: 32px;
       }
+
+      .question-body {
+        margin: 10px;
+        text-align: left;
+      }
     }
 
     .user-info {
       color: rgb(117, 117, 117);
       display: flex;
       margin-top: 10px;
+      margin-bottom: 10px;
+      position: absolute;
+      top: 5px;
 
       span {
         color: rgb(47, 0, 255);
         display: inline-block;
         margin: 0 5px;
-      }
-    }
-
-    .tags {
-      display: flex;
-      flex-direction: row;
-      justify-content: flex-start;
-      width: 100%;
-
-      .tag {
-        background-color: rgb(1, 30, 110);
-        color: rgb(228, 228, 228);
-        border-radius: 999px;
-        width: fit-content;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-right: 5px;
-
-        span {
-          margin: 5px 10px;
-          font-size: 12px;
-          font-weight: 800;
-        }
       }
     }
   }
@@ -101,7 +89,7 @@
     justify-content: space-between;
     align-items: center;
     // border: 1px solid red;
-    height: 75%;
+    height: 125px;
     width: 10%;
     font-family: inherit;
     font-size: 20px;
@@ -132,7 +120,7 @@
     justify-content: flex-end;
     // border: 1px solid black;
     height: 100%;
-    margin-bottom: 50px;
+    margin-bottom: 0px;
     color: rgb(109, 109, 109);
 
     div {
@@ -180,6 +168,33 @@
       &:hover {
         color: rgb(0, 165, 27);
         cursor: pointer;
+      }
+    }
+  }
+
+  .tags {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 100%;
+    position: absolute;
+    bottom: 20px;
+    left: 100px;
+
+    .tag {
+      background-color: rgb(1, 30, 110);
+      color: rgb(228, 228, 228);
+      border-radius: 999px;
+      width: fit-content;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-right: 5px;
+
+      span {
+        margin: 5px 10px;
+        font-size: 12px;
+        font-weight: 800;
       }
     }
   }

@@ -34,7 +34,6 @@
   background-color: rgb(1, 30, 110);
   color: rgb(228, 228, 228);
   border-radius: 999px;
-  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   display: flex;
@@ -65,6 +64,7 @@
 }
 .questionpostopen .questionContainer .questioninfo p {
   width: 90%;
+  margin-top: -5px;
 }
 .questionpostopen img {
   border-radius: 999px;

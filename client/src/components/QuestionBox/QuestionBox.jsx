@@ -30,6 +30,7 @@ function QuestionBox({
   views,
   authorName,
   comments,
+  body,
 }) {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
@@ -137,9 +138,10 @@ function QuestionBox({
         </div>
         <div className="question">
           <span>{question}</span>
+          {body && <p className="question-body">{body}</p>}
         </div>
-        <div className="tags">{tagsList}</div>
       </div>
+      <div className="tags">{tagsList}</div>
       <div className="engagement">
         <div>
           <AiOutlineEye className="icn" /> <span>{views}</span> Views
@@ -199,6 +201,7 @@ function QuestionBox({
             comments={comments}
             rep={rep}
             tags={tags}
+            body={body}
           />
         )}
       </ModalContainer>

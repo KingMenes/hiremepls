@@ -25,7 +25,6 @@
   background-color: rgb(57, 67, 94);
   color: rgb(228, 228, 228);
   border-radius: 999px;
-  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   display: flex;
