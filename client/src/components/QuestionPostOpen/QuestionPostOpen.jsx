@@ -187,8 +187,8 @@ function QuestionPostOpen({
               </span>
               <h1>{question}</h1>
               <p>{body}</p>
-              <div className="tags">{tagsList}</div>
             </div>
+            <div className="tags">{tagsList}</div>
           </div>
           <div className="addComment row flex-center">
             {sessionUser && (
@@ -228,7 +228,7 @@ function QuestionPostOpen({
                         <div className="buttondiv">
                           {edit !== comment._id ? (
                             <TiDelete
-                              className="icn-delete"
+                              className="icn-delete icn"
                               onClick={async (e) => {
                                 await dispatch(
                                   deleteComment({

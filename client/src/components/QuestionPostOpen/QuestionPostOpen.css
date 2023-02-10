@@ -23,12 +23,35 @@
   justify-content: flex-start;
   align-items: center;
   width: 100%;
+  position: relative;
+}
+.questionpostopen .questionContainer .repCount {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.questionpostopen .questionContainer .questioninfo {
+  width: 85%;
+  display: flex;
+  flex-direction: column;
+}
+.questionpostopen .questionContainer .questioninfo span {
+  align-self: flex-start;
+}
+.questionpostopen .questionContainer .questioninfo h1 {
+  align-self: flex-start;
+}
+.questionpostopen .questionContainer .questioninfo p {
+  width: 90%;
+  margin-top: -5px;
 }
 .questionpostopen .questionContainer .tags {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   width: 100%;
+  position: absolute;
+  bottom: -5px;
 }
 .questionpostopen .questionContainer .tags .tag {
   background-color: rgb(1, 30, 110);
@@ -45,26 +68,6 @@
   margin: 5px 10px;
   font-size: 12px;
   font-weight: 800;
-}
-.questionpostopen .questionContainer .repCount {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.questionpostopen .questionContainer .questioninfo {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-}
-.questionpostopen .questionContainer .questioninfo span {
-  align-self: flex-start;
-}
-.questionpostopen .questionContainer .questioninfo h1 {
-  align-self: flex-start;
-}
-.questionpostopen .questionContainer .questioninfo p {
-  width: 90%;
-  margin-top: -5px;
 }
 .questionpostopen img {
   border-radius: 999px;
@@ -202,4 +205,19 @@
   margin-left: 50px;
   margin-top: 40px;
   font-size: 14px;
+}
+.questionpostopen .comments .icn {
+  position: absolute;
+  right: 0px;
+  font-size: 32px;
+  color: rgb(165, 165, 165);
+}
+.questionpostopen .comments .icn:hover {
+  color: #000;
+  cursor: pointer;
+}
+.questionpostopen .comments .icn-update {
+  right: 40px;
+  top: 10px;
+  font-size: 20px;
 } /*# sourceMappingURL=QuestionPostOpen.css.map */
