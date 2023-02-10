@@ -147,23 +147,39 @@ function TestFetch() {
     return hotness;
   }
 
-  // const sortedByHot = questions.sort((a, b) => calculateHotness(b) - calculateHotness(a));
+  function sortByTop(questions) {
+    return questions.sort((a, b) => {
+      return (b.reputation.likes.count - b.reputation.dislikes.count) - (a.reputation.likes.count - a.reputation.dislikes.count)
+    });
+  }
 
-  // const sortedByNew = questions.sort((a, b) => {
+  function sortByHot(questions) {
+    return questions.sort((a, b) => {
+      return (calculateHotness(b) - calculateHotness(a))
+    })
+  }
 
-  //   // Convert the date strings to Date objects
-  //   const dateA = new Date(a.date);
-  //   const dateB = new Date(b.date);
+  function sortByNew(questions) {
+    return questions.sort((a, b) => {
+      return new Date(b.date) - new Date(a.date);
+    });
+  }
 
-  //   // Sort in ascending order
-  //   if (dateA > dateB) return -1;
-  //   if (dateA < dateB) return 1;
+  function sortByViews(questions) {
+    return questions.sort((a, b) => {
+      return b.views - a.views;
+    })
+  }
 
-  //   // If dates are equal
-  //   return 0;
-  // });
+  let questionsToSort = [];
+  Object.values(questions).map((question) => {
+    questionsToSort.push(question)
+  });
 
-  // const sortedByTop = questions.slice().sort((a, b) => (b.reputation[0] - b.reputation[1]) - (a.reputation[0] - a.reputation[1]));
+  let sortedQuestionsByTop = sortByTop(questionsToSort);
+  let sortedQuestionsByNew = sortByNew(questionsToSort);
+  let sortedQuestionsByViews = sortByViews(questionsToSort);
+  let sortedByHot = sortByHot(questionsToSort)
 
   return (
     <div id="questionsContainer">

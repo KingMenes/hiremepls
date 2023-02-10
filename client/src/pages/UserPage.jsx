@@ -13,6 +13,12 @@ function UserPage({ sessionUser }) {
     dispatch(getQuestions());
   }, [dispatch]);
 
+  function sortByTop(questions) {
+    return questions.sort((a, b) => {
+      return (b.reputation.likes.count - b.reputation.dislikes.count) - (a.reputation.likes.count - a.reputation.dislikes.count)
+    });
+  }
+
   let userQuestions = [];
   Object.values(questions).map((question) => {
     // console.log(question.author)
@@ -21,18 +27,7 @@ function UserPage({ sessionUser }) {
     }
   });
 
-  const sortedByTop = userQuestions
-    .slice()
-    .sort(
-      (a, b) =>
-        b.reputation.likes -
-        b.reputation.dislikes -
-        (a.reputation.likes - a.reputation.dislikes)
-    );
-
-  // console.log({ questions });
-  // console.log({ userQuestions });
-  // console.log({ sortedByTop });
+  let sortedByTop = sortByTop(userQuestions);
 
   return (
     <UserProfile
