@@ -10,7 +10,7 @@ function PopularBar({ sortedState, setSortedState }) {
     <div className="popularbar">
       <ul>
         <li
-          className={sortedState == 1 ? 'selected' : ''}
+          className={`${sortedState == 1 ? 'selected' : ''}`}
           onClick={() => setSortedState(1)}>
           <AiOutlineFire className="icon" />
           hot

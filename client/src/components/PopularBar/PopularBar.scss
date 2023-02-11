@@ -47,8 +47,9 @@
     margin-right: 5px;
   }
 
-  .selected{
-    background-color: #323fb1;
-    color: white;
+  .selected{ 
+    background-color: #323fb1 !important;
+    color: white !important;
+    border-radius: 999px;
   }
 }
