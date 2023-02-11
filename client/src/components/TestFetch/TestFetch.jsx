@@ -176,15 +176,26 @@ function TestFetch() {
     questionsToSort.push(question)
   });
 
-  let sortedQuestionsByTop = sortByTop(questionsToSort);
-  let sortedQuestionsByNew = sortByNew(questionsToSort);
-  let sortedQuestionsByViews = sortByViews(questionsToSort);
-  let sortedByHot = sortByHot(questionsToSort)
+  let sortedByTop = sortByTop(questionsToSort);
+  let sortedByNew = sortByNew(questionsToSort);
+  let sortedByViews = sortByViews(questionsToSort);
+  let sortedByHot = sortByHot(questionsToSort);
+
+  let sortedQuestions;
+
+  switch (sortedState) {
+    case 1: sortedQuestions = sortedByHot;
+    case 2: sortedQuestions = sortedByNew;
+    case 3: sortedQuestions = sortedByTop;
+    case 4: sortedQuestions = sortedByViews;
+    default:
+      // do nothing
+  }
 
   return (
     <div id="questionsContainer">
-      {questions
-        ? Object.values(questions).map((question) => {
+      {sortedQuestions
+        ? sortedQuestions.map((question) => {
             return (
               <QuestionBox
                 id={question?._id}

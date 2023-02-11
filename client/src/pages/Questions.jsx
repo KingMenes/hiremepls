@@ -8,14 +8,14 @@ import { useState } from "react";
 
 function Questions() {
   const sessionUser = useSelector((state) => state.session.user);
-  const [sortedState, setSortedState] = useState();
+  const [sortedState, setSortedState] = useState(1);
 
   return (
     <>
       <SortContext.Provider value={{ sortedState, setSortedState }}>
         <Trending />
         {sessionUser && <AskQuestion />}
-        <PopularBar />
+        <PopularBar sortedState={sortedState} setSortedState={setSortedState} />
         <TestFetch />
       </SortContext.Provider>
     </>
