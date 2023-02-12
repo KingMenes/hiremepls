@@ -39,8 +39,6 @@ function UserProfile({ username, rep, questions, answers, id }) {
     return Math.floor(seconds) + " seconds";
   }
 
-  console.log(questions);
-
   return (
     <div className="userprofile">
       <div className="userheader">
@@ -85,12 +83,24 @@ function UserProfile({ username, rep, questions, answers, id }) {
         </div>
         <div className="top-container">
           <span>Top Answers</span>
-          <div className="container"></div>
+          <div className="container">
+          {answers.map((answer) => {
+              return (
+                <div>
+                  <span className="questionRep">
+                    {answer?.reputation?.likes?.count -
+                      answer?.reputation?.dislikes?.count}
+                  </span>
+                  <span className="questionTitle">{answer?.body}</span>
+                </div>
+              );
+            })}
+          </div>
         </div>
-        <div className="top-container">
+        {/* <div className="top-container">
           <span>Top Tags</span>
           <div className="container"></div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

@@ -27,13 +27,22 @@ function UserPage({ sessionUser }) {
     }
   });
 
-  let sortedByTop = sortByTop(userQuestions);
+  let userAnswers = [];
+  Object.values(questions).map((question) => {
+    Object.values(question.comments).map((comment) => {
+      if (comment.author.username === sessionUser?.username) {
+        userAnswers.push(comment);
+      }
+    })
+  });
+
 
   return (
     <UserProfile
       username={sessionUser?.username}
       id={sessionUser?._id}
-      questions={sortedByTop.slice(0, 10)}
+      questions={sortByTop(userQuestions).slice(0, 10)}
+      answers = {sortByTop(userAnswers).slice(0,5)}
     />
   );
 }

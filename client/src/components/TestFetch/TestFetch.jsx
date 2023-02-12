@@ -192,6 +192,9 @@ function TestFetch() {
       // do nothing
   }
 
+
+  console.log(sortedQuestions)
+
   return (
     <div id="questionsContainer">
       {sortedQuestions
