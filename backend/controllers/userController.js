@@ -2,10 +2,11 @@ import User from "../models/userModel.js";
 import asyncHandler from "express-async-handler";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
+import { setTokenCookie } from "../auth.js";
 
 export const logoutUser = asyncHandler(async (req, res) => {
-  req.session.user = null;
-  res.json({ message: "Logged out" });
+  res.clearCookie('token')
+  return res.json({ message: "Logged out" });
 });
 
 export const getUser = asyncHandler(async (req, res) => {
@@ -24,21 +25,30 @@ const generateToken = (id) => {
 };
 
 export const isAuth = asyncHandler(async (req, res) => {
-  const session = req.session.user;
-  console.log(session);
-  if (session) {
-    const user = await User.findOne({ email: req.session.user.email });
+  const { user } = req;
+  if (user) {
+    const currentUser = await User.findById(user._id)
     return res.json({
-      _id: user.id,
-      token: generateToken(user._id),
-      username: user.username,
-      email: user.email,
-      reputation: user.reputation,
+      data: currentUser
     });
-  } else {
-    return res.status(401).json("unauthorized");
-  }
-});
+  } else return res.json({});
+}
+  // const session = req.session.user;
+
+  // if (session) {
+  //   const user = await User.findOne({ email: req.session.user.email });
+  //   return res.json({
+  //     _id: user.id,
+  //     token: generateToken(user._id),
+  //     username: user.username,
+  //     email: user.email,
+  //     reputation: user.reputation,
+  //   });
+  // } else {
+  //   return res.status(401).json("unauthorized");
+  // }
+  // }
+);
 
 export const createUser = asyncHandler(async (req, res) => {
   const { username, email, password, role } = req.body;
@@ -83,14 +93,17 @@ export const createUser = asyncHandler(async (req, res) => {
   });
 
   if (user) {
-    const userSession = { email: user.email };
-    req.session.user = userSession;
-    res.json({
+    // const userSession = { email: user.email };
+    // req.session.user = userSession;
+    await setTokenCookie(res, {
       _id: user.id,
-      token: generateToken(user._id),
       username: user.username,
       email: user.email,
-      reputation: user.reputation,
+    })
+    res.json({
+      _id: user.id,
+      username: user.username,
+      email: user.email,
     });
   } else {
     res.status(400);
@@ -119,8 +132,15 @@ export const logInUser = asyncHandler(async (req, res) => {
     throw new Error("Login information incorrect");
   }
   if (user && (await bcrypt.compare(password, user.password))) {
-    const userSession = { email: user.email };
-    req.session.user = userSession;
+    await setTokenCookie(res, {
+      _id: user.id,
+      token: generateToken(user._id),
+      username: user.username,
+      email: user.email,
+    })
+
+    // const userSession = { email: user.email };
+    // req.session.user = userSession;
     res.json({
       _id: user.id,
       token: generateToken(user._id),

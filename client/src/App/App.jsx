@@ -29,7 +29,7 @@ function App() {
     try {
       setLoading(true);
       const res = await http.get(`/users/isAuth`);
-      if (res.data.email) {
+      if (res.data.data.email) {
         dispatch(setUserThunk({ data: res.data }));
         setSessionUser(res.data);
       }

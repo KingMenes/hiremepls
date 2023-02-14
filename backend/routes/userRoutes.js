@@ -10,11 +10,12 @@ import {
   isAuth,
   logoutUser,
 } from "../controllers/userController.js";
+import { restoreUser, setTokenCookie } from "../auth.js";
 
 const router = express.Router();
 
 router.get("/me", getMe);
-router.get("/isAuth", isAuth);
+router.get("/isAuth", restoreUser, isAuth);
 router.get("/:id", getUser);
 router.get("/:username", getUser);
 router.post("/login", logInUser);
