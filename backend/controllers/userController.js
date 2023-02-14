@@ -147,7 +147,7 @@ export const logInUser = asyncHandler(async (req, res) => {
       username: user.username,
       email: user.email,
       reputation: user.reputation,
-      userSession,
+
     });
   } else {
     res.status(400);
