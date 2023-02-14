@@ -75,7 +75,7 @@ export const createUser = asyncHandler(async (req, res) => {
     if (userExist) {
       throw new Error("Username already used");
     }
-    if (userExist.username === "count") {
+    if (userExist?.username === "count") {
       throw new Error("Username cannot be used");
     }
   }
