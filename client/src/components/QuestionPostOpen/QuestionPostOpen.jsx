@@ -78,6 +78,7 @@ function QuestionPostOpen({
         comment: comment,
       })
     ); //Object to POST
+    setCommentBody('')
   };
 
   const tagsList = tags.map((tag) => (
@@ -202,6 +203,7 @@ function QuestionPostOpen({
                     name="comment"
                     id="comment"
                     placeholder="Add an answer or comment ..."
+                    value={commentBody}
                     onChange={(e) => setCommentBody(e.target.value)}
                   />
                 </div>
