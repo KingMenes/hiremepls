@@ -115,7 +115,7 @@ function QuestionPostOpen({
                       await dispatch(
                         repQuestion({
                           id,
-                          username: user.username,
+                          username: user?.username,
                           user,
                           rep: "like",
                         })
@@ -133,7 +133,7 @@ function QuestionPostOpen({
                       await dispatch(
                         repQuestion({
                           id,
-                          username: user.username,
+                          username: user?.username,
                           user,
                           rep: "like",
                         })
@@ -154,7 +154,7 @@ function QuestionPostOpen({
                       await dispatch(
                         repQuestion({
                           id,
-                          username: user.username,
+                          username: user?.username,
                           user,
                           rep: "dislike",
                         })
@@ -172,7 +172,7 @@ function QuestionPostOpen({
                       await dispatch(
                         repQuestion({
                           id,
-                          username: user.username,
+                          username: user?.username,
                           user,
                           rep: "dislike",
                         })
@@ -297,7 +297,7 @@ function QuestionPostOpen({
                       )}
                       <div className="comment-bottom-bar">
                         <div className="votes">
-                          {!comment.reputation.likes[sessionUser.username] ? (
+                          {!comment.reputation.likes[sessionUser?.username] ? (
                             <BsHandThumbsUp
                               onClick={async (e) => {
                                 e.preventDefault();
@@ -331,7 +331,7 @@ function QuestionPostOpen({
                               comment?.reputation?.dislikes?.count}
                           </span>
                           {!comment.reputation.dislikes[
-                            sessionUser.username
+                            sessionUser?.username
                           ] ? (
                             <BsHandThumbsDown
                               onClick={async (e) => {

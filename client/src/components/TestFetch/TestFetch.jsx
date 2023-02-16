@@ -189,7 +189,7 @@ function TestFetch() {
     case 3: sortedQuestions = sortedByTop;
     case 4: sortedQuestions = sortedByViews;
     default:
-      // do nothing
+    // do nothing
   }
 
 
@@ -199,22 +199,22 @@ function TestFetch() {
     <div id="questionsContainer">
       {sortedQuestions
         ? sortedQuestions.map((question) => {
-            return (
-              <QuestionBox
-                id={question?._id}
-                question={question?.question}
-                body={question?.body}
-                author={question?.author}
-                date={timeSince(new Date(question?.date))}
-                rep={question?.reputation}
-                tags={question?.tags}
-                views={question?.views}
-                key={question?._id}
-                authorName={question?.authorName}
-                comments={question?.comments}
-              />
-            );
-          })
+          return (
+            <QuestionBox
+              id={question?._id}
+              question={question?.question}
+              body={question?.body}
+              author={question?.author}
+              date={timeSince(new Date(question?.date))}
+              rep={question?.reputation}
+              tags={question?.tags}
+              views={question?.views}
+              key={question?._id}
+              authorName={question?.authorName}
+              comments={question?.comments}
+            />
+          );
+        })
         : null}
     </div>
   );
