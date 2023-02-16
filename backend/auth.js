@@ -41,11 +41,9 @@ export const restoreUser = (req, res, next) => {
         if (err) {
             return next();
         }
-        console.log(jwtPayload.data)
 
         try {
             const { id } = jwtPayload.data;
-            console.log(id)
             const user = await User.findById(id);
             req.user = {
                 _id: user.id,
