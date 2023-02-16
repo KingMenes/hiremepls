@@ -57,8 +57,8 @@ app.listen(port, () => console.log(`Server started on port ${port}`));
 app.use("/api/questions", questions);
 app.use("/api/users", users);
 app.use("/api/comments", comments);
-app.use("*", (req, res) => res.status(404).json({ error: "not found" }));
-app.use((req, res, next) => {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
+// app.use("*", (req, res) => res.status(404).json({ error: "not found" }));
+app.use('*', (req, res, next) => {
+  res.sendFile(path.join(__dirname, "index.html"));
 });
 export default app;

@@ -37,7 +37,6 @@ export const restoreUser = (req, res, next) => {
     // token parsed from cookies
     // console.log('cookies------------------------', req.cookies)
     const { token } = req.cookies;
-
     return jwt.verify(token, secret, null, async (err, jwtPayload) => {
         if (err) {
             return next();
@@ -45,6 +44,7 @@ export const restoreUser = (req, res, next) => {
 
         try {
             const { _id: id } = jwtPayload.data;
+            console.log(id)
             const user = await User.findById(id);
             req.user = {
                 _id: user.id,

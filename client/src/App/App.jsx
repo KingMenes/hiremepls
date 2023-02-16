@@ -29,6 +29,7 @@ function App() {
     try {
       setLoading(true);
       const res = await http.get(`/users/isAuth`);
+      console.log(res.data)
       if (res.data.data.email) {
         dispatch(setUserThunk({ data: res.data }));
         setSessionUser(res.data);
