@@ -9,7 +9,6 @@ import comments from "./routes/commentRoutes.js";
 import errorHandler from "./middleware/errorMiddleware.js";
 import session from "express-session";
 import MongoDBStores from "connect-mongodb-session";
-import cookieParser from 'cookie-parser'
 import path from "path";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
@@ -28,7 +27,6 @@ connectDB();
 
 // Use middleware
 app.use(express.json());
-app.use(cookieParser());
 
 app.use(express.urlencoded({ extended: false }));
 app.use(cors());
