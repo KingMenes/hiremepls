@@ -26,7 +26,6 @@ const generateToken = (id) => {
 
 export const isAuth = asyncHandler(async (req, res) => {
   const { user } = req;
-  console.log(user)
   if (user) {
     const currentUser = await User.findById(user._id)
     return res.json({
@@ -98,11 +97,12 @@ export const createUser = asyncHandler(async (req, res) => {
     // req.session.user = userSession;
     await setTokenCookie(res, {
       _id: user.id,
+      token: generateToken(user._id),
       username: user.username,
       email: user.email,
     })
     res.json({
-      _id: user.id,
+      _id: user._id,
       username: user.username,
       email: user.email,
     });

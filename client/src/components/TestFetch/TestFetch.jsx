@@ -8,6 +8,7 @@ import { SortContext } from "../../context";
 function TestFetch() {
   const dispatch = useDispatch();
   const questions = useSelector((state) => state.questions);
+  console.log(questions)
   const { sortedState } = useContext(SortContext);
 
   useEffect(() => {

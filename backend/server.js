@@ -12,6 +12,7 @@ import MongoDBStores from "connect-mongodb-session";
 import path from "path";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
+import cookieParser from "cookie-parser";
 
 const MongoDBStore = MongoDBStores(session);
 const MAX_AGE = 1000 * 60 * 60 * 3; // 3hrs
@@ -32,21 +33,22 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 app.use(express.json());
 app.use(errorHandler);
+app.use(cookieParser())
 
-app.use(
-  session({
-    secret: process.env.JWT_SECRET,
-    name: "session-id",
-    store: mongoDbstore,
-    cookie: {
-      maxAge: MAX_AGE,
-      sameSite: false,
-      secure: false,
-    },
-    resave: true,
-    saveUninitialized: false,
-  })
-);
+// app.use(
+//   session({
+//     secret: process.env.JWT_SECRET,
+//     name: "session-id",
+//     store: mongoDbstore,
+//     cookie: {
+//       maxAge: MAX_AGE,
+//       sameSite: false,
+//       secure: false,
+//     },
+//     resave: true,
+//     saveUninitialized: false,
+//   })
+// );
 
 // Confirmation on successful connect
 app.listen(port, () => console.log(`Server started on port ${port}`));

@@ -35,7 +35,7 @@ export const setTokenCookie = (res, user) => {
 
 export const restoreUser = (req, res, next) => {
     // token parsed from cookies
-    // console.log('cookies------------------------', req.cookies)
+    console.log('cookies------------------------', req.cookies)
     const { token } = req.cookies;
     return jwt.verify(token, secret, null, async (err, jwtPayload) => {
         if (err) {
