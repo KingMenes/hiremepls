@@ -4,11 +4,12 @@ import "./TestFetch.css";
 import { getQuestions } from "../../store/questions";
 import { useDispatch, useSelector } from "react-redux";
 import { SortContext } from "../../context";
+import Loading from "../Loading/Loading";
 
 function TestFetch() {
   const dispatch = useDispatch();
   const questions = useSelector((state) => state.questions);
-  console.log(questions)
+
   const { sortedState } = useContext(SortContext);
 
   useEffect(() => {
@@ -196,29 +197,30 @@ function TestFetch() {
 
   console.log(sortedQuestions)
 
-  return (
-    <div id="questionsContainer">
-      {sortedQuestions
-        ? sortedQuestions.map((question) => {
-          return (
-            <QuestionBox
-              id={question?._id}
-              question={question?.question}
-              body={question?.body}
-              author={question?.author}
-              date={timeSince(new Date(question?.date))}
-              rep={question?.reputation}
-              tags={question?.tags}
-              views={question?.views}
-              key={question?._id}
-              authorName={question?.authorName}
-              comments={question?.comments}
-            />
-          );
-        })
-        : null}
-    </div>
-  );
+  return Object.values(questions).length === 0 ? <Loading></Loading> :
+    (
+      <div id="questionsContainer">
+        {sortedQuestions
+          ? sortedQuestions.map((question) => {
+            return (
+              <QuestionBox
+                id={question?._id}
+                question={question?.question}
+                body={question?.body}
+                author={question?.author}
+                date={timeSince(new Date(question?.date))}
+                rep={question?.reputation}
+                tags={question?.tags}
+                views={question?.views}
+                key={question?._id}
+                authorName={question?.authorName}
+                comments={question?.comments}
+              />
+            );
+          })
+          : null}
+      </div>
+    );
 }
 
 export default TestFetch;
