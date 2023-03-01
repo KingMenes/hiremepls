@@ -28,7 +28,7 @@ function SectionCardContainer() {
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
         >
-          Search for Jobs
+          Search for Jobs{<br></br>}(in progress)
         </motion.button>
       </SectionCard>
       <SectionCard
@@ -43,7 +43,7 @@ function SectionCardContainer() {
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
         >
-          Find Salaries
+          Find Salaries {<br></br>}(in progress)
         </motion.button>
       </SectionCard>
       {/* <SectionCard className='bg-green' /> */}

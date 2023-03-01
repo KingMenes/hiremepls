@@ -3,6 +3,7 @@
   flex-direction: row;
   width: 95%;
   height: 70vh;
+  min-height: 600px;
   margin-left: auto;
   margin-right: auto;
   justify-content: center;
@@ -25,10 +26,10 @@
   margin-bottom: 20px;
 }
 .sectioncard-container .btn-orange {
-  background-color: hsl(27deg, 90%, 45%);
+  background-color: hsl(27, 90%, 45%);
 }
 .sectioncard-container .btn-blue {
-  background-color: hsl(206deg, 100%, 52%);
+  background-color: hsl(206, 100%, 52%);
 }
 
 @media only screen and (min-width: 1300px) {
