@@ -48,4 +48,15 @@
   cursor: pointer;
   background-color: rgb(1, 30, 110);
   transition: all 0.5s ease-in-out;
+}
+
+@media only screen and (max-width: 1280px) {
+  .trending {
+    width: 100%;
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+  .trending .dots {
+    display: hidden;
+  }
 }/*# sourceMappingURL=Trending.css.map */

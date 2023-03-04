@@ -24,3 +24,12 @@
 //   width: 200px;
 //   transition: 0.5s;
 // }
+
+
+@media only screen and (max-width: 1280px) {
+  #questionsContainer {
+    width: 100%;
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+}

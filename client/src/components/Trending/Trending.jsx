@@ -13,7 +13,7 @@ function Trending() {
             <span>{tag}</span>
           </div>
         ))}
-        <div className="tag">
+        <div className="tag dots">
           <span>
             <BsThreeDots className="icon" />
           </span>

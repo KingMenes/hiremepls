@@ -11,21 +11,22 @@
   margin-top: 10px;
   font-family: "Nunito", sans-serif;
   font-weight: 600;
-  font-size: 20px;
+  font-size: 1.5em;
   color: rgb(50, 63, 177);
 }
 .popularbar ul {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+  width: 90%;
 }
 .popularbar ul li {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  margin-right: 40px;
+  margin-right: 1.5em;
   padding: 3px;
   width: 90px;
 }
@@ -46,4 +47,16 @@
   background-color: #323fb1 !important;
   color: white !important;
   border-radius: 999px;
+  width: 100px;
+}
+
+@media only screen and (max-width: 1280px) {
+  .popularbar {
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .popularbar {
+    font-size: 1.2em;
+  }
 }/*# sourceMappingURL=PopularBar.css.map */
