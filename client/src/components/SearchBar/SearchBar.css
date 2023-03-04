@@ -3,7 +3,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
-  border: 1px hsl(267, 17%, 46%) solid;
+  border: 1px hsl(267deg, 17%, 46%) solid;
   border-radius: 3px;
   width: 100%;
   height: 75%;
@@ -12,7 +12,7 @@
   flex-grow: 1;
 }
 .searchbar:focus {
-  outline: hsl(206, 90%, 69.5%);
+  outline: hsl(206deg, 90%, 69.5%);
   box-shadow: 0 0 0 4px;
 }
 .searchbar .input-group {
@@ -44,7 +44,7 @@
 .searchbar .search-icon {
   height: 100%;
   width: 100%;
-  color: hsl(0, 0%, 30%);
+  color: hsl(0deg, 0%, 30%);
 }
 .searchbar .search_dropdown {
   display: flex;
@@ -67,4 +67,10 @@
 
 .hidden {
   visibility: hidden;
-}/*# sourceMappingURL=SearchBar.css.map */
+}
+
+@media only screen and (max-width: 768px) {
+  .searchbar {
+    width: 10%;
+  }
+} /*# sourceMappingURL=SearchBar.css.map */

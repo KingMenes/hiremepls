@@ -33,7 +33,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 app.use(express.json());
 app.use(errorHandler);
-app.use(cookieParser())
+app.use(cookieParser());
 
 // app.use(
 //   session({
@@ -58,7 +58,7 @@ app.use("/api/questions", questions);
 app.use("/api/users", users);
 app.use("/api/comments", comments);
 // app.use("*", (req, res) => res.status(404).json({ error: "not found" }));
-app.use('*', (req, res, next) => {
+app.use("*", (req, res, next) => {
   res.sendFile(path.join(__dirname, "index.html"));
 });
 export default app;

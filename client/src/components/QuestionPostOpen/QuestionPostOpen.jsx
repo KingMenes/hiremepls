@@ -78,7 +78,7 @@ function QuestionPostOpen({
         comment: comment,
       })
     ); //Object to POST
-    setCommentBody('')
+    setCommentBody("");
   };
 
   const tagsList = tags.map((tag) => (

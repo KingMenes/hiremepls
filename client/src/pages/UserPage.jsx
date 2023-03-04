@@ -15,7 +15,11 @@ function UserPage({ sessionUser }) {
 
   function sortByTop(questions) {
     return questions.sort((a, b) => {
-      return (b.reputation.likes.count - b.reputation.dislikes.count) - (a.reputation.likes.count - a.reputation.dislikes.count)
+      return (
+        b.reputation.likes.count -
+        b.reputation.dislikes.count -
+        (a.reputation.likes.count - a.reputation.dislikes.count)
+      );
     });
   }
 
@@ -33,16 +37,15 @@ function UserPage({ sessionUser }) {
       if (comment.author.username === sessionUser?.username) {
         userAnswers.push(comment);
       }
-    })
+    });
   });
-
 
   return (
     <UserProfile
       username={sessionUser?.username}
       id={sessionUser?._id}
       questions={sortByTop(userQuestions).slice(0, 10)}
-      answers = {sortByTop(userAnswers).slice(0,5)}
+      answers={sortByTop(userAnswers).slice(0, 5)}
     />
   );
 }

@@ -84,7 +84,7 @@ function UserProfile({ username, rep, questions, answers, id }) {
         <div className="top-container">
           <span>Top Answers</span>
           <div className="container">
-          {answers.map((answer) => {
+            {answers.map((answer) => {
               return (
                 <div>
                   <span className="questionRep">

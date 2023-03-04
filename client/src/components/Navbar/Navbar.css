@@ -6,7 +6,8 @@
   height: 40px;
   font-family: "Nunito", sans-serif;
   font-weight: 500;
-  box-shadow: 0 1px 2px hsla(0, 0%, 0%, 0.05), 0 1px 4px hsla(0, 0%, 0%, 0.05), 0 2px 8px hsla(0, 0%, 0%, 0.05);
+  box-shadow: 0 1px 2px hsla(0deg, 0%, 0%, 0.05),
+    0 1px 4px hsla(0deg, 0%, 0%, 0.05), 0 2px 8px hsla(0deg, 0%, 0%, 0.05);
   border-radius: 5px;
   background-color: white;
 }
@@ -54,7 +55,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  color: hsl(210, 8%, 35%);
+  color: hsl(210deg, 8%, 35%);
 }
 .navbar nav ul li .navlink {
   padding: 5px;
@@ -67,8 +68,8 @@
   align-items: center;
 }
 .navbar nav ul li .navlink:hover {
-  background-color: hsl(210, 8%, 90%);
-  color: hsl(210, 8%, 15%);
+  background-color: hsl(210deg, 8%, 90%);
+  color: hsl(210deg, 8%, 15%);
   cursor: pointer;
   border-radius: 999px;
   padding: 5px;
@@ -85,19 +86,32 @@
   font: inherit;
   cursor: pointer;
   outline: inherit;
-  background-color: hsl(203, 89%, 21%);
+  background-color: hsl(203deg, 89%, 21%);
   width: 80px;
   border-radius: 5px;
   align-self: flex-end;
 }
 .navbar .btn-signup {
-  border: 1px solid hsl(203, 89%, 21%);
+  border: 1px solid hsl(203deg, 89%, 21%);
   background-color: inherit;
-  color: hsl(203, 89%, 21%);
+  color: hsl(203deg, 89%, 21%);
 }
 
-@media only screen and (max-width: 1300px) {
+@media only screen and (min-width: 768px) {
+  .menu-icon {
+    display: none;
+  }
+}
+@media only screen and (max-width: 1024px) {
   .nav {
     width: 40%;
   }
-}/*# sourceMappingURL=Navbar.css.map */
+}
+@media only screen and (max-width: 768px) {
+  .navbar nav {
+    display: none;
+  }
+  .navbar .logo {
+    width: 140%;
+  }
+} /*# sourceMappingURL=Navbar.css.map */

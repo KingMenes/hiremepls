@@ -5,7 +5,7 @@ import bcrypt from "bcryptjs";
 import { setTokenCookie } from "../auth.js";
 
 export const logoutUser = asyncHandler(async (req, res) => {
-  res.clearCookie('token')
+  res.clearCookie("token");
   return res.json({ message: "Logged out" });
 });
 
@@ -24,15 +24,16 @@ const generateToken = (id) => {
   });
 };
 
-export const isAuth = asyncHandler(async (req, res) => {
-  const { user } = req;
-  if (user) {
-    const currentUser = await User.findById(user._id)
-    return res.json({
-      data: currentUser
-    });
-  } else return res.json({});
-}
+export const isAuth = asyncHandler(
+  async (req, res) => {
+    const { user } = req;
+    if (user) {
+      const currentUser = await User.findById(user._id);
+      return res.json({
+        data: currentUser,
+      });
+    } else return res.json({});
+  }
   // const session = req.session.user;
 
   // if (session) {
@@ -100,7 +101,7 @@ export const createUser = asyncHandler(async (req, res) => {
       token: generateToken(user._id),
       username: user.username,
       email: user.email,
-    })
+    });
     res.json({
       _id: user._id,
       username: user.username,
@@ -138,7 +139,7 @@ export const logInUser = asyncHandler(async (req, res) => {
       token: generateToken(user._id),
       username: user.username,
       email: user.email,
-    })
+    });
 
     // const userSession = { email: user.email };
     // req.session.user = userSession;
@@ -148,7 +149,6 @@ export const logInUser = asyncHandler(async (req, res) => {
       username: user.username,
       email: user.email,
       reputation: user.reputation,
-
     });
   } else {
     res.status(400);

@@ -48,7 +48,7 @@
     margin-right: 5px;
   }
 
-  .selected{ 
+  .selected {
     background-color: #323fb1 !important;
     color: white !important;
     border-radius: 999px;
@@ -56,7 +56,7 @@
   }
 }
 
-@media only screen and (max-width: 1280px) {
+@media only screen and (max-width: 1024px) {
   .popularbar {
     width: 100%;
   }

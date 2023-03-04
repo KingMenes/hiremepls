@@ -151,14 +151,18 @@ function TestFetch() {
 
   function sortByTop(questions) {
     return questions.sort((a, b) => {
-      return (b.reputation.likes.count - b.reputation.dislikes.count) - (a.reputation.likes.count - a.reputation.dislikes.count)
+      return (
+        b.reputation.likes.count -
+        b.reputation.dislikes.count -
+        (a.reputation.likes.count - a.reputation.dislikes.count)
+      );
     });
   }
 
   function sortByHot(questions) {
     return questions.sort((a, b) => {
-      return (calculateHotness(b) - calculateHotness(a))
-    })
+      return calculateHotness(b) - calculateHotness(a);
+    });
   }
 
   function sortByNew(questions) {
@@ -170,12 +174,12 @@ function TestFetch() {
   function sortByViews(questions) {
     return questions.sort((a, b) => {
       return b.views - a.views;
-    })
+    });
   }
 
   let questionsToSort = [];
   Object.values(questions).map((question) => {
-    questionsToSort.push(question)
+    questionsToSort.push(question);
   });
 
   let sortedByTop = sortByTop(questionsToSort);
@@ -186,22 +190,26 @@ function TestFetch() {
   let sortedQuestions;
 
   switch (sortedState) {
-    case 1: sortedQuestions = sortedByHot;
-    case 2: sortedQuestions = sortedByNew;
-    case 3: sortedQuestions = sortedByTop;
-    case 4: sortedQuestions = sortedByViews;
+    case 1:
+      sortedQuestions = sortedByHot;
+    case 2:
+      sortedQuestions = sortedByNew;
+    case 3:
+      sortedQuestions = sortedByTop;
+    case 4:
+      sortedQuestions = sortedByViews;
     default:
     // do nothing
   }
 
+  console.log(sortedQuestions);
 
-  console.log(sortedQuestions)
-
-  return Object.values(questions).length === 0 ? <Loading></Loading> :
-    (
-      <div id="questionsContainer">
-        {sortedQuestions
-          ? sortedQuestions.map((question) => {
+  return Object.values(questions).length === 0 ? (
+    <Loading></Loading>
+  ) : (
+    <div id="questionsContainer">
+      {sortedQuestions
+        ? sortedQuestions.map((question) => {
             return (
               <QuestionBox
                 id={question?._id}
@@ -218,9 +226,9 @@ function TestFetch() {
               />
             );
           })
-          : null}
-      </div>
-    );
+        : null}
+    </div>
+  );
 }
 
 export default TestFetch;

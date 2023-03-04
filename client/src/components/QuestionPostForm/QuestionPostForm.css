@@ -169,7 +169,7 @@
   font: inherit;
   cursor: pointer;
   outline: inherit;
-  background-color: hsl(203, 86%, 44%);
+  background-color: hsl(203deg, 86%, 44%);
   width: 100px;
   border-radius: 5px;
   font-family: "Nunito", sans-serif;
@@ -268,4 +268,4 @@
 }
 .question-post .close-icn:hover {
   cursor: pointer;
-}/*# sourceMappingURL=QuestionPostForm.css.map */
+} /*# sourceMappingURL=QuestionPostForm.css.map */
