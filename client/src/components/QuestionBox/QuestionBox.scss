@@ -59,6 +59,8 @@
         color: inherit;
         font-family: inherit;
         font-size: 32px;
+        // border: #000 solid 1px;
+        width: 100%;
       }
 
       .question-body {
@@ -197,5 +199,12 @@
         font-weight: 800;
       }
     }
+  }
+}
+
+@media only screen and (max-width: 525px) {
+  .question span {
+    display: inline;
+    font-size: 24px;
   }
 }

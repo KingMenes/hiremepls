@@ -1,1 +1,1 @@
-{"version":3,"sources":["TestFetch.scss","TestFetch.css"],"names":[],"mappings":"AAAA;EACE,aAAA;EACA,sBAAA;EACA,mBAAA;EACA,uBAAA;EAEA,UAAA;EACA,iBAAA;EACA,kBAAA;EACA,aAAA;ACAF;;ADmBA;EACE;IACE,WAAA;IACA,iBAAA;IACA,kBAAA;EChBF;AACF","file":"TestFetch.css"}
+{"version":3,"sources":["TestFetch.scss","TestFetch.css"],"names":[],"mappings":"AAAA;EACE,aAAA;EACA,sBAAA;EACA,mBAAA;EACA,uBAAA;EAEA,UAAA;EACA,iBAAA;EACA,kBAAA;EACA,aAAA;ACAF;;ADkBA;EACE;IACE,WAAA;IACA,iBAAA;IACA,kBAAA;ECfF;AACF","file":"TestFetch.css"}

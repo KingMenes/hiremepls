@@ -32,25 +32,13 @@
 }
 
 .bg-orange {
-  background: linear-gradient(
-    0deg,
-    hsl(27deg, 95%, 90%) 30%,
-    hsl(0deg, 0%, 100%)
-  );
+  background: linear-gradient(0deg, hsl(27, 95%, 90%) 30%, hsl(0, 0%, 100%));
 }
 
 .bg-blue {
-  background: linear-gradient(
-    0deg,
-    hsl(206deg, 96%, 90%) 30%,
-    hsl(0deg, 0%, 100%)
-  );
+  background: linear-gradient(0deg, hsl(206, 96%, 90%) 30%, hsl(0, 0%, 100%));
 }
 
 .bg-green {
-  background: linear-gradient(
-    0deg,
-    hsl(146deg, 96%, 90%) 30%,
-    hsl(0deg, 0%, 100%)
-  );
+  background: linear-gradient(0deg, hsl(146, 96%, 90%) 30%, hsl(0, 0%, 100%));
 } /*# sourceMappingURL=SectionCard.css.map */
