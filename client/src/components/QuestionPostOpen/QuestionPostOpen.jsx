@@ -20,7 +20,7 @@ import {
 } from "react-icons/bs";
 import { BiComment } from "react-icons/bi";
 import { incrementQuestion, repQuestion } from "../../store/questions";
-import avatar from "../../assets/avatar.webp"
+import avatar from "../../assets/avatar.png"
 
 const fadeIn = {
   hidden: {
