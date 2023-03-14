@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const API_ENDPOINT =
   process.env.NODE_ENV !== "development"
-    ? `https://hiremepls-api.onrender.com/api`
+    ? `/api`
     : "/api";
 
 export default axios.create({

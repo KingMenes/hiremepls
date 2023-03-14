@@ -20,6 +20,7 @@ import UserPage from "../pages/UserPage";
 export const URL = process.env.REACT_APP_SERVER_URL;
 
 function App() {
+  console.log('app')
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
   const [userSession, setUserSession] = useState(true);
