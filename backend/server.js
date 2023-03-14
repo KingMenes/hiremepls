@@ -57,23 +57,6 @@ app.listen(port, () => console.log(`Server started on port ${port}`));
 app.use("/api/questions", questions);
 app.use("/api/users", users);
 app.use("/api/comments", comments);
-// app.use("*", (req, res) => res.status(404).json({ error: "not found" }));
-app.use((_req, _res, next) => {
-  const err = new Error("The requested resource couldn't be found.");
-  err.title = "Resource Not Found";
-  err.errors = ["The requested resource couldn't be found."];
-  err.status = 404;
-  next(err);
-});
+app.use("*", (req, res) => res.status(404).json({ error: "not found" }));
 
-app.use((err, _req, res, _next) => {
-  res.status(err.status || 500);
-  console.error(err);
-  res.json({
-    title: err.title || 'Server Error',
-    message: err.message,
-    errors: err.errors,
-    stack: isProduction ? null : err.stack
-  });
-});
 export default app;
