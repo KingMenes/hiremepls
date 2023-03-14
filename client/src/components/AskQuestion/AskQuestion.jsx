@@ -4,12 +4,13 @@ import { NavLink } from "react-router-dom";
 import useQuestionModal from "../../hooks/useQuestionModal";
 import { AnimatePresence, motion } from "framer-motion";
 import QuestionPostForm from "../QuestionPostForm/QuestionPostForm";
+import avatar from "../../assets/avatar.webp"
 
 function AskQuestion({ sessionUser, setSessionUser }) {
   return (
     <div className="askquestion">
       <div>
-        <img src="https://thispersondoesnotexist.com/image" alt="" />
+        <img src={avatar} alt="" />
         <div className="question-input">
           <HiOutlineChatBubbleLeftEllipsis className="icon" />
           <NavLink to="/askquestion" id="navlink">

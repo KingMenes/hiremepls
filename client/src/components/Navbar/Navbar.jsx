@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout, login } from "../../store/session";
 import { NavLink } from "react-router-dom";
 import UserBadge from "../UserBadge/UserBadge";
+import avatar from "../../assets/avatar.webp"
 
 function Navbar({ sessionUser, setSessionUser }) {
   const dispatch = useDispatch();
@@ -72,7 +73,7 @@ function Navbar({ sessionUser, setSessionUser }) {
 
         {sessionUser && (
           <UserBadge
-            img="https://thispersondoesnotexist.com/image"
+            img={avatar}
             setSessionUser={setSessionUser}
             sessionUser={sessionUser}
           />
