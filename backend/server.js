@@ -62,6 +62,6 @@ app.use("/api/users", users);
 app.use("/api/comments", comments);
 // app.use("*", (req, res) => res.status(404).json({ error: "not found" }));
 app.use("*", (req, res, next) => {
-  res.sendFile(path.join(__dirname, "%PUBLIC_URL%/index.html"));
+  res.sendFile(path.join(__dirname, "build/index.html"));
 });
 export default app;
