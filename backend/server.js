@@ -13,6 +13,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
 import cookieParser from "cookie-parser";
+import router from "./routes/index.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -57,6 +58,7 @@ app.use(cookieParser());
 app.listen(port, () => console.log(`Server started on port ${port}`));
 
 // api routes
+app.use(router)
 app.use("/api/questions", questions);
 app.use("/api/users", users);
 app.use("/api/comments", comments);
@@ -66,26 +68,7 @@ app.use("/api/comments", comments);
 //   res.sendFile(path.join(__dirname, "../client/public/index.html"));
 // });
 
-if (process.env.NODE_ENV === 'production') {
-  // Serve the frontend's index.html file at the root route
-  router.get('/', (req, res) => {
-    res.cookie('XSRF-TOKEN', req.csrfToken());
-    res.sendFile(
-      path.resolve(__dirname, '../client', 'build', 'index.html')
-    );
-  });
 
-  // Serve the static assets in the frontend's build folder
-  router.use(express.static(path.resolve("../client/build")));
-
-  // Serve the frontend's index.html file at all other routes NOT starting with /api
-  router.get(/^(?!\/?api).*/, (req, res) => {
-    res.cookie('XSRF-TOKEN', req.csrfToken());
-    res.sendFile(
-      path.resolve(__dirname, '../client', 'build', 'index.html')
-    );
-  });
-}
 
 
 export default app;
