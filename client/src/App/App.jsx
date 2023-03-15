@@ -20,17 +20,14 @@ import UserPage from "../pages/UserPage";
 export const URL = process.env.REACT_APP_SERVER_URL;
 
 function App() {
-  console.log('app')
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
-  const [userSession, setUserSession] = useState(true);
   const [sessionUser, setSessionUser] = useState();
 
   const fetchUserAuth = async () => {
     try {
       setLoading(true);
       const res = await http.get(`/users/isAuth`);
-      console.log(res.data);
       if (res.data.data.email) {
         dispatch(setUserThunk({ data: res.data }));
         setSessionUser(res.data.data);

@@ -10,8 +10,7 @@ import {
 } from "../controllers/commentsController.js";
 
 router.get("/", getComments);
-router.post("/", protect, createComment);
-router.put("/:id", protect, updateComment);
-router.delete("/id", protect, deleteComment);
-
+router.post("/", createComment);
+router.put("/:id", updateComment);
+router.delete("/id", deleteComment);
 export default router;

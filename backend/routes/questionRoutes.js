@@ -18,14 +18,14 @@ import {
 
 router.get("/", getQuestions);
 router.get("/:id", getQuestion);
-router.post("/", protect, createQuestion);
-router.put("/:questionId/repComment/:commentId", protect, repComment);
-router.put("/:questionId/comment/:commentId", protect, updateComment);
-router.put("/rep/:id", protect, repQuestion);
+router.post("/", createQuestion);
+router.put("/:questionId/repComment/:commentId", repComment);
+router.put("/:questionId/comment/:commentId", updateComment);
+router.put("/rep/:id", repQuestion);
 router.put("/view/:id", viewQuestion);
-router.put("/comments/:id", protect, addComment);
-router.put("/:id", protect, updateQuestion);
-router.delete("/:questionId/comment/:commentId", protect, deleteComment);
-router.delete("/:id", protect, deleteQuestion);
+router.put("/comments/:id", addComment);
+router.put("/:id", updateQuestion);
+router.delete("/:questionId/comment/:commentId", deleteComment);
+router.delete("/:id", deleteQuestion);
 
 export default router;
