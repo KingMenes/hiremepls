@@ -1,5 +1,5 @@
 // backend/routes/index.js
-const express = require("express");
+import express from 'express'
 const router = express.Router();
 const apiRouter = require("./api");
 // Static routes
