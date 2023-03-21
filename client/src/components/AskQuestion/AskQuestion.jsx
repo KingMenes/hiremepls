@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import useQuestionModal from "../../hooks/useQuestionModal";
 import { AnimatePresence, motion } from "framer-motion";
 import QuestionPostForm from "../QuestionPostForm/QuestionPostForm";
-import avatar from "../../assets/avatar.png"
+import avatar from "../../assets/avatar.png";
 
 function AskQuestion({ sessionUser, setSessionUser }) {
   return (

@@ -11,7 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout, login } from "../../store/session";
 import { NavLink } from "react-router-dom";
 import UserBadge from "../UserBadge/UserBadge";
-import avatar from "../../assets/avatar.png"
+import avatar from "../../assets/avatar.png";
 
 function Navbar({ sessionUser, setSessionUser }) {
   const dispatch = useDispatch();

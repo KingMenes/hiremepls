@@ -20,7 +20,7 @@ import {
 } from "react-icons/bs";
 import { BiComment } from "react-icons/bi";
 import { incrementQuestion, repQuestion } from "../../store/questions";
-import avatar from "../../assets/avatar.png"
+import avatar from "../../assets/avatar.png";
 
 const fadeIn = {
   hidden: {
@@ -193,9 +193,7 @@ function QuestionPostOpen({
             <div className="tags">{tagsList}</div>
           </div>
           <div className="addComment row flex-center">
-            {sessionUser && (
-              <img src={avatar} alt="" />
-            )}
+            {sessionUser && <img src={avatar} alt="" />}
             {sessionUser ? (
               <form className="row flex-center" onSubmit={handleSubmit}>
                 <div className="commentInput">

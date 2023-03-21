@@ -58,7 +58,7 @@ app.use(cookieParser());
 app.listen(port, () => console.log(`Server started on port ${port}`));
 
 // api routes
-app.use(router)
+app.use(router);
 app.use("/api/questions", questions);
 app.use("/api/users", users);
 app.use("/api/comments", comments);
@@ -67,8 +67,5 @@ app.use("/api/comments", comments);
 // app.use("*", (req, res, next) => {
 //   res.sendFile(path.join(__dirname, "../client/public/index.html"));
 // });
-
-
-
 
 export default app;

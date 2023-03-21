@@ -1,7 +1,7 @@
 // backend/routes/index.js
-import express from 'express'
+import express from "express";
 const router = express.Router();
-import path from 'path'
+import path from "path";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
 const __filename = fileURLToPath(import.meta.url);
@@ -30,4 +30,4 @@ if (process.env.NODE_ENV !== "production") {
     res.status(201).json({});
   });
 }
-export default router
+export default router;
