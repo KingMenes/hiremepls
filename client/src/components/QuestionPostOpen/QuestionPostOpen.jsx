@@ -21,6 +21,7 @@ import {
 import { BiComment } from "react-icons/bi";
 import { incrementQuestion, repQuestion } from "../../store/questions";
 import avatar from "../../assets/avatar.png";
+import ReplyBox from "../ReplyBox/ReplyBox";
 
 const fadeIn = {
   hidden: {
@@ -362,8 +363,17 @@ function QuestionPostOpen({
                           )}
                         </div>
                         <div className="comment-reply">
+                          {comment?.replies.map((reply) => {
+                            return (
+                              <>
+                                <div>{reply.user.username}</div>
+                                <div>{reply.reply}</div>
+                              </>
+                            )
+                          })}
                           <BiComment />
                           <span>Reply</span>
+                          <ReplyBox commentId={comment?._id} questionId={id}></ReplyBox>
                         </div>
                       </div>
                     </div>

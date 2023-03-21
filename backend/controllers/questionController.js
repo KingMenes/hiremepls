@@ -194,13 +194,21 @@ export const deleteComment = asyncHandler(async (req, res) => {
 });
 
 export const updateComment = asyncHandler(async (req, res) => {
-  const { comment: body } = req.body;
+  const { comment: body, reply, user } = req.body;
   const { questionId, commentId } = req.params;
 
   const question = await Question.findById(questionId);
   const comment = await Comment.findById(commentId);
-  comment.body = body;
-  await comment.save();
+  console.log(reply)
+  if (reply) {
+    comment.replies.push({ reply, user })
+    await comment.save()
+  }
+  if (body) {
+    comment.body = body;
+    await comment.save();
+  }
+
   for (let i = 0; i < question.comments.length; i++) {
     let comm = question.comments[i];
     if (comm._id.toString() === commentId) {
@@ -209,6 +217,7 @@ export const updateComment = asyncHandler(async (req, res) => {
       break;
     }
   }
+  console.log(question.comments)
   res.json(question);
 });
 const reputation = async (question, comment) => {

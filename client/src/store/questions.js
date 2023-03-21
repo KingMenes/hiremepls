@@ -118,29 +118,44 @@ export const repQuestion = createAsyncThunk(
   }
 );
 
+
 export const addComment = createAsyncThunk(
   ADD_COMMENT,
-  async ({ id, user, comment }) => {
+  async ({ id, user, comment, commentId }) => {
     let token;
     if (user.token) {
       token = user.token;
     }
     http.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-    const res = await http.put(`/questions/comments/${id}`, {
-      user,
-      comment,
-    });
-    return res.data;
+
+    if (id) {
+
+      const res = await http.put(`/questions/comments/${id}`, {
+        user,
+        comment,
+      });
+      return res.data;
+    }
   }
 );
 export const updateComment = createAsyncThunk(
   UPDATE_QUESTION,
-  async ({ comment, user, questionId, commentId }) => {
+  async ({ comment, user, questionId, commentId, reply }) => {
     let token;
     if (user.token) {
       token = user.token;
     }
     http.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+
+    if (reply) {
+      const res = await http.put(
+        `/questions/${questionId}/comment/${commentId}`,
+        {
+          reply,
+          user
+        }
+      );
+    }
 
     const res = await http.put(
       `/questions/${questionId}/comment/${commentId}`,
@@ -152,6 +167,25 @@ export const updateComment = createAsyncThunk(
     return res.data;
   }
 );
+// export const addReply = createAsyncThunk(
+//   'hello',
+//   async ({ user, comment, commentId, questionId }) => {
+//     console.log(questionId)
+//     let token;
+//     if (user.token) {
+//       token = user.token;
+//     }
+//     http.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+//     const res = await http.put(`/comments/${commentId}`, {
+//       user,
+//       comment,
+//       commentId
+//     })
+//     console.log(res.data)
+//     return res.data
+//   }
+
+// );
 
 export const repComment = createAsyncThunk(
   UPDATE_QUESTION,
