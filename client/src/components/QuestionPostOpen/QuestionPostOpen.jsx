@@ -22,6 +22,7 @@ import { BiComment } from "react-icons/bi";
 import { incrementQuestion, repQuestion } from "../../store/questions";
 import avatar from "../../assets/avatar.png";
 import ReplyBox from "../ReplyBox/ReplyBox";
+import CommentContainer from "../CommentContainer/CommentContainer";
 
 const fadeIn = {
   hidden: {
@@ -59,6 +60,7 @@ function QuestionPostOpen({
   const [errors, setErrors] = useState("");
   const [edit, setEdit] = useState("");
   const [currentValue, setCurrentValue] = useState();
+  const [toggleReply, setToggleReply] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -369,11 +371,14 @@ function QuestionPostOpen({
                                 <div>{reply.user.username}</div>
                                 <div>{reply.reply}</div>
                               </div>
-                            )
+                            );
                           })}
                           <BiComment />
                           <span>Reply</span>
-                          <ReplyBox commentId={comment?._id} questionId={id}></ReplyBox>
+                          <ReplyBox
+                            commentId={comment?._id}
+                            questionId={id}
+                          ></ReplyBox>
                         </div>
                       </div>
                     </div>

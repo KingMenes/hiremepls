@@ -199,10 +199,10 @@ export const updateComment = asyncHandler(async (req, res) => {
 
   const question = await Question.findById(questionId);
   const comment = await Comment.findById(commentId);
-  console.log(reply)
+  console.log(reply);
   if (reply) {
-    comment.replies.push({ reply, user })
-    await comment.save()
+    comment.replies.push({ reply, user });
+    await comment.save();
   }
   if (body) {
     comment.body = body;
@@ -217,7 +217,7 @@ export const updateComment = asyncHandler(async (req, res) => {
       break;
     }
   }
-  console.log(question.comments)
+  console.log(question.comments);
   res.json(question);
 });
 const reputation = async (question, comment) => {

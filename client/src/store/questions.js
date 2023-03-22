@@ -118,7 +118,6 @@ export const repQuestion = createAsyncThunk(
   }
 );
 
-
 export const addComment = createAsyncThunk(
   ADD_COMMENT,
   async ({ id, user, comment, commentId }) => {
@@ -129,7 +128,6 @@ export const addComment = createAsyncThunk(
     http.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
     if (id) {
-
       const res = await http.put(`/questions/comments/${id}`, {
         user,
         comment,
@@ -152,7 +150,7 @@ export const updateComment = createAsyncThunk(
         `/questions/${questionId}/comment/${commentId}`,
         {
           reply,
-          user
+          user,
         }
       );
     }

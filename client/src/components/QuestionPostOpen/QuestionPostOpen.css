@@ -84,55 +84,6 @@
   font-weight: 700;
   margin-right: 0px;
 }
-.questionpostopen .addComment {
-  background-color: #f1f2f2;
-  width: 100%;
-  height: 120px;
-  margin-top: 10px;
-}
-.questionpostopen .addComment form {
-  width: 90%;
-  height: 50px;
-}
-.questionpostopen .addComment p {
-  display: block;
-  margin-left: 10px;
-}
-.questionpostopen .addComment button {
-  display: flex;
-  background-color: #2e69ff;
-  outline: none;
-  color: #fff;
-  border: none;
-  border-radius: 999px;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  height: 30px;
-  width: 20%;
-  margin-left: 10px;
-}
-.questionpostopen .addComment button:hover {
-  filter: brightness(0.9);
-  cursor: pointer;
-}
-.questionpostopen .addComment .commentInput {
-  width: 75%;
-  height: 36px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #fff;
-  border-radius: 999px;
-}
-.questionpostopen .addComment .commentInput input {
-  width: 90%;
-  height: 100%;
-  border: none;
-}
-.questionpostopen .addComment .commentInput input:focus {
-  outline: none;
-}
 .questionpostopen .comments {
   min-height: 30vh;
   width: 100%;
@@ -220,6 +171,62 @@
   right: 40px;
   top: 10px;
   font-size: 20px;
+}
+.questionpostopen .reply-btn {
+  cursor: pointer;
+}
+
+.addComment {
+  background-color: #f1f2f2;
+  width: 100%;
+  height: 120px;
+  margin-top: 10px;
+}
+.addComment form {
+  width: 90%;
+  height: 50px;
+}
+.addComment p {
+  display: block;
+  margin-left: 10px;
+}
+.addComment button {
+  display: flex;
+  background-color: #2e69ff;
+  outline: none;
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  width: 20%;
+  margin-left: 10px;
+}
+.addComment button:hover {
+  filter: brightness(0.9);
+  cursor: pointer;
+}
+.addComment .commentInput {
+  width: 75%;
+  height: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 999px;
+}
+.addComment .commentInput input {
+  width: 90%;
+  height: 100%;
+  border: none;
+}
+.addComment .commentInput input:focus {
+  outline: none;
+}
+.addComment .comment-reply {
+  display: block;
 }
 
 @media only screen and (max-width: 1024px) {

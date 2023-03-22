@@ -1,7 +1,7 @@
 import asyncHandler from "express-async-handler";
 import Comment from "../models/commentModel.js";
 import User from "../models/userModel.js";
-import Question from '../models/questionModel.js'
+import Question from "../models/questionModel.js";
 
 export const getComments = asyncHandler(async (req, res) => {
   const commentsList = await Comment.find();
@@ -26,15 +26,19 @@ export const createComment = asyncHandler(async (req, res) => {
 
 export const updateComment = asyncHandler(async (req, res) => {
   const comment = await Comment.findById(req.params.id);
-  const { comment: commentBody, user: userFront, commentId, questionId } = req.body
+  const {
+    comment: commentBody,
+    user: userFront,
+    commentId,
+    questionId,
+  } = req.body;
   if (commentId) {
-    await comment.replies.push({ comment: commentBody, user: userFront })
-    await comment.save()
-    console.log(comment)
-    res.json(comment)
-    return
+    await comment.replies.push({ comment: commentBody, user: userFront });
+    await comment.save();
+    console.log(comment);
+    res.json(comment);
+    return;
   }
-
 
   if (!comment) {
     res.status(400);
