@@ -16,8 +16,7 @@
   border-radius: 50%;
   height: 150px;
   width: 150px;
-  filter: drop-shadow(0 10px 8px rgba(0, 0, 0, 0.04))
-    drop-shadow(0 4px 3px rgba(0, 0, 0, 0.1));
+  filter: drop-shadow(0 10px 8px rgba(0, 0, 0, 0.04)) drop-shadow(0 4px 3px rgba(0, 0, 0, 0.1));
   margin-left: 50px;
 }
 .userprofile .userheader {
@@ -111,12 +110,7 @@
   width: 100%;
   border-bottom: #d6d9dc 1px solid;
 }
-.userprofile
-  .participation-section
-  .top-container
-  .container
-  div
-  .questionTitle {
+.userprofile .participation-section .top-container .container div .questionTitle {
   display: block;
   font-size: 100%;
   margin-top: auto;
@@ -130,4 +124,4 @@
   border-radius: 5px;
   font-size: 14px;
   margin: 15px;
-} /*# sourceMappingURL=UserProfile.css.map */
+}/*# sourceMappingURL=UserProfile.css.map */

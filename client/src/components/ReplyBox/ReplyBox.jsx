@@ -17,7 +17,7 @@ const ReplyBox = ({ commentId, questionId }) => {
         updateComment({ commentId, reply: comment, user, questionId })
       ).then(async ({ payload }) => {
         setComment("");
-        console.log(payload);
+        // console.log(payload);
         // await dispatch(getQuestions())
       });
     }

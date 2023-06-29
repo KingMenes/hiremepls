@@ -367,9 +367,9 @@ function QuestionPostOpen({
                         <div className="comment-reply">
                           {comment?.replies.map((reply) => {
                             return (
-                              <div>
-                                <div>{reply.user.username}</div>
-                                <div>{reply.reply}</div>
+                              <div className="comment-each">
+                                <div>{reply.user.username}: </div>
+                                <div> {reply.reply}</div>
                               </div>
                             );
                           })}
